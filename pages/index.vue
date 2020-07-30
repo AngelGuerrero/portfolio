@@ -2,11 +2,11 @@
   <div class="dev wrapper">
     <nav class="dev navbar">
       <div class="nav__menu">
-        <a href="#" class="menu__item">&lt; home /&gt;</a>
-        <a href="#" class="menu__item">&lt; about /&gt;</a>
-        <a href="#" class="menu__item">&lt; lab /&gt;</a>
-        <a href="#" class="menu__item">&lt; projects /&gt;</a>
-        <a href="#" class="menu__item">&lt; contact /&gt;</a>
+        <a href="#" class="menu__item">home </a>
+        <a href="#" class="menu__item">about</a>
+        <a href="#" class="menu__item">lab</a>
+        <a href="#" class="menu__item">projects</a>
+        <a href="#" class="menu__item">contact</a>
       </div>
     </nav>
 
@@ -26,9 +26,21 @@
       </div>
     </aside>
 
-    <main class="dev main" />
+    <main class="dev main">
+      <h1 class="main__title">
+        Hi, my name is
+      </h1>
+      <h1 class="main__title">
+        Ángel Guerrero
+      </h1>
+      <h2 class="main__subtitle">
+        I <span class="title--cursive">design</span> and <span class="title--enfasis">develop</span> in Vue
+      </h2>
+    </main>
     <footer class="dev footer">
-      <arrow-right-icon class="icon" />
+      <div class="footer__next">
+        <arrow-right-icon class="icon" />
+      </div>
     </footer>
   </div>
 </template>
@@ -38,8 +50,21 @@ export default {}
 </script>
 
 <style>
+@font-face {
+  font-family: "Cy";
+  src: url("../assets/fonts/Cy/Cy-Regular.otf");
+}
+@font-face {
+  font-family: "Cy Extra Bold";
+  src: url("../assets/fonts/Cy/Cy-ExtraBold.otf");
+}
+@font-face {
+  font-family: "Consolas";
+  src: url("../assets/fonts/Consolas.ttf");
+}
 .icon {
-  font-size: 24px;
+  font-size: 22px;
+  color: black;
 }
 .wrapper {
   height: 100%;
@@ -54,7 +79,7 @@ export default {}
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
-  background-color: white;
+  background-color: rgb(255, 255, 253);
 }
 
 .aside__header {
@@ -63,32 +88,38 @@ export default {}
 }
 
 .aside__header-menu {
-  /* background-color: blue; */
-  border: 1px solid rgb(235, 235, 235);
+  background-color: #FF13F7;
   height: 50px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding-bottom: 10px;
 }
 .aside__header-menu .icon {
-  margin: 0;
-  color: black;
+  color: white;
+  font-size: 36px;
+
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 
 .aside__title {
+  font-family: 'Red Rose', cursive;
+  font-weight: 700;
+  font-size: 1.2rem;
+
   width: 200%;
-  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   overflow-wrap: normal;
   word-wrap: normal;
-  color: rgb(90, 90, 97);
+  color: #1313FF;
 
   position: absolute;
   top: 120px;
@@ -99,7 +130,7 @@ export default {}
 
 .aside__links {
   height: 50%;
-  border-right: 1px solid rgb(235, 235, 235);
+  background-color: #1313FF;
 
   display: flex;
   flex-direction: column;
@@ -109,41 +140,96 @@ export default {}
 
 .link--icon {
   margin-bottom: 30px;
-  color: rgb(90, 90, 97);
+  color: white;
+  cursor: pointer;
 }
 
 .main {
-  background-color: lightblue;
+  background-color: #1313FF;
   grid-column-start: 2;
   grid-column-end: 5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.main__title {
+  color: white;
+  font-family: "Cy";
+}
+
+.main__title {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 60px;
+  font-size: 60px;
+}
+.main__subtitle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-size: 40px;
+}
+.title--cursive {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+.title--enfasis {
+  color: white;
+  font-family: "Cy Extra Bold";
+  position: relative;
+}
+.title--enfasis::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 70%;
+  height: 30%;
+  background-color: #00FFEE;
 }
 
 .navbar {
-  background-color: white;
+  background-color: #1313FF;
   grid-column-start: 2;
   grid-column-end: 5;
 }
 
 .nav__menu {
-  width: 50%;
+  width: 60%;
   margin-left: auto;
   height: 100%;
   display: flex;
+  background-color: white;
 }
 
 .menu__item {
   flex-grow: 1;
   width: 80px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: 'Saira Semi Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgb(90, 90, 97);
+  color: #1313FF;
+}
+.menu__item:hover {
+  background-color: #1313FF;
+  color: white;
 }
 
 .footer {
-  background-color: white;
+  background-color: #1313FF;
+
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 3;
@@ -152,10 +238,17 @@ export default {}
   justify-content: flex-end;
   align-items: center;
 }
-.footer .icon {
-  width: 80px;
+.footer__next {
+  width: 100px;
+  height: 100%;
+  background-color: #FF13F7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__next .icon {
   font-size: 36px;
-  margin: 0;
-  color: rgb(90, 90, 97);
+  color: white;
 }
 </style>
