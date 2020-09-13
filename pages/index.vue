@@ -1,7 +1,8 @@
 <template>
   <div class="dev wrapper">
+    <!-- Nav -->
     <nav class="dev navbar">
-      <div class="nav__menu">
+      <div class="nav__menu d-none d-md-flex">
         <a href="#" class="menu__item">home </a>
         <a href="#" class="menu__item">about</a>
         <a href="#" class="menu__item">lab</a>
@@ -10,6 +11,7 @@
       </div>
     </nav>
 
+    <!-- Aside menú -->
     <aside class="wrapper__menu">
       <div class="aside__header">
         <div class="aside__header-menu">
@@ -26,17 +28,20 @@
       </div>
     </aside>
 
+    <!-- Main content -->
     <main class="dev main">
-      <h1 class="main__title">
+      <h1 class="main__title" data-aos="fade-right">
         Hi, my name is
       </h1>
-      <h1 class="main__title">
+      <h1 class="main__title" data-aos="fade-right" data-aos-delay="1000">
         Ángel Guerrero
       </h1>
-      <h2 class="main__subtitle">
+      <h2 class="main__subtitle" data-aos="fade-right" data-aos-delay="2000">
         I <span class="title--cursive">design</span> and <span class="title--enfasis">develop</span> in Vue
       </h2>
     </main>
+
+    <!-- Footer -->
     <footer class="dev footer">
       <div class="footer__next">
         <arrow-right-icon class="icon" />
@@ -49,7 +54,10 @@
 export default {}
 </script>
 
-<style>
+<style lang="scss">
+
+$mainColor: #1111d8;
+
 @font-face {
   font-family: "Cy";
   src: url("../assets/fonts/Cy/Cy-Regular.otf");
@@ -62,6 +70,7 @@ export default {}
   font-family: "Consolas";
   src: url("../assets/fonts/Consolas.ttf");
 }
+
 .icon {
   font-size: 22px;
   color: black;
@@ -79,7 +88,8 @@ export default {}
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
-  background-color: rgb(255, 255, 253);
+  background-color: $mainColor;
+  color: white;
 }
 
 .aside__header {
@@ -110,16 +120,16 @@ export default {}
 }
 
 .aside__title {
-  font-family: 'Red Rose', cursive;
+  font-family: 'Courgette', cursive;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 
   width: 200%;
   text-transform: uppercase;
   letter-spacing: 3px;
   overflow-wrap: normal;
   word-wrap: normal;
-  color: #1313FF;
+  color: white;
 
   position: absolute;
   top: 120px;
@@ -130,7 +140,7 @@ export default {}
 
 .aside__links {
   height: 50%;
-  background-color: #1313FF;
+  background-color: $mainColor;
 
   display: flex;
   flex-direction: column;
@@ -145,7 +155,7 @@ export default {}
 }
 
 .main {
-  background-color: #1313FF;
+  background-color: $mainColor;
   grid-column-start: 2;
   grid-column-end: 5;
 
@@ -154,47 +164,72 @@ export default {}
   justify-content: center;
   align-items: flex-start;
 }
-.main__title {
-  color: white;
-  font-family: "Cy";
-}
 
 .main__title {
+  font-family: "Cy";
   margin-top: 3px;
   margin-bottom: 3px;
   margin-left: 60px;
-  font-size: 60px;
+  font-size: 3rem;
+  color: white;
+
+  @include media-screen-md {
+    font-size: 60px;
+  }
 }
+
 .main__subtitle {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 60px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
-  font-size: 40px;
+  font-size: 20px;
+
+  @include media-screen-md {
+    font-size: 40px;
+  }
 }
+
 .title--cursive {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
   font-weight: 300;
 }
+
+@keyframes slideright {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 70%;
+  }
+}
+
 .title--enfasis {
   color: white;
   font-family: "Cy Extra Bold";
   position: relative;
-}
-.title--enfasis::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  width: 70%;
-  height: 30%;
-  background-color: #00FFEE;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 30%;
+    background-color: #00FFEE;
+
+    animation-name: slideright;
+    animation-delay: 3s;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
 }
 
 .navbar {
-  background-color: #1313FF;
+  background-color: $mainColor;
   grid-column-start: 2;
   grid-column-end: 5;
 }
@@ -204,7 +239,6 @@ export default {}
   margin-left: auto;
   height: 100%;
   display: flex;
-  background-color: white;
 }
 
 .menu__item {
@@ -220,15 +254,26 @@ export default {}
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  color: #1313FF;
+  color: #ffffff;
 }
 .menu__item:hover {
-  background-color: #1313FF;
+  background-color: darken($color: $mainColor, $amount: 10);
   color: white;
 }
 
+@keyframes slideBoxRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
 .footer {
-  background-color: #1313FF;
+  background-color: $mainColor;
 
   grid-column-start: 2;
   grid-column-end: 5;
@@ -246,6 +291,10 @@ export default {}
   display: flex;
   justify-content: center;
   align-items: center;
+
+  animation-name: slideBoxRight;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 }
 .footer__next .icon {
   font-size: 36px;

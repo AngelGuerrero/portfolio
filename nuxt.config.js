@@ -29,8 +29,13 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;700&family=Saira+Semi+Condensed:wght@300;400;500;600&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Courgette&display=swap'
       }
     ]
+
   },
   /*
    ** Global CSS
@@ -40,7 +45,12 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [{ src: '@/plugins/vue-material-icons', mode: 'client' }],
+  plugins:
+  [
+    { src: '@/plugins/vue-material-icons', mode: 'client' },
+    { src: '@/plugins/aos', ssr: false },
+    { src: '@/plugins/bootstrap', ssr: false }
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -60,8 +70,17 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/style-resources'
   ],
+  /**
+   * Style resources
+   */
+  styleResources: {
+    scss: [
+      '~/assets/scss/media.scss'
+    ]
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
