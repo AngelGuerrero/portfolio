@@ -1,0 +1,50 @@
+/*
+  Colors
+ */
+// $mainColor: #1111d8;
+$principal: #3b0a76;
+$hotpink: #ff44b1;
+$gold: #fedc24;
+
+/*
+  Animations
+*/
+@keyframes slideBoxRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/*
+  Fonts
+ */
+@font-face {
+  font-family: "Cy";
+  src: url("../assets/fonts/Cy/Cy-Regular.otf");
+}
+@font-face {
+  font-family: "Cy Extra Bold";
+  src: url("../assets/fonts/Cy/Cy-ExtraBold.otf");
+}
+@font-face {
+  font-family: "Consolas";
+  src: url("../assets/fonts/Consolas.ttf");
+}
+
+.dev {
+  // border: 1px solid tomato;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.icon {
+  font-size: 22px;
+  color: black;
+}

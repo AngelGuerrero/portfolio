@@ -14,7 +14,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Ángel Guerrero blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -47,7 +47,7 @@ export default {
    */
   plugins:
   [
-    { src: '@/plugins/vue-material-icons', mode: 'client' },
+    { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' },
     { src: '@/plugins/aos', ssr: false },
     { src: '@/plugins/bootstrap', ssr: false }
   ],
@@ -61,7 +61,8 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/global-components'
   ],
   /*
    ** Nuxt.js modules
@@ -78,6 +79,7 @@ export default {
    */
   styleResources: {
     scss: [
+      '~/assets/scss/global.scss',
       '~/assets/scss/media.scss'
     ]
   },

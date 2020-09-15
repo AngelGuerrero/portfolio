@@ -1,86 +1,153 @@
 <template>
   <div class="dev wrapper">
     <!-- Nav -->
-    <nav class="dev navbar">
-      <div class="nav__menu d-none d-md-flex">
-        <a href="#" class="menu__item">home </a>
-        <a href="#" class="menu__item">about</a>
-        <a href="#" class="menu__item">lab</a>
-        <a href="#" class="menu__item">projects</a>
-        <a href="#" class="menu__item">contact</a>
-      </div>
-    </nav>
+    <Navbar />
 
     <!-- Aside menú -->
     <aside class="wrapper__menu">
       <div class="aside__header">
         <div class="aside__header-menu">
-          <menu-icon class="icon" />
+          <client-only>
+            <menu-icon class="icon" />
+          </client-only>
         </div>
-        <h2 class="aside__title">
+        <!-- <h2 class="aside__title">
           &lt; Home /&gt;
-        </h2>
+        </h2> -->
       </div>
       <div class="aside__links">
-        <github-icon class="link--icon icon" />
-        <whatsapp-icon class="link--icon icon" />
-        <gmail-icon class="link--icon icon" />
+        <client-only>
+          <github-icon class="link--icon icon" />
+          <whatsapp-icon class="link--icon icon" />
+          <gmail-icon class="link--icon icon" />
+        </client-only>
       </div>
     </aside>
 
     <!-- Main content -->
     <main class="dev main">
-      <h1 class="main__title" data-aos="fade-right">
-        Hi, my name is
-      </h1>
-      <h1 class="main__title" data-aos="fade-right" data-aos-delay="1000">
-        Ángel Guerrero
-      </h1>
-      <h2 class="main__subtitle" data-aos="fade-right" data-aos-delay="2000">
-        I <span class="title--cursive">design</span> and <span class="title--enfasis">develop</span> in Vue
-      </h2>
+      <div class="background_tag">
+        <h2 class="">
+          &lt; Home /&gt;
+        </h2>
+      </div>
+
+      <div id="box__title_1" class="dev">
+        <h1 id="title1" class="main__title opacity-0">
+          Hi, my name is
+        </h1>
+      </div>
+
+      <div id="box__title_2" class="dev">
+        <h1 id="title2" class="main__title opacity-0">
+          Ángel Guerrero
+        </h1>
+      </div>
+
+      <div id="subtitle" class="main__subtitle dev" />
     </main>
 
     <!-- Footer -->
     <footer class="dev footer">
       <div class="footer__next">
-        <arrow-right-icon class="icon" />
+        <client-only>
+          <arrow-right-icon class="icon" />
+        </client-only>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-export default {}
+import TypeIt from 'typeit'
+
+export default {
+  mounted () {
+    const addClass = (id, clazz) => {
+      const item = document.getElementById(id)
+      item.classList.add(clazz)
+    }
+
+    const removeClass = (id, clazz) => {
+      const item = document.getElementById(id)
+      item.classList.remove(clazz)
+    }
+    //
+    // First title
+    addClass('box__title_1', 'box__title__disappear')
+    setTimeout(_ => removeClass('title1', 'opacity-0'), 1000)
+    //
+    // Second title
+    setTimeout(() => {
+      addClass('box__title_2', 'box__title__disappear')
+      setTimeout(_ => removeClass('title2', 'opacity-0'), 1000)
+    }, 2000)
+
+    // After 3 seconds
+    setTimeout(() => {
+      const typeit = new TypeIt('#subtitle', {
+        speed: 90,
+        startDelay: 900,
+        waitUntilVisible: true
+      })
+        .type('I <span class="title--cursive">decign</span>')
+        .pause(500)
+        .move(-3)
+        .delete(1)
+        .type('s')
+        .move('END')
+
+        .type(' and')
+        .type(' <span class="title--enfasis">develop</span>')
+        .pause(1000)
+        .type(' in ')
+
+      // Laravel
+        .type('Laravel', { delay: 1500 })
+        .delete(7)
+
+      // C#
+        .type('C#', { delay: 1500 })
+        .delete(2)
+
+      // SQL Server
+        .type('SQL Server', { delay: 1500 })
+        .delete(10)
+
+      // Bootstrap
+        .type('Bootstrap', { delay: 1500 })
+        .delete(9)
+
+      // React
+        .type('<span class="react">React</span>', { delay: 1500 })
+        .pause(1500)
+        .delete(5)
+
+      // Vue
+        .type('<span class="vue">Vue</span> <span class="heart">❤</span>', { delay: 1500 })
+
+      typeit.go()
+    }, 3000)
+
+    // 10s
+    // remove all classes
+    setTimeout(() => {
+      removeClass('box__title_1', 'box__title__disappear')
+      removeClass('box__title_2', 'box__title__disappear')
+    }, 10000)
+  }
+}
 </script>
 
 <style lang="scss">
-
-$mainColor: #1111d8;
-
-@font-face {
-  font-family: "Cy";
-  src: url("../assets/fonts/Cy/Cy-Regular.otf");
-}
-@font-face {
-  font-family: "Cy Extra Bold";
-  src: url("../assets/fonts/Cy/Cy-ExtraBold.otf");
-}
-@font-face {
-  font-family: "Consolas";
-  src: url("../assets/fonts/Consolas.ttf");
-}
-
-.icon {
-  font-size: 22px;
-  color: black;
-}
 .wrapper {
-  height: 100%;
-  background-color: rgb(255, 255, 253);
+  min-height: 100vh;
+
   display: grid;
   grid-template-columns: 50px 1fr 1fr 1fr;
   grid-template-rows: 50px auto 70px;
+
+  background-color: rgb(255, 255, 253);
 }
 
 .wrapper__menu {
@@ -88,7 +155,7 @@ $mainColor: #1111d8;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
-  background-color: $mainColor;
+  background-color: $principal;
   color: white;
 }
 
@@ -98,7 +165,7 @@ $mainColor: #1111d8;
 }
 
 .aside__header-menu {
-  background-color: #FF13F7;
+  background-color: $hotpink;
   height: 50px;
 
   display: flex;
@@ -140,7 +207,7 @@ $mainColor: #1111d8;
 
 .aside__links {
   height: 50%;
-  background-color: $mainColor;
+  background-color: $principal;
 
   display: flex;
   flex-direction: column;
@@ -155,7 +222,7 @@ $mainColor: #1111d8;
 }
 
 .main {
-  background-color: $mainColor;
+  background-color: $principal;
   grid-column-start: 2;
   grid-column-end: 5;
 
@@ -178,10 +245,18 @@ $mainColor: #1111d8;
   }
 }
 
+.slideRight {
+  opacity: 0;
+  animation-name: slideBoxRight;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
 .main__subtitle {
+  width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 60px;
+  padding-left: 60px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   font-size: 20px;
@@ -228,52 +303,8 @@ $mainColor: #1111d8;
   }
 }
 
-.navbar {
-  background-color: $mainColor;
-  grid-column-start: 2;
-  grid-column-end: 5;
-}
-
-.nav__menu {
-  width: 60%;
-  margin-left: auto;
-  height: 100%;
-  display: flex;
-}
-
-.menu__item {
-  flex-grow: 1;
-  width: 80px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-family: 'Saira Semi Condensed', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #ffffff;
-}
-.menu__item:hover {
-  background-color: darken($color: $mainColor, $amount: 10);
-  color: white;
-}
-
-@keyframes slideBoxRight {
-  0% {
-    opacity: 0;
-    transform: translateX(-1000px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-
 .footer {
-  background-color: $mainColor;
+  background-color: $principal;
 
   grid-column-start: 2;
   grid-column-end: 5;
@@ -284,20 +315,78 @@ $mainColor: #1111d8;
   align-items: center;
 }
 .footer__next {
+  opacity: 0;
   width: 100px;
   height: 100%;
-  background-color: #FF13F7;
+  background-color: $hotpink;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   animation-name: slideBoxRight;
+  animation-delay: 10s;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
 .footer__next .icon {
   font-size: 36px;
   color: white;
+}
+
+.background_tag {
+  color: white;
+  position: fixed;
+  top: 20%;
+  left: 5%;
+  opacity: 0.2;
+
+  h2 {
+    font-size: 3rem !important;
+    font-family: 'Courgette', cursive;
+  }
+}
+
+@keyframes revealBoxRight {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.box__title {
+}
+
+.box__title__disappear {
+  position: relative;
+
+  &::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: $gold;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  animation-name: revealBoxRight;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  }
+}
+
+.react {
+  color: #00d8ff;
+}
+.vue {
+  color: #55e7a6;
+}
+.heart {
+  color: red;
 }
 </style>
