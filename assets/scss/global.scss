@@ -20,6 +20,29 @@ $gold: #fedc24;
   }
 }
 
+@keyframes revealBoxRight {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes slideright {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 70%;
+  }
+}
+
 /*
   Fonts
  */
@@ -47,4 +70,40 @@ $gold: #fedc24;
 .icon {
   font-size: 22px;
   color: black;
+}
+
+.react {
+  color: #00d8ff;
+}
+.vue {
+  color: #55e7a6;
+}
+.heart {
+  color: red;
+}
+
+.title--cursive {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.title--enfasis {
+  color: white;
+  font-family: "Cy Extra Bold";
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 30%;
+    background-color: #00FFEE;
+
+    animation-name: slideright;
+    animation-delay: 3s;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
 }
