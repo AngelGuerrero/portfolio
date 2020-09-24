@@ -26,6 +26,7 @@ export default {
   justify-content: flex-end;
   align-items: center;
 }
+
 .footer__next {
   opacity: 0;
   width: 100px;
@@ -40,7 +41,12 @@ export default {
   animation-delay: 10s;
   animation-duration: 3s;
   animation-fill-mode: forwards;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
+
 .footer__next .icon {
   font-size: 36px;
   color: white;

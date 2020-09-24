@@ -36,9 +36,10 @@ export default {
 
   display: grid;
   grid-template-columns: 50px 1fr 1fr 1fr;
-  grid-template-rows: 50px auto 50px;
+  grid-template-rows: 50px auto 70px;
 
   background-color: rgb(255, 255, 253);
+  overflow: hidden;
 }
 
 .wrapper__menu {

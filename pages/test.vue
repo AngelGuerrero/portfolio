@@ -1,219 +1,381 @@
 <template>
-  <div>
-    <div id="box__title_1">
-      <h1 id="title1" class="main__title dev opacity-0">
-        Hi, my name is
-      </h1>
-    </div>
-
-    <div id="box__title_2">
-      <h1
-        id="name__title"
-        data-text="Ángel Guerrero"
-        class="main__title opacity-0"
-        @mousemove="onMouseMove"
-        @mouseleave="showImage = false"
-      >
-        Ángel Guerrero
-      </h1>
-    </div>
-
-    <div id="subtitle" class="main__subtitle dev" />
-
-    <div v-show="showImage" id="personal__image" class="demo-3">
-      <div class="glitch glitch--style-2">
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-        <div class="glitch__img" />
+  <div class="demo-3">
+    <div class="grid">
+      <div class="grid__item">
+        <div class="glitch glitch--style-2">
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+        </div>
+        <h1 class="grid__item-title">
+          Prone <span>Abjectness</span></h2>
+        </h1>
+      </div>
+      <div class="grid__item">
+        <div class="glitch glitch--style-3">
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+        </div>
+        <h1 class="grid__item-title">
+          Equal <span>Undertaking</span></h2>
+        </h1>
+      </div>
+      <div class="grid__item">
+        <div class="glitch glitch--vertical glitch--style-4">
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+        </div>
+        <h1 class="grid__item-title">
+          Gifted <span>Friendliness</span></h2>
+        </h1>
+      </div>
+      <div class="grid__item">
+        <div class="glitch glitch--style-5">
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+        </div>
+        <h1 class="grid__item-title">
+          Past <span>Monotony</span></h2>
+        </h1>
+      </div>
+      <div class="grid__item">
+        <div class="glitch glitch--style-6">
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+        </div>
+        <h1 class="grid__item-title">
+          Ground <span>Curtness</span></h2>
+        </h1>
+      </div>
+      <div class="grid__item">
+        <div class="glitch glitch--style-7">
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+          <div class="glitch__img" />
+        </div>
+        <h2 class="grid__item-title">
+          Wide <span>Distraction</span>
+        </h2>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import TypeIt from 'typeit'
-
 export default {
-  data () {
-    return {
-      showImage: false,
-      size: null
-    }
-  },
 
-  mounted () {
-    this.initTextAnimation()
-  },
-
-  methods: {
-    resize () {
-      window.addEventListener('resize', (e) => {
-        console.log(e.innerWidth)
-      })
-    },
-
-    initTextAnimation () {
-      const addClass = (id, clazz) => {
-        const item = document.getElementById(id)
-        item.classList.add(clazz)
-      }
-
-      const removeClass = (id, clazz) => {
-        const item = document.getElementById(id)
-        item.classList.remove(clazz)
-      }
-      //
-      // First title
-      addClass('box__title_1', 'box__title__disappear')
-      setTimeout(_ => removeClass('title1', 'opacity-0'), 1000)
-      //
-      // Second title
-      setTimeout(() => {
-        addClass('box__title_2', 'box__title__disappear')
-        setTimeout(_ => removeClass('name__title', 'opacity-0'), 1000)
-      }, 2000)
-
-      // After 3 seconds
-      setTimeout(() => {
-        const typeit = new TypeIt('#subtitle', {
-          speed: 90,
-          startDelay: 900,
-          waitUntilVisible: true
-        })
-          .type('I <span class="title--cursive">decign</span>')
-          .pause(500)
-          .move(-3)
-          .delete(1)
-          .type('s')
-          .move('END')
-
-          .type(' and')
-          .type(' <span class="title--enfasis">develop</span>')
-          .pause(1000)
-          .type(' in ')
-
-        // Laravel
-          .type('Laravel', { delay: 1500 })
-          .delete(7)
-
-        // C#
-          .type('C#', { delay: 1500 })
-          .delete(2)
-
-        // SQL Server
-          .type('SQL Server', { delay: 1500 })
-          .delete(10)
-
-        // Bootstrap
-          .type('Bootstrap', { delay: 1500 })
-          .delete(9)
-
-        // React
-          .type('<span class="react">React</span>', { delay: 1500 })
-          .pause(1500)
-          .delete(5)
-
-        // Vue
-          .type('<span class="vue">Vue</span> <span class="heart">❤</span>', { delay: 1500 })
-
-        typeit.go()
-      }, 3000)
-
-      // 10s
-      // remove all classes
-      setTimeout(() => {
-        removeClass('box__title_1', 'box__title__disappear')
-        removeClass('box__title_2', 'box__title__disappear')
-      }, 10000)
-    },
-
-    onMouseMove (e) {
-      this.showImage = true
-      const mainTitle = document.getElementById('name__title')
-      mainTitle.style.cursor = 'crosshair'
-
-      const personalImage = document.getElementById('personal__image')
-
-      const x = e.clientX
-      const y = e.clientY
-
-      if (x < 770) {
-        personalImage.style.transform = `translate(${x * -1.3}px, ${y * -0.1}px)`
-      } else {
-        personalImage.style.transform = `translate(${x * -0.3}px, ${y * 0.4}px)`
-      }
-    }
-  }
 }
 </script>
 
 <style lang="scss" scoped>
-#name__title {
-  &:hover {
-    color: $gold;
-    cursor: crosshair;
-  }
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;margin:0.67em 0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}dfn{font-style:italic;}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}pre{white-space:pre-wrap;}q{quotes:"\201C" "\201D" "\2018" "\2019";}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}img{border:0;}svg:not(:root){overflow:hidden;}figure{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;padding:0;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,select{text-transform:none;}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}button[disabled],html input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-.main__title {
-  font-family: "Cy";
-  margin-top: 3px;
-  margin-bottom: 3px;
-  font-size: 9vw;
-  color: white;
-
-  @include media-screen-md {
-    padding-left: 60px;
-    font-size: 60px;
-  }
+html {
+  background: #1d2121;
 }
 
-.box__title__disappear {
-  position: relative;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  color: #57585c;
+  color: var(--color-text);
+  background-color: #fff;
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  &::after {
+/* Fade effect */
+.js body {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.js body.render {
+  opacity: 1;
+}
+
+/* Page Loader */
+.js .loading::before {
   content: '';
-  width: 100%;
-  height: 100%;
-  background-color: $gold;
-  position: absolute;
+  position: fixed;
+  z-index: 100000;
   top: 0;
   left: 0;
-
-  animation-name: revealBoxRight;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  }
-}
-
-.main__subtitle {
   width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  font-size: 5vw;
+  height: 100%;
+  background: var(--color-bg);
+}
 
-  @include media-screen-md {
-    padding-left: 60px;
-    font-size: 26px;
+.js .loading::after {
+  content: '';
+  position: fixed;
+  z-index: 100000;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: var(--color-link);
+  animation: loaderAnim 0.7s linear infinite alternate forwards;
+}
+
+@keyframes loaderAnim {
+  to {
+    opacity: 1;
+    transform: scale3d(0.5,0.5,1);
   }
 }
 
-#personal__image {
-  width: 25%;
-  position: absolute;
-  z-index: 10 !important;
-  top: 0;
-  right: 10%;
-  /* transform: translate(15%, 15%); */
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
 }
 
-// ==================
-// Glitch
-// ==================
+a:hover,
+a:focus {
+  color: var(--color-link-hover);
+  outline: none;
+}
+
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.message {
+  position: relative;
+  z-index: 100;
+  padding: 1.5em 1em;
+  font-size: 0.85em;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-bg);
+  background: var(--color-text);
+}
+
+@supports(-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+  .message {
+    display: none;
+  }
+}
+
+/* Icons */
+.icon {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0 auto;
+  fill: currentColor;
+}
+
+.icon--keyboard {
+  display: none;
+}
+
+main {
+  position: relative;
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.content--fixed {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  height: 100vh;
+  padding: 1.5em;
+  pointer-events: none;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto 4em;
+  grid-template-areas: 'header header'
+  '... ...'
+  'github demos';
+}
+
+.content--fixed a {
+  pointer-events: auto;
+}
+
+.content--top {
+  padding: 1.5em 2em 1.5em 1.5em;
+  justify-content: flex-start;
+  min-height: 0;
+  position: relative;
+}
+
+/* Header */
+.codrops-header {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-items: center;
+  align-self: start;
+  grid-area: header;
+  justify-self: start;
+}
+
+.demo-2 .codrops-header {
+  justify-self: stretch;
+}
+
+.codrops-header__title {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.info {
+  margin: 0 0 0 1.25em;
+  color: var(--color-info);
+}
+
+.github {
+  display: block;
+  align-self: end;
+  grid-area: github;
+  justify-self: start;
+}
+
+.content--top .github {
+  align-self: center;
+  margin: 0 1em 0 auto;
+}
+
+.demos {
+  position: relative;
+  display: block;
+  align-self: end;
+  text-align: right;
+  grid-area: demos;
+}
+
+.content--top .demos {
+  align-self: center;
+}
+
+.demo {
+  margin: 0 0 0 1em;
+}
+
+.demo:hover,
+.demo:focus {
+  opacity: 0.5;
+}
+
+.demo span {
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+a.demo--current {
+  pointer-events: none;
+  color: var(--color-link-hover);
+}
+
+/* Top Navigation Style */
+.codrops-links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0 1em 0 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.codrops-icon {
+  display: inline-block;
+  margin: 0.15em;
+  padding: 0.25em;
+}
+
+@media screen and (max-width: 55em) {
+  .message {
+    display: block;
+  }
+  .content {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .content--fixed {
+    position: relative;
+    z-index: 1000;
+    display: block;
+    padding: 0.85em;
+  }
+  .codrops-header {
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+  }
+  .codrops-header__title {
+    font-weight: bold;
+    padding-bottom: 0.25em;
+    text-align: center;
+  }
+  .github {
+    display: block;
+    margin: 1em auto;
+  }
+  .content--top .github {
+      margin: 1em 0;
+  }
+  .codrops-links {
+    margin: 0;
+  }
+  .demos {
+    text-align: center;
+  }
+  .demo {
+    margin: 0 0.5em;
+  }
+}
+
 .demo-3 {
   --color-text: tomato;
   --color-bg: #1d2121;
@@ -322,6 +484,65 @@ export default {
   --blend-color-5: transparent;
 }
 
+.grid {
+  margin: 50vh auto 0;
+    position: relative;
+    padding: 0 1em;
+    width: 100%;
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid__item {
+    margin: 0 0 40vh;
+    position: relative;
+}
+
+.grid__item:nth-child(odd) {
+  margin-top: -40vh;
+}
+
+.grid__item-title {
+  position: absolute;
+  margin: 0;
+  font-size: 6vw;
+  color: var(--color-title);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  padding: 30vh 0.5em 0;
+  top: 0;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.grid__item:nth-child(odd) .grid__item-title {
+  right: 0;
+  text-align: right;
+  padding-top: 10vh;
+}
+
+.grid__item-title span {
+  display: block;
+  position: relative;
+  font-size: 50%;
+  font-weight: 500;
+  opacity: 0;
+  color: var(--color-subtitle);
+}
+
+.glitch:hover + .grid__item-title span {
+  opacity: 1;
+  animation: glitch-anim-text 0.5s linear;
+}
+
+@media screen and (max-width: 55em) {
+  .grid { grid-template-columns: 100%; margin-top: 3em; }
+  .grid__item { margin: 0 0 3em; }
+  .grid__item:nth-child(odd) { margin-top: 0; }
+  .grid__item-title, .grid__item:nth-child(odd) .grid__item-title { font-size: 2em; text-align: center; width: 100%; padding: 0; top: 20%; }
+}
+
 /* Glitch styles */
 .glitch {
   position: relative;
@@ -399,44 +620,44 @@ export default {
 /* Hovers */
 
 /* On hover we show the 2nd, 3rd, 4th and 5th image*/
-.glitch .glitch__img:nth-child(n+2) {
+.glitch:hover .glitch__img:nth-child(n+2) {
   opacity: 1;
 }
 
 /* Hover animations for horizontal case */
-.glitch .glitch__img:nth-child(2) {
+.glitch:hover .glitch__img:nth-child(2) {
   transform: translate3d(var(--gap-horizontal),0,0);
   animation: glitch-anim-1-horizontal var(--time-anim) infinite linear alternate;
 }
 
-.glitch > .glitch__img:nth-child(3) {
+.glitch:hover > .glitch__img:nth-child(3) {
   transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0);
   animation: glitch-anim-2-horizontal var(--time-anim) infinite linear alternate;
 }
 
-.glitch > .glitch__img:nth-child(4) {
+.glitch:hover > .glitch__img:nth-child(4) {
   transform: translate3d(0, calc(-1 * var(--gap-vertical)), 0) scale3d(-1,-1,1);
   animation: glitch-anim-3-horizontal var(--time-anim) infinite linear alternate;
 }
 
 /* Hover animations for vertical case */
-.glitch--vertical .glitch__img:nth-child(2) {
+.glitch--vertical:hover .glitch__img:nth-child(2) {
   transform: translate3d(0, var(--gap-vertical), 0);
   animation: glitch-anim-1-vertical var(--time-anim) infinite linear alternate;
 }
 
-.glitch--vertical > .glitch__img:nth-child(3) {
+.glitch--vertical:hover > .glitch__img:nth-child(3) {
   transform: translate3d(0, calc(-1 * var(--gap-vertical)), 0);
   animation: glitch-anim-2-vertical var(--time-anim) infinite linear alternate;
 }
 
-.glitch--vertical > .glitch__img:nth-child(4) {
+.glitch--vertical:hover > .glitch__img:nth-child(4) {
   transform: translate3d(calc(-1 * var(--gap-horizontal)), 0, 0) scale3d(-1,-1,1);
   animation: glitch-anim-3-vertical var(--time-anim) infinite linear alternate;
 }
 
 /* Hover flash animation on last image */
-.glitch > .glitch__img:nth-child(5) {
+.glitch:hover > .glitch__img:nth-child(5) {
   animation: glitch-anim-flash 0.5s steps(1,end) infinite;
 }
 

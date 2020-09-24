@@ -59,6 +59,10 @@ $gold: #fedc24;
   src: url("../assets/fonts/Consolas.ttf");
 }
 
+body {
+  overflow: hidden;
+}
+
 .dev {
   // border: 1px solid tomato;
 }
@@ -83,7 +87,7 @@ $gold: #fedc24;
 }
 
 .title--cursive {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
   font-weight: 300;
 }
@@ -94,12 +98,12 @@ $gold: #fedc24;
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -10px;
     left: 0;
     height: 30%;
-    background-color: #00FFEE;
+    background-color: #00ffee;
 
     animation-name: slideright;
     animation-delay: 3s;
