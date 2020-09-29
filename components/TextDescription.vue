@@ -11,8 +11,9 @@
         id="name__title"
         data-text="Ángel Guerrero"
         class="main__title opacity-0"
+        @mouseenter="onMouseOver"
         @mousemove="onMouseMove"
-        @mouseleave="showImage = false"
+        @mouseleave="onMouseLeaveFromContainer"
       >
         Ángel Guerrero
       </h1>
@@ -20,7 +21,7 @@
 
     <div id="subtitle" class="main__subtitle dev" />
 
-    <div v-show="showImage" id="personal__image" class="demo-3">
+    <div v-show="showImage" id="personal__image" class="demo-3" @mouseleave="onMouseLeaveFromImage" @mousemove="onMouseMove">
       <div class="glitch glitch--style-2">
         <div class="glitch__img" />
         <div class="glitch__img" />
@@ -39,7 +40,10 @@ export default {
   data () {
     return {
       showImage: false,
-      size: null
+      outFromContainer: false,
+      size: null,
+      x: 0,
+      y: 0
     }
   },
 
@@ -50,7 +54,7 @@ export default {
   methods: {
     resize () {
       window.addEventListener('resize', (e) => {
-        console.log(e.innerWidth)
+        // console.log(e.innerWidth)
       })
     },
 
@@ -129,20 +133,32 @@ export default {
       }, 10000)
     },
 
-    onMouseMove (e) {
+    onMouseOver () {
       this.showImage = true
-      const mainTitle = document.getElementById('name__title')
-      mainTitle.style.cursor = 'crosshair'
+      this.outFromContainer = false
+    },
 
+    onMouseMove (e) {
       const personalImage = document.getElementById('personal__image')
 
-      const x = e.clientX
-      const y = e.clientY
+      this.x = e.pageX
+      this.y = e.pageY
 
-      if (x < 770) {
-        personalImage.style.transform = `translate(${x * -1.3}px, ${y * -0.1}px)`
-      } else {
-        personalImage.style.transform = `translate(${x * -0.3}px, ${y * 0.4}px)`
+      // console.log(this.x)
+      // console.log(this.y)
+
+      personalImage.style.left = `${this.x}px`
+      personalImage.style.top = `${this.y}px`
+      this.onMouseLeaveFromImage()
+    },
+
+    onMouseLeaveFromContainer () {
+      this.outFromContainer = true
+    },
+
+    onMouseLeaveFromImage () {
+      if (this.outFromContainer && (this.x < 100 || this.x > 500 || this.y < 270 || this.y > 300)) {
+        this.showImage = false
       }
     }
   }
@@ -153,7 +169,7 @@ export default {
 #name__title {
   &:hover {
     color: $gold;
-    cursor: crosshair;
+    cursor: pointer;
   }
 }
 
@@ -203,12 +219,9 @@ export default {
 }
 
 #personal__image {
-  width: 25%;
   position: absolute;
-  z-index: 10 !important;
-  top: 0;
-  right: 10%;
-  /* transform: translate(15%, 15%); */
+  z-index: 1;
+  transform: translate(-50%, -50%);
 }
 
 // ==================
@@ -221,7 +234,7 @@ export default {
   --color-link-hover: #fff;
   --color-info: #454847;
   --glitch-width: 40vmax;
-  --glitch-height: calc(40vmax * 1.25);
+  --glitch-height: calc(40vmax * 1.0);
   --color-title: #fff;
   --color-subtitle: #30efbf;
 }
@@ -307,8 +320,8 @@ export default {
 }
 
 .glitch--style-6 {
-  --gap-horizontal: 3px;
-  --gap-vertical: 70px;
+  --gap-horizontal: 1px;
+  --gap-vertical: 30px;
   --time-anim: 2.25s;
   --blend-mode-1: none;
   --blend-mode-2: none;
@@ -326,15 +339,11 @@ export default {
 .glitch {
   position: relative;
   width: var(--glitch-width);
-  max-width: 400px;
+  max-width: 300px;
   height: var(--glitch-height);
-  max-height: calc(400px * 1.25);
+  max-height: calc(300px * 1.25);
   overflow: hidden;
   margin: 0 auto;
-}
-
-.glitch:hover {
-  cursor: pointer;
 }
 
 .glitch__img {
@@ -343,7 +352,7 @@ export default {
   left: calc(-1 * var(--gap-horizontal));
   width: calc(100% + var(--gap-horizontal) * 2);
   height: calc(100% + var(--gap-vertical) * 2);
-  background: url(~assets/images/me.png) no-repeat 50% 0;
+  background: url(~assets/images/me-70.png) no-repeat 50% 0;
   background-color: var(--blend-color-1);
   background-size: cover;
   transform: translate3d(0,0,0);
@@ -351,23 +360,23 @@ export default {
 }
 
 .glitch--style-2 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~assets/images/me-70.png);
 }
 
 .glitch--style-3 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~assets/images/me-70.png);
 }
 
 .glitch--style-4 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~assets/images/me-70.png);
 }
 
 .glitch--style-5 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~assets/images/me-70.png);
 }
 
 .glitch--style-6 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~assets/images/me-70.png);
 }
 
 /* Set the background colors for the glitch images*/
@@ -397,6 +406,10 @@ export default {
 }
 
 /* Hovers */
+
+.glitch:hover {
+  cursor: none;
+}
 
 /* On hover we show the 2nd, 3rd, 4th and 5th image*/
 .glitch .glitch__img:nth-child(n+2) {

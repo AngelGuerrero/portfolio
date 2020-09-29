@@ -16,6 +16,7 @@ export default {}
 
 <style lang="scss" scoped>
 .navbar {
+  content-visibility: auto;
   background-color: $principal;
   grid-column: 2/5;
   grid-row: 1/2;
