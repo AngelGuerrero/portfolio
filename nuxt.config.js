@@ -52,8 +52,7 @@ export default {
   plugins:
   [
     { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' },
-    { src: '@/plugins/bootstrap', ssr: false },
-    { src: '@/plugins/anime', ssr: false }
+    { src: '@/plugins/anime', ssr: false, mode: 'client' }
   ],
   /*
    ** Auto import components
@@ -76,8 +75,21 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'bootstrap-vue/nuxt'
   ],
+  bootstrapVue: {
+    componentPlugins: [
+      'LayoutPlugin'
+      // 'FormPlugin',
+      // 'FormCheckboxPlugin',
+      // 'FormInputPlugin',
+      // 'FormRadioPlugin',
+      // 'ToastPlugin',
+      // 'ModalPlugin'
+    ]
+    // directivePlugins: ['VBPopoverPlugin', 'VBTooltipPlugin', 'VBScrollspyPlugin']
+  },
   /**
    * Style resources
    */
@@ -101,5 +113,7 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {}
+  build: {
+    transpile: ['bootstrap-vue']
+  }
 }

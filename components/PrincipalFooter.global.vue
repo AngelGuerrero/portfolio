@@ -2,8 +2,12 @@
   <footer class="dev footer">
     <div class="footer__next">
       <client-only>
-        <!-- <arrow-right-icon class="icon" /> -->
-        <img src="~assets/images/fleche_verte_droite.svg" alt="" srcset="~assets/images/fleche_verte_droite.svg">
+        <img
+          class="fleche"
+          src="~assets/images/fleche_verte_droite.svg"
+          alt=""
+          srcset="~assets/images/fleche_verte_droite.svg"
+        >
       </client-only>
     </div>
   </footer>
@@ -11,7 +15,13 @@
 
 <script>
 export default {
-
+  mounted () {
+    this.$anime({
+      targets: '.footer__next',
+      translateX: [-1000, 0],
+      duration: 10000
+    })
+  }
 }
 </script>
 
@@ -29,7 +39,7 @@ export default {
 }
 
 .footer__next {
-  opacity: 0;
+  // opacity: 0;
   width: 100px;
   height: 100%;
   background-color: $principal;
@@ -38,10 +48,10 @@ export default {
   justify-content: center;
   align-items: center;
 
-  animation-name: slideBoxRight;
-  animation-delay: 5s;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
+  // animation-name: slideBoxRight;
+  // animation-delay: 5s;
+  // animation-duration: 3s;
+  // animation-fill-mode: forwards;
 
   &:hover {
     cursor: pointer;

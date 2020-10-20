@@ -213,7 +213,7 @@ export default {
 
   // initial state
   opacity: 0;
-  @include appear-from-opacity($duration: 9s, $delay: 12s);
+  @include appear-from-opacity($duration: 3s, $delay: 2s);
 }
 
 .glitch--style-1 {

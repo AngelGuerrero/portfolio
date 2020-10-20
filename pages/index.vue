@@ -1,7 +1,8 @@
 <template>
   <div class="dev wrapper">
+    <!-- Animated vertical lines -->
     <AnimatedLine />
-    <AnimatedHorizontalLine />
+
     <!-- Nav -->
     <Navbar />
 
