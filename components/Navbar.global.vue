@@ -34,8 +34,8 @@ export default {}
   flex-grow: 1;
 
   font-family: "Saira Semi Condensed", sans-serif;
-  font-size: 16px;
   font-weight: 600;
+  font-size: 16px;
   text-transform: uppercase;
   text-decoration: none;
   color: $gold;

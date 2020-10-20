@@ -52,12 +52,6 @@ export default {
   },
 
   methods: {
-    resize () {
-      window.addEventListener('resize', (e) => {
-        // console.log(e.innerWidth)
-      })
-    },
-
     initTextAnimation () {
       const addClass = (id, clazz) => {
         const item = document.getElementById(id)
@@ -146,7 +140,7 @@ export default {
 .main__title {
   font-family: "Cy";
   margin: 4px 0;
-  padding: 5px;
+  padding: 5px 0;
   font-size: 9vw;
 
   color: #ee6352;
@@ -329,7 +323,7 @@ export default {
   left: calc(-1 * var(--gap-horizontal));
   width: calc(100% + var(--gap-horizontal) * 2);
   height: calc(100% + var(--gap-vertical) * 2);
-  background: url(~assets/images/me-70.png) no-repeat 50% 0;
+  background: url(~assets/images/me.png) no-repeat 50% 0;
   background-color: var(--blend-color-1);
   background-size: cover;
   transform: translate3d(0, 0, 0);
@@ -337,23 +331,23 @@ export default {
 }
 
 .glitch--style-2 .glitch__img {
-  background-image: url(~assets/images/me-70.png);
+  background-image: url(~assets/images/me.png);
 }
 
 .glitch--style-3 .glitch__img {
-  background-image: url(~assets/images/me-70.png);
+  background-image: url(~assets/images/me.png);
 }
 
 .glitch--style-4 .glitch__img {
-  background-image: url(~assets/images/me-70.png);
+  background-image: url(~assets/images/me.png);
 }
 
 .glitch--style-5 .glitch__img {
-  background-image: url(~assets/images/me-70.png);
+  background-image: url(~assets/images/me.png);
 }
 
 .glitch--style-6 .glitch__img {
-  background-image: url(~assets/images/me-70.png);
+  background-image: url(~assets/images/me.png);
 }
 
 /* Set the background colors for the glitch images*/
