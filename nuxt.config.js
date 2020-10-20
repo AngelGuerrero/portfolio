@@ -1,4 +1,8 @@
 export default {
+  loading: {
+    color: 'blue',
+    height: '5px'
+  },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -48,8 +52,8 @@ export default {
   plugins:
   [
     { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' },
-    { src: '@/plugins/aos', ssr: false },
-    { src: '@/plugins/bootstrap', ssr: false }
+    { src: '@/plugins/bootstrap', ssr: false },
+    { src: '@/plugins/anime', ssr: false }
   ],
   /*
    ** Auto import components

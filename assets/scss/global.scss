@@ -2,10 +2,32 @@
   Colors
  */
 // $mainColor: #1111d8;
-$principal: #3b0a76;
-$hotpink: #ff44b1;
+// $principal: #3b0a76;
+// $principal: #21083f;
+// $principal: #041449; // blue
+$principal: #000814; // blue
+// $accent: #1bcad6;
+$accent: #3bffbe;
+$secondaryAccent: #ff44b1;
+$thirdAccent: #ffe75f;
 $gold: #fedc24;
 
+
+:root {
+  --gradient: linear-gradient(
+   45deg,
+   #05132b,
+   #14294e,
+   #2e68d4,
+   #845ec2,
+   #d65db1,
+   #831c64,
+   #ff6f91,
+   #ff9671,
+   #ffe75f,
+   #92ff5f
+  );
+}
 /*
   Animations
 */
@@ -20,6 +42,47 @@ $gold: #fedc24;
   }
 }
 
+@keyframes revealBoxRight {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes slideright {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 70%;
+  }
+}
+
+@keyframes bgAnimation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+@keyframes appear {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+@keyframes appearBackgroundLetters {
+  0% { opacity: 0;}
+  100% { opacity: 0.1;}
+}
 /*
   Fonts
  */
@@ -31,9 +94,9 @@ $gold: #fedc24;
   font-family: "Cy Extra Bold";
   src: url("../assets/fonts/Cy/Cy-ExtraBold.otf");
 }
-@font-face {
-  font-family: "Consolas";
-  src: url("../assets/fonts/Consolas.ttf");
+body {
+  overflow: hidden;
+  background-color: $principal;
 }
 
 .dev {
@@ -44,7 +107,60 @@ $gold: #fedc24;
   opacity: 0;
 }
 
+@mixin appear-background-letters($opacity, $duration, $delay) {
+  opacity: $opacity;
+
+  animation-name: appearBackgroundLetters;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
+}
+
+@mixin appear-from-opacity($duration, $delay) {
+  animation-name: appear;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
+}
+
 .icon {
   font-size: 22px;
   color: black;
+}
+
+.react {
+  color: #00d8ff;
+}
+.vue {
+  color: #55e7a6;
+}
+.heart {
+  color: red;
+}
+
+.title--cursive {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.title--enfasis {
+  color: white;
+  font-family: "Cy Extra Bold";
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -5px;
+    left: 0px;
+    height: 30%;
+    background-color: #00ffee;
+
+    animation-name: slideright;
+    animation-delay: 3s;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
 }
