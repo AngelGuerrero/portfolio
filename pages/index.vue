@@ -1,5 +1,7 @@
 <template>
   <div class="dev wrapper">
+    <AnimatedLine />
+    <AnimatedHorizontalLine />
     <!-- Nav -->
     <Navbar />
 
@@ -7,9 +9,9 @@
     <AsideMenu />
 
     <!-- Main content -->
-    <main class="dev main d-flex align-items-center">
+    <main class="dev main">
       <div class="background_tag">
-        <h2> &lt; Home /&gt; </h2>
+        <h2>&lt; Home /&gt;</h2>
       </div>
 
       <TextDescription />
@@ -53,6 +55,7 @@ export default {
 
 .main {
   background-color: $principal;
+  // background-color: black;
   grid-column-start: 2;
   grid-column-end: 5;
 }
@@ -69,7 +72,9 @@ export default {
   position: fixed;
   top: 20%;
   left: 18%;
-  opacity: 0.2;
+
+  opacity: 0;
+  @include appear-background-letters($opacity: 0, $duration: 8s, $delay: 10s);
 
   @include media-screen-sm {
     left: 5%;
@@ -77,12 +82,11 @@ export default {
 
   h2 {
     font-size: 2rem !important;
-    font-family: 'Courgette', cursive;
+    font-family: "Courgette", cursive;
 
     @include media-screen-md {
       font-size: 3rem !important;
     }
   }
 }
-
 </style>

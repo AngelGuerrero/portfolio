@@ -2,7 +2,8 @@
   <footer class="dev footer">
     <div class="footer__next">
       <client-only>
-        <arrow-right-icon class="icon" />
+        <!-- <arrow-right-icon class="icon" /> -->
+        <img src="~assets/images/fleche_verte_droite.svg" alt="" srcset="~assets/images/fleche_verte_droite.svg">
       </client-only>
     </div>
   </footer>
@@ -31,14 +32,14 @@ export default {
   opacity: 0;
   width: 100px;
   height: 100%;
-  background-color: $hotpink;
+  background-color: $principal;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   animation-name: slideBoxRight;
-  animation-delay: 10s;
+  animation-delay: 5s;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 

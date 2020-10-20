@@ -1,51 +1,51 @@
 <template>
-  <div>
-    <div id="box__title_1">
-      <h1 id="title1" class="main__title dev opacity-0">
-        Hi, my name is
-      </h1>
-    </div>
+  <b-container class="h-100 textDescription__container" fluid>
+    <b-row class="h-100 align-items-center">
+      <!-- col -->
+      <b-col md="12" lg="6">
+        <div>
+          <div id="box__title_1">
+            <h1 id="title1" class="main__title opacity-0 dev">
+              Hi, my name is
+            </h1>
+          </div>
 
-    <div id="box__title_2">
-      <h1
-        id="name__title"
-        data-text="Ángel Guerrero"
-        class="main__title opacity-0"
-        @mouseenter="onMouseOver"
-        @mousemove="onMouseMove"
-        @mouseleave="onMouseLeaveFromContainer"
-      >
-        Ángel Guerrero
-      </h1>
-    </div>
+          <div id="box__title_2">
+            <h1
+              id="name__title"
+              data-text="Ángel Guerrero"
+              class="main__title opacity-0 dev"
+            >
+              Ángel Guerrero
+            </h1>
+          </div>
 
-    <div id="subtitle" class="main__subtitle dev" />
-
-    <div v-show="showImage" id="personal__image" class="demo-3" @mouseleave="onMouseLeaveFromImage" @mousemove="onMouseMove">
-      <div class="glitch glitch--style-2">
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-        <div class="glitch__img" />
-      </div>
-    </div>
-  </div>
+          <div id="subtitle" class="main__subtitle dev" />
+        </div>
+      </b-col>
+      <!-- col -->
+      <b-col lg="6" class="d-none d-lg-block">
+        <div v-show="showImage" id="personal__image" class="demo-3">
+          <div class="glitch glitch--style-4">
+            <div class="glitch__img" />
+            <div class="glitch__img" />
+            <div class="glitch__img" />
+            <div class="glitch__img" />
+            <div class="glitch__img" />
+          </div>
+        </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
 import TypeIt from 'typeit'
 
 export default {
-  data () {
-    return {
-      showImage: false,
-      outFromContainer: false,
-      size: null,
-      x: 0,
-      y: 0
-    }
-  },
+  data: () => ({
+    showImage: true
+  }),
 
   mounted () {
     this.initTextAnimation()
@@ -98,29 +98,31 @@ export default {
           .pause(1000)
           .type(' in ')
 
-        // Laravel
+          // Laravel
           .type('Laravel', { delay: 1500 })
           .delete(7)
 
-        // C#
+          // C#
           .type('C#', { delay: 1500 })
           .delete(2)
 
-        // SQL Server
+          // SQL Server
           .type('SQL Server', { delay: 1500 })
           .delete(10)
 
-        // Bootstrap
+          // Bootstrap
           .type('Bootstrap', { delay: 1500 })
           .delete(9)
 
-        // React
+          // React
           .type('<span class="react">React</span>', { delay: 1500 })
           .pause(1500)
           .delete(5)
 
-        // Vue
-          .type('<span class="vue">Vue</span> <span class="heart">❤</span>', { delay: 1500 })
+          // Vue
+          .type('<span class="vue">Vue</span> <span class="heart">❤</span>', {
+            delay: 1500
+          })
 
         typeit.go()
       }, 3000)
@@ -131,58 +133,36 @@ export default {
         removeClass('box__title_1', 'box__title__disappear')
         removeClass('box__title_2', 'box__title__disappear')
       }, 10000)
-    },
-
-    onMouseOver () {
-      this.showImage = true
-      this.outFromContainer = false
-    },
-
-    onMouseMove (e) {
-      const personalImage = document.getElementById('personal__image')
-
-      this.x = e.pageX
-      this.y = e.pageY
-
-      // console.log(this.x)
-      // console.log(this.y)
-
-      personalImage.style.left = `${this.x}px`
-      personalImage.style.top = `${this.y}px`
-      this.onMouseLeaveFromImage()
-    },
-
-    onMouseLeaveFromContainer () {
-      this.outFromContainer = true
-    },
-
-    onMouseLeaveFromImage () {
-      if (this.outFromContainer && (this.x < 100 || this.x > 500 || this.y < 270 || this.y > 300)) {
-        this.showImage = false
-      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#name__title {
-  &:hover {
-    color: $gold;
-    cursor: pointer;
-  }
+.textDescription__container {
+  background-image: url('~assets/images/pattern.svg');
 }
 
 .main__title {
   font-family: "Cy";
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin: 4px 0;
+  padding: 5px;
   font-size: 9vw;
-  color: white;
 
-  @include media-screen-md {
+  color: #ee6352;
+  background-image: var(--gradient);
+  background-clip: text;
+  color: transparent;
+  background-size: 400%;
+
+  animation-name: bgAnimation;
+  animation-duration: 35s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+
+  @include media-screen-lg {
     padding-left: 60px;
-    font-size: 60px;
+    font-size: 5vw;
   }
 }
 
@@ -190,38 +170,31 @@ export default {
   position: relative;
 
   &::after {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background-color: $gold;
-  position: absolute;
-  top: 0;
-  left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $gold;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  animation-name: revealBoxRight;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
+    animation-name: revealBoxRight;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
   }
 }
 
 .main__subtitle {
   width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   font-size: 5vw;
 
-  @include media-screen-md {
+  @include media-screen-lg {
     padding-left: 60px;
-    font-size: 26px;
+    font-size: 2vw;
   }
-}
-
-#personal__image {
-  position: absolute;
-  z-index: 1;
-  transform: translate(-50%, -50%);
 }
 
 // ==================
@@ -234,9 +207,13 @@ export default {
   --color-link-hover: #fff;
   --color-info: #454847;
   --glitch-width: 40vmax;
-  --glitch-height: calc(40vmax * 1.0);
+  --glitch-height: calc(40vmax * 1);
   --color-title: #fff;
   --color-subtitle: #30efbf;
+
+  // initial state
+  opacity: 0;
+  @include appear-from-opacity($duration: 9s, $delay: 12s);
 }
 
 .glitch--style-1 {
@@ -330,7 +307,7 @@ export default {
   --blend-mode-5: none;
   --blend-color-1: transparent;
   --blend-color-2: transparent;
-  --blend-color-3: rgba(255,255,255,0.2);
+  --blend-color-3: rgba(255, 255, 255, 0.2);
   --blend-color-4: transparent;
   --blend-color-5: transparent;
 }
@@ -355,7 +332,7 @@ export default {
   background: url(~assets/images/me-70.png) no-repeat 50% 0;
   background-color: var(--blend-color-1);
   background-size: cover;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   background-blend-mode: var(--blend-mode-1);
 }
 
@@ -401,7 +378,7 @@ export default {
 }
 
 /* Hide all images except the first one */
-.glitch__img:nth-child(n+2) {
+.glitch__img:nth-child(n + 2) {
   opacity: 0;
 }
 
@@ -412,23 +389,24 @@ export default {
 }
 
 /* On hover we show the 2nd, 3rd, 4th and 5th image*/
-.glitch .glitch__img:nth-child(n+2) {
+.glitch .glitch__img:nth-child(n + 2) {
   opacity: 1;
 }
 
 /* Hover animations for horizontal case */
 .glitch .glitch__img:nth-child(2) {
-  transform: translate3d(var(--gap-horizontal),0,0);
+  transform: translate3d(var(--gap-horizontal), 0, 0);
   animation: glitch-anim-1-horizontal var(--time-anim) infinite linear alternate;
 }
 
 .glitch > .glitch__img:nth-child(3) {
-  transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0);
+  transform: translate3d(calc(-1 * var(--gap-horizontal)), 0, 0);
   animation: glitch-anim-2-horizontal var(--time-anim) infinite linear alternate;
 }
 
 .glitch > .glitch__img:nth-child(4) {
-  transform: translate3d(0, calc(-1 * var(--gap-vertical)), 0) scale3d(-1,-1,1);
+  transform: translate3d(0, calc(-1 * var(--gap-vertical)), 0)
+    scale3d(-1, -1, 1);
   animation: glitch-anim-3-horizontal var(--time-anim) infinite linear alternate;
 }
 
@@ -444,13 +422,14 @@ export default {
 }
 
 .glitch--vertical > .glitch__img:nth-child(4) {
-  transform: translate3d(calc(-1 * var(--gap-horizontal)), 0, 0) scale3d(-1,-1,1);
+  transform: translate3d(calc(-1 * var(--gap-horizontal)), 0, 0)
+    scale3d(-1, -1, 1);
   animation: glitch-anim-3-vertical var(--time-anim) infinite linear alternate;
 }
 
 /* Hover flash animation on last image */
 .glitch > .glitch__img:nth-child(5) {
-  animation: glitch-anim-flash 0.5s steps(1,end) infinite;
+  animation: glitch-anim-flash 0.5s steps(1, end) infinite;
 }
 
 /* Animations */
@@ -750,11 +729,11 @@ export default {
     clip-path: polygon(30% 0, 25% 0, 25% 100%, 30% 100%);
   }
   33% {
-    -webkit-clip-path: polygon(15% 0, 16% 0, 16% 100%, 15% 100%);;
+    -webkit-clip-path: polygon(15% 0, 16% 0, 16% 100%, 15% 100%);
     clip-path: polygon(15% 0, 16% 0, 16% 100%, 15% 100%);
   }
   37% {
-    -webkit-clip-path: polygon(40% 0, 39% 0, 39% 100%, 40% 100%);;
+    -webkit-clip-path: polygon(40% 0, 39% 0, 39% 100%, 40% 100%);
     clip-path: polygon(40% 0, 39% 0, 39% 100%, 40% 100%);
   }
   40% {
@@ -806,7 +785,7 @@ export default {
 @keyframes glitch-anim-text {
   0% {
     opacity: 1;
-    transform: translate3d(-10px,0,0) scale3d(-1,-1,1);
+    transform: translate3d(-10px, 0, 0) scale3d(-1, -1, 1);
     -webkit-clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
     clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
   }
@@ -839,11 +818,11 @@ export default {
     clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
   }
   90% {
-    transform: translate3d(-10px,0,0) scale3d(-1,-1,1);
+    transform: translate3d(-10px, 0, 0) scale3d(-1, -1, 1);
   }
   100% {
     opacity: 1;
-    transform: translate3d(0,0,0) scale3d(1,1,1);
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
@@ -855,9 +834,10 @@ export default {
     opacity: 0.2;
     transform: translate3d(var(--gap-horizontal), var(--gap-vertical), 0);
   }
-  33%, 100% {
+  33%,
+  100% {
     opacity: 0;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 }
 </style>

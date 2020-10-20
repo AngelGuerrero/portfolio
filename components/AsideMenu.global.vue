@@ -1,49 +1,75 @@
 <template>
   <aside class="wrapper__menu">
     <div class="aside__header">
-      <div class="aside__header-menu">
+      <div
+        class="aside__header-menu d-flex justify-content-center align-items-center d-md-none"
+      >
         <client-only>
           <menu-icon class="icon" />
         </client-only>
       </div>
-      <!-- <h2 class="aside__title">
-          &lt; Home /&gt;
-        </h2> -->
     </div>
+
     <div class="aside__links">
       <client-only>
-        <github-icon class="link--icon icon" />
-        <whatsapp-icon class="link--icon icon" />
-        <gmail-icon class="link--icon icon" />
+        <a
+          href="https://github.com/AngelGuerrero"
+          target="_blank"
+          title="Ver perfil de GitHub y códigos"
+        >
+          <github-icon
+            class="link--icon icon"
+            title="Ver perfil de GitHub y códigos"
+          />
+        </a>
+        <a
+          href="https://wa.link/upltbr"
+          target="_blank"
+          title="Abrir chat de Whatsapp"
+        >
+          <whatsapp-icon
+            class="link--icon icon"
+            title="Abrir chat de Whatsapp"
+          />
+        </a>
+        <a
+          href="mailto:lasantiagoguerrero@gmail.com"
+          target="_blank"
+          title="Mandar correo electrónico"
+        >
+          <gmail-icon
+            class="link--icon icon"
+            title="¡Mandar correo electrónico!"
+          />
+        </a>
       </client-only>
     </div>
   </aside>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
 .aside__header {
+  opacity: 0;
+  // initial state
+  opacity: 0;
+  @include appear-from-opacity($duration: 8s, $delay: 4s);
+
   height: 50%;
   position: relative;
 }
 
 .aside__header-menu {
-  background-color: $hotpink;
+  background-color: $accent;
   height: 50px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
   padding-bottom: 10px;
 }
 .aside__header-menu .icon {
-  color: white;
   font-size: 36px;
 
   display: flex;
@@ -55,9 +81,9 @@ export default {
 }
 
 .aside__title {
-  font-family: 'Courgette', cursive;
+  font-family: "Courgette", cursive;
   font-weight: 700;
-  font-size: 1.0rem;
+  font-size: 1rem;
 
   width: 200%;
   text-transform: uppercase;
@@ -74,6 +100,8 @@ export default {
 }
 
 .aside__links {
+  @include appear-from-opacity($duration: 8s, $delay: 4s);
+
   height: 50%;
   background-color: $principal;
 
