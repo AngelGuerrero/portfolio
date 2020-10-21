@@ -94,9 +94,15 @@ $gold: #fedc24;
   font-family: "Cy Extra Bold";
   src: url("../assets/fonts/Cy/Cy-ExtraBold.otf");
 }
+
 body {
   overflow: hidden;
   background-color: $principal;
+  cursor: url('~assets/images/cursor.svg'), auto;
+}
+
+.svg__test {
+  fill: #00d8ff;
 }
 
 .dev {

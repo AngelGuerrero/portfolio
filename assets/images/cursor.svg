@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 22 22">
+  <g id="cursor" transform="translate(-2 -2)">
+    <g id="Grupo_1" data-name="Grupo 1">
+      <path id="Trazado_1" data-name="Trazado 1" d="M9,13a4,4,0,1,1,4,4A4,4,0,0,1,9,13Z" fill="#3bffbe"/>
+    </g>
+    <path id="Trazado_2" data-name="Trazado 2" d="M13,2h0V5.3h0"/>
+    <path id="Trazado_3" data-name="Trazado 3" d="M13,20.7h0V24h0"/>
+    <path id="Trazado_4" data-name="Trazado 4" d="M24,13H20.7"/>
+    <path id="Trazado_5" data-name="Trazado 5" d="M5.3,13H2"/>
+    <path id="Trazado_6" data-name="Trazado 6" d="M20.8,5.2h0L18.4,7.6h0"/>
+    <path id="Trazado_7" data-name="Trazado 7" d="M7.6,18.4h0L5.2,20.8h0"/>
+    <path id="Trazado_8" data-name="Trazado 8" d="M20.8,20.8h0l-2.4-2.4h0"/>
+    <path id="Trazado_9" data-name="Trazado 9" d="M7.6,7.6h0L5.2,5.2h0"/>
+  </g>
+</svg>
