@@ -25,27 +25,33 @@
       </b-col>
       <!-- col -->
       <b-col lg="6" class="d-none d-lg-block">
-        <div v-show="showImage" id="personal__image" class="demo-3">
-          <div class="glitch glitch--style-4">
-            <div class="glitch__img" />
-            <div class="glitch__img" />
-            <div class="glitch__img" />
-            <div class="glitch__img" />
-            <div class="glitch__img" />
-          </div>
-        </div>
+        <kinesis-container>
+          <kinesis-element :strength="20" type="depth">
+            <div id="personal__image" class="demo-3 box-shadow">
+              <div class="glitch glitch--style-4">
+                <div class="glitch__img" />
+                <div class="glitch__img" />
+                <div class="glitch__img" />
+                <div class="glitch__img" />
+                <div class="glitch__img" />
+              </div>
+            </div>
+          </kinesis-element>
+        </kinesis-container>
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
+import { KinesisContainer, KinesisElement } from 'vue-kinesis'
 import TypeIt from 'typeit'
 
 export default {
-  data: () => ({
-    showImage: true
-  }),
+  components: {
+    KinesisContainer,
+    KinesisElement
+  },
 
   mounted () {
     this.initTextAnimation()
@@ -134,7 +140,7 @@ export default {
 
 <style lang="scss" scoped>
 .textDescription__container {
-  background-image: url('~assets/images/pattern.svg');
+  background-image: url("~assets/images/pattern.svg");
 }
 
 .main__title {
@@ -379,7 +385,7 @@ export default {
 /* Hovers */
 
 .glitch:hover {
-  cursor: none;
+  // cursor: none;
 }
 
 /* On hover we show the 2nd, 3rd, 4th and 5th image*/

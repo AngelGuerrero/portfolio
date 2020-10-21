@@ -23,15 +23,7 @@
   </div>
 </template>
 
-<script>
-import TextDescription from '@/components/TextDescription'
-
-export default {
-  components: {
-    TextDescription
-  }
-}
-</script>
+<script></script>
 
 <style lang="scss">
 .wrapper {
