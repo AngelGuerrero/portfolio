@@ -1,6 +1,6 @@
 <template>
   <aside class="wrapper__menu">
-    <div class="aside__header">
+    <div :class="{ 'header--animation': !isMobile }" class="aside__header">
       <div
         class="aside__header-menu d-flex justify-content-center align-items-center d-md-none"
       >
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="aside__links">
+    <div :class="{ 'links--animation': !isMobile }" class="aside__links">
       <client-only>
         <a
           href="https://github.com/AngelGuerrero"
@@ -48,18 +48,29 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    //
+    // Doesn't play animations on mobile devices
+    //
+    isMobile: {
+      type: Boolean,
+      default: true
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .aside__header {
-  opacity: 0;
-  // initial state
-  opacity: 0;
-  @include appear-from-opacity($duration: 8s, $delay: 4s);
-
   height: 50%;
   position: relative;
+}
+
+.header--animation {
+  // initial state
+  opacity: 0;
+  @include appear-from-opacity($duration: 5s, $delay: 2s);
 }
 
 .aside__header-menu {
@@ -100,8 +111,6 @@ export default {}
 }
 
 .aside__links {
-  @include appear-from-opacity($duration: 8s, $delay: 4s);
-
   height: 50%;
   background-color: $principal;
 
@@ -109,6 +118,10 @@ export default {}
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+}
+
+.links--animation {
+  @include appear-from-opacity($duration: 8s, $delay: 4s);
 }
 
 .link--icon {

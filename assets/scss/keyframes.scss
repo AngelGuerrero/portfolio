@@ -1,0 +1,56 @@
+
+/*
+  Animations
+*/
+@keyframes slideBoxRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes revealBoxRight {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes slideright {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 70%;
+  }
+}
+
+@keyframes bgAnimation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+@keyframes appear {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+@keyframes appearBackgroundLetters {
+  0% { opacity: 0;}
+  100% { opacity: 0.1;}
+}

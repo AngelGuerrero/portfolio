@@ -19,6 +19,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
+    "mobile-device-detect": "^0.4.3",
     "nuxt": "^2.13.0",
     "typeit": "^7.0.4",
     "vue-animejs": "^2.1.1",
