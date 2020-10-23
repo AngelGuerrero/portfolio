@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper__lines">
+  <div :class="{ 'opacity-0': isMobile }" class="wrapper__lines">
     <div class="line" />
     <div class="line" />
     <div class="line" />
@@ -13,35 +13,51 @@
 
 <script>
 export default {
-  data () {
-    return {
-      max: 100,
-      min: 5
+  props: {
+    //
+    // Doesn't play animations on mobile devices
+    //
+    isMobile: {
+      type: Boolean,
+      default: true
     }
   },
 
+  data: () => ({
+    max: 100,
+    min: 5
+  }),
+
   mounted () {
-    const lines = this.$el.getElementsByClassName('line')
+    if (this.isMobile) { return }
 
-    //
-    // Random position lines
-    for (let index = 0; index < lines.length; index++) {
-      const left = Math.random() * (this.max - this.min) + this.min
-      lines[index].style.left = `${left}%`
+    this.initLineAnimation()
+  },
+
+  methods: {
+    initLineAnimation () {
+      const lines = this.$el.getElementsByClassName('line')
+
+      //
+      // Random position lines
+      for (let index = 0; index < lines.length; index++) {
+        const left = Math.random() * (this.max - this.min) + this.min
+        lines[index].style.left = `${left}%`
+      }
+
+      this.$anime({
+        targets: '.line',
+        bottom: ['-100%', '100%'],
+        duration: 11000,
+        delay (el, i, l) {
+          return i * 1500
+        },
+        endDelay (el, i, l) {
+          return (l - i) * 50
+        },
+        loop: true
+      })
     }
-
-    this.$anime({
-      targets: '.line',
-      bottom: ['-100%', '100%'],
-      duration: 11000,
-      delay (el, i, l) {
-        return i * 2000
-      },
-      endDelay (el, i, l) {
-        return (l - i) * 100
-      },
-      loop: true
-    })
   }
 }
 </script>

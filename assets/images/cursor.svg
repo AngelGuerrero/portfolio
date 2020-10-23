@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 22 22">
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 22 22">
   <g id="cursor" transform="translate(-2 -2)">
     <g id="Grupo_1" data-name="Grupo 1">
-      <path id="Trazado_1" data-name="Trazado 1" d="M9,13a4,4,0,1,1,4,4A4,4,0,0,1,9,13Z" fill="#3bffbe"/>
+      <path id="Trazado_1" data-name="Trazado 1" d="M9,13a4,4,0,1,1,4,4A4,4,0,0,1,9,13Z" fill="#ffe75f"/>
     </g>
     <path id="Trazado_2" data-name="Trazado 2" d="M13,2h0V5.3h0"/>
     <path id="Trazado_3" data-name="Trazado 3" d="M13,20.7h0V24h0"/>

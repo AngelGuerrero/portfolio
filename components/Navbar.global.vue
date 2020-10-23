@@ -23,7 +23,7 @@ export default {}
   .nav__menu {
     // initial state
     opacity: 0;
-    @include appear-from-opacity($duration: 3s, $delay: 4s);
+    @include appear-from-opacity($duration: 3s, $delay: 2s);
   }
 }
 
