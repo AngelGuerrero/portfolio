@@ -127,6 +127,9 @@ export default {
 .link--icon {
   margin-bottom: 30px;
   color: white;
-  cursor: pointer;
+  &:hover {
+    color: $accent;
+    cursor: pointer;
+  }
 }
 </style>

@@ -10,7 +10,25 @@
 
 <script>
 export default {
-  layout: 'technoLayout'
+  layout: 'technoLayout',
+
+  head () {
+    return {
+      title: 'Home',
+      meta: [
+        {
+          hid: 'title',
+          name: 'title',
+          content: 'Home'
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: '¡Cotiza tu sitio web, aplicación o sistema ahora mismo! Platiquemos tranquilamente para aterrizar esa gran idea y darle vida. 👌'
+        }
+      ]
+    }
+  }
 }
 </script>
 
