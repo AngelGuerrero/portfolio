@@ -8,9 +8,9 @@
   margin: 0;
 }
 
-// 
+//
 // Mixins
-// 
+//
 @mixin appear-background-letters($opacity, $duration, $delay) {
   opacity: $opacity;
 
@@ -27,13 +27,42 @@
   animation-fill-mode: forwards;
 }
 
-// 
+//
 // My global classes
-// 
+//
 .dev {
   // border: 1px solid tomato;
 }
 
 .opacity-0 {
   opacity: 0;
+}
+
+.my-btn {
+  // border: 3px solid lighten($color: $principal, $amount: 20);
+  position: relative;
+
+  &::before {
+    transition: all 1s;
+  }
+  &:hover {
+    &::before {
+      content: "NEXT";
+      color: $accent;
+      font-size: 14px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid $accent;
+      padding: 2px;
+
+      transition: all 1s;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation-name: "moveBtn";
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+  }
 }

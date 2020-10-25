@@ -1,11 +1,11 @@
 <template>
   <footer class="dev footer">
-    <div class="footer__next">
+    <div class="footer__next my-btn">
       <client-only>
         <img
           class="fleche"
           src="~assets/images/fleche_verte_droite.svg"
-          alt=""
+          alt="Fleche icon"
           srcset="~assets/images/fleche_verte_droite.svg"
         >
       </client-only>
