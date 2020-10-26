@@ -65,3 +65,29 @@
     opacity: 1;
   }
 }
+
+@keyframes appearSquare {
+  from {
+    opacity: 1;
+    transform: translate(-12px, 13px);
+  }
+  to {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes hideSquare {
+  to {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes appearBorder {
+  from {
+    border: 3px solid darken($color: $principal, $amount: 20);
+  }
+  to {
+    border: 3px solid darken($color: $secondaryAccent, $amount: 20);
+  }
+}

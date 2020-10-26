@@ -1,14 +1,20 @@
 <template>
-  <footer class="dev footer">
-    <div class="footer__next my-btn">
-      <client-only>
+  <footer class="dev footer d-flex align-items-center justify-content-between">
+    <div>
+      <p class="text__status px-3">
+        Website under construction 🚧
+      </p>
+    </div>
+
+    <div class="footer__next">
+      <nuxt-link to="/me">
         <img
           class="fleche"
           src="~assets/images/fleche_verte_droite.svg"
           alt="Fleche icon"
           srcset="~assets/images/fleche_verte_droite.svg"
         >
-      </client-only>
+      </nuxt-link>
     </div>
   </footer>
 </template>
@@ -32,14 +38,9 @@ export default {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 3;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .footer__next {
-  // opacity: 0;
   width: 100px;
   height: 100%;
   background-color: $principal;
@@ -48,18 +49,37 @@ export default {
   justify-content: center;
   align-items: center;
 
-  // animation-name: slideBoxRight;
-  // animation-delay: 5s;
-  // animation-duration: 3s;
-  // animation-fill-mode: forwards;
+  position: relative;
 
   &:hover {
-    cursor: pointer;
+    &::before {
+      content: "NEXT";
+      color: $accent;
+      font-size: 14px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid $accent;
+      padding: 2px;
+
+      transition: all 1s;
+
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      animation-name: "moveBtn";
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
   }
 }
 
 .footer__next .icon {
   font-size: 36px;
   color: white;
+}
+
+.text__status {
+  color: $accent;
 }
 </style>
