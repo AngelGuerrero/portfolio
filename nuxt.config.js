@@ -98,6 +98,12 @@ export default {
 
   },
 
+  /**
+   * Router
+   */
+  router: {
+  },
+
   /*
    ** Global CSS
    */

@@ -38,31 +38,6 @@
   opacity: 0;
 }
 
-.my-btn {
-  // border: 3px solid lighten($color: $principal, $amount: 20);
-  position: relative;
-
-  &::before {
-    transition: all 1s;
-  }
-  &:hover {
-    &::before {
-      content: "NEXT";
-      color: $accent;
-      font-size: 14px;
-      width: 100%;
-      height: 100%;
-      border: 3px solid $accent;
-      padding: 2px;
-
-      transition: all 1s;
-
-      position: absolute;
-      top: 0;
-      left: 0;
-      animation-name: "moveBtn";
-      animation-duration: 1s;
-      animation-fill-mode: forwards;
-    }
-  }
+.nuxt-link-active {
+  color: $accent !important;
 }

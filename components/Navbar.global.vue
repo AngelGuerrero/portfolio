@@ -1,17 +1,42 @@
 <template>
   <nav class="dev navbar p-0 d-flex">
     <div class="nav__menu dev d-none d-md-flex w-50 h-100 ml-auto">
-      <a href="#" class="menu__item dev">home </a>
-      <a href="#" class="menu__item dev">about</a>
-      <a href="#" class="menu__item dev">lab</a>
-      <a href="#" class="menu__item dev">projects</a>
-      <a href="#" class="menu__item dev">contact</a>
+      <div v-for="item in menuList" :key="item.id" class="menu__item dev">
+        <nuxt-link :to="item.to" exact>
+          {{ item.title }}
+        </nuxt-link>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      hover: false,
+
+      menu: [
+        { title: 'Home', to: '/', active: false },
+        { title: 'Me', to: 'me', active: false },
+        { title: 'Lab', to: 'lab', active: false },
+        { title: 'Project', to: 'projects', active: false },
+        { title: 'Contact', to: 'contact', active: false }
+      ]
+    }
+  },
+
+  computed: {
+    menuList () {
+      return this.menu.map((item) => {
+        item.active = item.to === this.$route.path
+        return item
+      })
+    }
+  },
+
+  methods: {}
+}
 </script>
 
 <style lang="scss" scoped>
@@ -33,16 +58,20 @@ export default {}
   align-items: center;
   flex-grow: 1;
 
-  font-family: "Saira Semi Condensed", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: $gold;
+  &:hover {
+    a {
+      color: $secondaryAccent;
+    }
+  }
+
+  a {
+    font-family: "Saira Semi Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $gold;
+  }
 }
 
-.menu__item:hover {
-  background-color: darken($color: $principal, $amount: 10);
-  color: $accent;
-}
 </style>
