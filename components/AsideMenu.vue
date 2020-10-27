@@ -1,12 +1,8 @@
 <template>
-  <aside class="wrapper__menu">
-    <div :class="{ 'header--animation': !isMobile }" class="aside__header">
-      <div
-        class="aside__header-menu d-flex justify-content-center align-items-center d-md-none"
-      >
-        <client-only>
-          <menu-icon class="icon" />
-        </client-only>
+  <aside class="aside__wrapper dev">
+    <div :class="{ 'header--animation': !isMobile }" class="aside__header h-10">
+      <div class="aside__header-menu d-flex justify-content-center align-items-center d-md-none">
+        <menu-icon class="icon" />
       </div>
     </div>
 
@@ -62,6 +58,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.aside__wrapper {
+  grid-row: layout-row-first / layout-row-end;
+  grid-column: layout-col-first / layout-col-line-second;
+  color: white;
+}
+
 .aside__header {
   height: 50%;
   position: relative;
@@ -121,6 +123,7 @@ export default {
 }
 
 .links--animation {
+  opacity: 0;
   @include appear-from-opacity($duration: 8s, $delay: 4s);
 }
 

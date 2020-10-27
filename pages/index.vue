@@ -1,16 +1,24 @@
 <template>
-  <b-container class="dev h-100 w-100" fluid>
-    <!-- Component view has a postition absolute -->
+  <div class="index__wrapper h-100 d-flex align-items-center dev">
+    <!-- Component with postition absolute -->
     <BackgroundTag tag-name="Home" />
 
-    <!-- Contians row and cols -->
-    <TextDescription :is-mobile="this.$store.state.isMobile" />
-  </b-container>
+    <b-container fluid class="h-100">
+      <TextDescription :is-mobile="this.$store.state.isMobile" />
+    </b-container>
+  </div>
 </template>
 
 <script>
 export default {
   layout: 'technoLayout',
+
+  created () {
+    this.$store.commit('setNavigation', {
+      prev: '',
+      next: '/me'
+    })
+  },
 
   head () {
     return {
@@ -24,7 +32,8 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: '¡Cotiza tu sitio web, aplicación o sistema ahora mismo! Platiquemos tranquilamente para aterrizar esa gran idea y darle vida. 👌'
+          content:
+            '¡Cotiza tu sitio web, aplicación o sistema ahora mismo! Platiquemos tranquilamente para aterrizar esa gran idea y darle vida. 👌'
         }
       ]
     }
@@ -32,4 +41,9 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.index__wrapper {
+  grid-column: main-col-begin / main-col-begin;
+  grid-row: main-row-content / main-row-content;
+}
+</style>

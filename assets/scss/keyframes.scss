@@ -55,13 +55,23 @@
   100% { opacity: 0.1;}
 }
 
-@keyframes moveBtn {
+@keyframes moveBtnRight {
   from {
     transform: translate(0px, 0px);
     opacity: 0;
   }
   to {
-    transform: translate(-20px, -15px);
+    transform: translate(-15px, -10px);
+    opacity: 1;
+  }
+}
+
+@keyframes moveBtnLeft {
+  from {
+    transform: translate(0px, 0px);
+    opacity: 0;
+  } to {
+    transform: translate(15px, -10px);
     opacity: 1;
   }
 }
