@@ -8,7 +8,7 @@
     <main class="dev main background">
       <Nuxt />
     </main>
-    <PrincipalFooter />
+    <PrincipalFooter :prev="this.$store.state.nav.prev" :next="this.$store.state.nav.next" />
   </div>
 </template>
 

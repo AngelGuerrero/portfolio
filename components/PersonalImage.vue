@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="personal-image__wrapper">
     <kinesis-container>
       <kinesis-element :strength="20" type="depth">
         <div id="personal__image" class="demo-3 box-shadow">
@@ -28,6 +28,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.personal-image__wrapper {
+  opacity: 0.4;
+  transition: all 1s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
 // ==================
 // Glitch
 // ==================
