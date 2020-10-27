@@ -1,5 +1,5 @@
 <template>
-  <b-row class="textDescription__container h-100 align-items-center">
+  <b-row class="h-100 align-items-center">
     <!-- col -->
     <b-col md="12" lg="6">
       <div>
@@ -148,12 +148,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.textDescription__container {
-  background-image: url("~assets/images/pattern.svg");
-  background-size: cover;
-  background-repeat: repeat;
-  background-position: center;
-}
 
 .main__title {
   font-family: "Cy";

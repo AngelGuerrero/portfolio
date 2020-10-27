@@ -41,9 +41,8 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  background-color: $principal;
-  grid-column: 2/5;
-  grid-row: 1/2;
+  grid-row: layout-row-first / layout-row-line-second;
+  grid-column: layout-col-line-second / layout-col-end;
 
   .nav__menu {
     // initial state
