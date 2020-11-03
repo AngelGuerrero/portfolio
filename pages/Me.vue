@@ -13,7 +13,7 @@
             Hi!
           </h3>
         </header>
-        <p class="text pr-4">
+        <p class="text pr-4 text-3xl">
           I’m software developer, a full-stack programmer focus on front-end, I have made web and desktop applications, I have maintained, fixed and improved apps and systems.
         </p>
       </b-col>

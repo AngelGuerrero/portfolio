@@ -30,10 +30,12 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/tailwindcss": "^3.2.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.2.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "node-sass": "^4.14.1",
+    "nuxt-purgecss": "^1.0.0",
     "sass-loader": "^10.0.2"
   }
 }

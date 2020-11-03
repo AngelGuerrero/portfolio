@@ -1,20 +1,23 @@
 <template>
-  <aside class="aside__wrapper dev">
-    <div :class="{ 'header--animation': !isMobile }" class="aside__header h-10">
-      <div class="aside__header-menu d-flex justify-content-center align-items-center d-md-none">
-        <menu-icon class="icon" />
-      </div>
-    </div>
-
-    <div :class="{ 'links--animation': !isMobile }" class="aside__links">
+  <aside class="dev h-full flex flex-col justify-end">
+    <!-- Icons to social networks -->
+    <div :class="{ 'links--animation': !isMobile }" class="flex flex-col">
       <client-only>
         <a
           href="https://github.com/AngelGuerrero"
           target="_blank"
           title="Ver perfil de GitHub y códigos"
+          class="dev
+              text-white
+                flex
+                justify-center
+                items-center
+                px-3
+                py-6
+                text-2xl
+              hover:text-custom-accent"
         >
           <github-icon
-            class="link--icon icon"
             title="Ver perfil de GitHub y códigos"
           />
         </a>
@@ -22,9 +25,17 @@
           href="https://wa.link/upltbr"
           target="_blank"
           title="Abrir chat de Whatsapp"
+          class="dev
+              text-white
+                flex
+                justify-center
+                items-center
+                px-3
+                py-6
+                text-2xl
+              hover:text-custom-accent"
         >
           <whatsapp-icon
-            class="link--icon icon"
             title="Abrir chat de Whatsapp"
           />
         </a>
@@ -32,9 +43,17 @@
           href="mailto:lasantiagoguerrero@gmail.com"
           target="_blank"
           title="Mandar correo electrónico"
+          class="dev
+              text-white
+                flex
+                justify-center
+                items-center
+                px-3
+                py-6
+                text-2xl
+              hover:text-custom-accent"
         >
           <gmail-icon
-            class="link--icon icon"
             title="¡Mandar correo electrónico!"
           />
         </a>
@@ -57,82 +76,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.aside__wrapper {
-  grid-row: layout-row-first / layout-row-end;
-  grid-column: layout-col-first / layout-col-line-second;
-  color: white;
-}
-
-.aside__header {
-  height: 50%;
-  position: relative;
-}
-
-.header--animation {
-  // initial state
-  opacity: 0;
-  @include appear-from-opacity($duration: 5s, $delay: 2s);
-}
-
-.aside__header-menu {
-  background-color: $accent;
-  height: 50px;
-
-  cursor: pointer;
-  padding-bottom: 10px;
-}
-.aside__header-menu .icon {
-  font-size: 36px;
-
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-}
-
-.aside__title {
-  font-family: "Courgette", cursive;
-  font-weight: 700;
-  font-size: 1rem;
-
-  width: 200%;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  overflow-wrap: normal;
-  word-wrap: normal;
-  color: white;
-
-  position: absolute;
-  top: 120px;
-
-  transform: rotate(270deg) translateX(-50%) translateY(120%);
-  transform-origin: 0px 0px;
-}
-
-.aside__links {
-  height: 50%;
-  background-color: $principal;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.links--animation {
-  opacity: 0;
-  @include appear-from-opacity($duration: 8s, $delay: 4s);
-}
-
-.link--icon {
-  margin-bottom: 30px;
-  color: white;
-  &:hover {
-    color: $accent;
-    cursor: pointer;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
