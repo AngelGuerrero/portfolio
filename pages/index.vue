@@ -1,17 +1,17 @@
 <template>
-  <div class="index__wrapper h-100 d-flex align-items-center dev">
+  <div class="dev bg-pattern bg-cover bg-center h-full flex justify-center items-center">
     <!-- Component with postition absolute -->
     <BackgroundTag tag-name="Home" />
 
-    <b-container fluid class="h-100">
+    <div class="dev w-full">
       <TextDescription :is-mobile="this.$store.state.isMobile" />
-    </b-container>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'technoLayout',
+  layout: 'base',
 
   created () {
     this.$store.commit('setNavigation', {
@@ -41,9 +41,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.index__wrapper {
-  grid-column: main-col-begin / main-col-begin;
-  grid-row: main-row-content / main-row-content;
-}
-</style>
+<style lang="scss" scoped></style>

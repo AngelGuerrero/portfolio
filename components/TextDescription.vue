@@ -1,44 +1,33 @@
 <template>
-  <b-row class="h-100 align-items-center">
+  <div class="dev flex">
     <!-- col -->
-    <b-col md="12" lg="6">
-      <div>
-        <div id="box__title_1">
-          <h1
-            id="title1"
-            :class="{ 'opacity-0': !isMobile }"
-            class="main__title dev"
-          >
-            Hi, my name is
-          </h1>
-        </div>
-
-        <div id="box__title_2">
-          <h1
-            id="name__title"
-            data-text="Ángel Guerrero"
-            :class="{ 'opacity-0': !isMobile }"
-            class="main__title dev"
-          >
-            Ángel Guerrero
-          </h1>
-        </div>
-
-        <!-- Doesn't show animation in mobile devices -->
-        <div v-show="!isMobile" id="subtitle" class="main__subtitle dev" />
-        <div v-show="isMobile" class="main__subtitle">
-          I <span class="title--cursive">design</span> and
-          <span class="title--enfasis">develop</span> in
-          <span class="vue">Vue</span>
-          <span class="heart">❤</span>
-        </div>
+    <div class="dev w-full flex flex-col justify-center text-center xs:text-left lg:w-1/2">
+      <div id="box__title_1">
+        <h1 id="title1" :class="{ 'opacity-0': !isMobile }" class="main__title dev">
+          Hi, my name is
+        </h1>
       </div>
-    </b-col>
+
+      <div id="box__title_2">
+        <h1 id="name__title" data-text="Ángel Guerrero" :class="{ 'opacity-0': !isMobile }" class="main__title dev">
+          Ángel Guerrero
+        </h1>
+      </div>
+
+      <!-- Doesn't show animation in mobile devices -->
+      <div v-if="!isMobile" id="subtitle" class="main__subtitle dev" />
+      <div v-else class="main__subtitle">
+        I <span class="font-sans italic">design</span> and
+        <span class="font-cy-bold font-bold animation__underscore">develop</span> in
+        <span class="text-custom-green">Vue</span>
+        <span class="text-custom-red">❤</span>
+      </div>
+    </div>
     <!-- col -->
-    <b-col lg="6" class="d-none d-lg-block">
+    <div class="dev w-1/2 hidden lg:block">
       <PersonalImage />
-    </b-col>
-  </b-row>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -95,7 +84,7 @@ export default {
           startDelay: 900,
           waitUntilVisible: true
         })
-          .type('I <span class="title--cursive">decign</span>')
+          .type('I <span class="font-sans italic">decign</span>')
           .pause(500)
           .move(-3)
           .delete(1)
@@ -103,7 +92,7 @@ export default {
           .move('END')
 
           .type(' and')
-          .type(' <span class="title--enfasis">develop</span>')
+          .type(' <span class="font-cy-bold animation__underscore">develop</span>')
           .pause(1000)
           .type(' in ')
 
@@ -124,12 +113,12 @@ export default {
           .delete(9)
 
           // React
-          .type('<span class="react">React</span>', { delay: 1500 })
+          .type('<span class="text-custom-blue">React</span>', { delay: 1500 })
           .pause(1500)
           .delete(5)
 
           // Vue
-          .type('<span class="vue">Vue</span> <span class="heart">❤</span>', {
+          .type('<span class="text-custom-green">Vue</span> <span class="text-custom-red">❤</span>', {
             delay: 1500
           })
 
@@ -153,7 +142,7 @@ export default {
   font-family: "Cy";
   margin: 4px 0;
   padding: 5px 0;
-  font-size: 8vw;
+  font-size: 7vw;
 
   color: #ee6352;
   background-image: var(--gradient);
@@ -200,6 +189,25 @@ export default {
   @include media-screen-lg {
     padding-left: 60px;
     font-size: 2vw;
+  }
+}
+
+.animation__underscore {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -5px;
+    left: 0px;
+    height: 30%;
+    background-color: #00ffee;
+
+    animation-name: slideright;
+    animation-delay: 3s;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
   }
 }
 </style>

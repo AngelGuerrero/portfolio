@@ -34,7 +34,7 @@ export default {
     font-family: "Courgette", cursive;
 
     @include media-screen-md {
-      font-size: 3rem !important;
+      font-size: 2.5rem !important;
     }
   }
 }

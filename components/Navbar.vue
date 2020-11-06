@@ -1,7 +1,43 @@
 <template>
-  <nav class="dev navbar p-0 d-flex">
-    <div class="nav__menu dev d-none d-md-flex w-50 h-100 ml-auto">
-      <div v-for="item in menuList" :key="item.id" class="menu__item dev">
+  <nav class="dev navbar h-full flex justify-between">
+    <!-- Icon burger -->
+    <div
+      class="dev
+              bg-custom-accent
+              w-16
+              m-1
+              flex
+              justify-center
+              items-center
+              hover:bg-custom-contrast
+              cursor-pointer"
+    >
+      <img
+        src="~/assets/images/menu.svg"
+        class="dev
+              flex
+              justify-center
+              items-center
+              p-3
+              cursor-pointer"
+      >
+    </div>
+    <!-- Menu -->
+    <div class="dev nav__menu hidden sm:flex">
+      <div
+        v-for="item in menuList"
+        :key="item.id"
+        class="dev
+              flex
+              items-center
+              flex-1
+              px-5
+              md:px-10
+              font-saira
+              uppercase
+              text-custom-contrast
+              hover:text-custom-enfasis"
+      >
         <nuxt-link :to="item.to" exact>
           {{ item.title }}
         </nuxt-link>
@@ -12,19 +48,15 @@
 
 <script>
 export default {
-  data () {
-    return {
-      hover: false,
-
-      menu: [
-        { title: 'Home', to: '/', active: false },
-        { title: 'Me', to: 'me', active: false },
-        { title: 'Lab', to: 'lab', active: false },
-        { title: 'Project', to: 'projects', active: false },
-        { title: 'Contact', to: 'contact', active: false }
-      ]
-    }
-  },
+  data: () => ({
+    menu: [
+      { title: 'Home', to: '/', active: false },
+      { title: 'Me', to: 'me', active: false },
+      { title: 'Lab', to: 'lab', active: false },
+      { title: 'Project', to: 'projects', active: false },
+      { title: 'Contact', to: 'contact', active: false }
+    ]
+  }),
 
   computed: {
     menuList () {
@@ -33,44 +65,16 @@ export default {
         return item
       })
     }
-  },
-
-  methods: {}
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .navbar {
-  grid-row: layout-row-first / layout-row-line-second;
-  grid-column: layout-col-line-second / layout-col-end;
-
   .nav__menu {
     // initial state
     opacity: 0;
-    @include appear-from-opacity($duration: 3s, $delay: 2s);
+    @include appear-from-opacity($duration: 3s, $delay: 1s);
   }
 }
-
-.menu__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-
-  &:hover {
-    a {
-      color: $secondaryAccent;
-    }
-  }
-
-  a {
-    font-family: "Saira Semi Condensed", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $gold;
-  }
-}
-
 </style>

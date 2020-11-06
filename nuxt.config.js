@@ -130,7 +130,9 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/global-components'
+    '@nuxtjs/global-components',
+    '@nuxtjs/tailwindcss',
+    'nuxt-purgecss'
   ],
   /*
    ** Nuxt.js modules
@@ -141,7 +143,7 @@ export default {
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     '@nuxtjs/style-resources',
-    'bootstrap-vue/nuxt',
+    // 'bootstrap-vue/nuxt',
     '@nuxtjs/sitemap'
   ],
 
@@ -163,19 +165,19 @@ export default {
   /**
    * Bootstrap configuration and plugins
    */
-  bootstrapVue: {
-    icons: false,
-    componentPlugins: [
-      'LayoutPlugin'
-      // 'FormPlugin',
-      // 'FormCheckboxPlugin',
-      // 'FormInputPlugin',
-      // 'FormRadioPlugin',
-      // 'ToastPlugin',
-      // 'ModalPlugin'
-    ]
-    // directivePlugins: ['VBPopoverPlugin', 'VBTooltipPlugin', 'VBScrollspyPlugin']
-  },
+  // bootstrapVue: {
+  //   icons: false,
+  //   componentPlugins: [
+  //     'LayoutPlugin'
+  //     // 'FormPlugin',
+  //     // 'FormCheckboxPlugin',
+  //     // 'FormInputPlugin',
+  //     // 'FormRadioPlugin',
+  //     // 'ToastPlugin',
+  //     // 'ModalPlugin'
+  //   ]
+  //   // directivePlugins: ['VBPopoverPlugin', 'VBTooltipPlugin', 'VBScrollspyPlugin']
+  // },
 
   /**
    * Style resources
@@ -204,7 +206,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
-    transpile: ['bootstrap-vue'],
+    // transpile: ['bootstrap-vue'],
     babel: {
       compact: true
     }
