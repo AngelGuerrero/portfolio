@@ -1,7 +1,23 @@
 <template>
-  <div class="dev flex">
+  <div
+    class="dev
+          w-full
+          flex
+          px-3
+          md:px-10
+          lg:px-0"
+  >
     <!-- col -->
-    <div class="dev w-full flex flex-col justify-center text-center xs:text-left lg:w-1/2">
+    <div
+      class="dev
+            w-full
+            flex
+            flex-col
+            justify-center
+            text-center
+            lg:text-left
+            lg:w-1/2"
+    >
       <div id="box__title_1">
         <h1 id="title1" :class="{ 'opacity-0': !isMobile }" class="main__title dev">
           Hi, my name is
@@ -14,7 +30,9 @@
         </h1>
       </div>
 
-      <!-- Doesn't show animation in mobile devices -->
+      <!-- ================================================
+        Do not show animations in mobile devices
+        ================================================ -->
       <div v-if="!isMobile" id="subtitle" class="main__subtitle dev" />
       <div v-else class="main__subtitle">
         I <span class="font-sans italic">design</span> and
@@ -23,22 +41,18 @@
         <span class="text-custom-red">❤</span>
       </div>
     </div>
+
     <!-- col -->
     <div class="dev w-1/2 hidden lg:block">
-      <PersonalImage />
+      <MyPhoto />
     </div>
   </div>
 </template>
 
 <script>
 import TypeIt from 'typeit'
-import PersonalImage from './PersonalImage'
 
 export default {
-  components: {
-    PersonalImage
-  },
-
   props: {
     //
     // Doesn't play animations on mobile devices

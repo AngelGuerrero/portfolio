@@ -107,7 +107,9 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '~/assets/css/fonts.css'
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -123,7 +125,16 @@ export default {
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
    */
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      {
+        path: '~/components/my/',
+        prefix: 'My'
+      }
+    ]
+  },
+
   /*
    ** Nuxt.js dev-modules
    */
@@ -163,23 +174,6 @@ export default {
   },
 
   /**
-   * Bootstrap configuration and plugins
-   */
-  // bootstrapVue: {
-  //   icons: false,
-  //   componentPlugins: [
-  //     'LayoutPlugin'
-  //     // 'FormPlugin',
-  //     // 'FormCheckboxPlugin',
-  //     // 'FormInputPlugin',
-  //     // 'FormRadioPlugin',
-  //     // 'ToastPlugin',
-  //     // 'ModalPlugin'
-  //   ]
-  //   // directivePlugins: ['VBPopoverPlugin', 'VBTooltipPlugin', 'VBScrollspyPlugin']
-  // },
-
-  /**
    * Style resources
    */
   styleResources: {
@@ -209,6 +203,13 @@ export default {
     // transpile: ['bootstrap-vue'],
     babel: {
       compact: true
+    },
+
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {}
+      }
     }
   }
 }

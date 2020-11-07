@@ -3,17 +3,25 @@
     <!-- Animated vertical lines -->
     <AnimatedLine :is-mobile="this.$store.state.isMobile" />
 
+    <div class="icon__burger">
+      <IconBurger />
+    </div>
+
     <nav class="nav">
       <Navbar />
     </nav>
-    <aside class="aside_left">
+
+    <aside class="aside__left">
       <AsideMenu :is-mobile="this.$store.state.isMobile" />
     </aside>
+
     <main class="main">
       <Nuxt />
     </main>
+
     <!-- FIX: Add content aside right -->
-    <aside class="aside_right hidden sm:block" />
+    <aside class="aside__right hidden sm:block" />
+
     <footer class="footer">
       <PrincipalFooter :prev="this.$store.state.nav.prev" :next="this.$store.state.nav.next" />
     </footer>
@@ -45,38 +53,42 @@ export default {
   display: grid;
   // grid-gap: 5px;
   grid-template-areas:
-    "nav nav"
-    "aside_left main"
-    "aside_left footer"
+    "burger nav"
+    "aside__left main"
+    "footer footer"
   ;
 
-  grid-template-rows: 4rem 1fr 4rem;
-  grid-template-columns: 4rem auto;
+  grid-template-columns: 3rem 1fr;
+  grid-template-rows: 3rem 1fr 4rem;
 
   @media screen and (min-width: 640px) {
     grid-template-areas:
-      "nav nav nav"
-      "aside_left main aside_right"
-      "aside_left footer footer"
+      "burger nav nav"
+      "aside__left main aside__right"
+      "footer footer footer"
     ;
-    grid-template-columns: 4rem 1fr 5rem;
+    grid-template-columns: 3rem 1fr 3rem;
   }
+}
+
+.icon__burger {
+  grid-area: burger;
 }
 
 .nav {
   grid-area: nav;
 }
 
-.aside_left {
-  grid-area: aside_left;
+.aside__left {
+  grid-area: aside__left;
 }
 
 .main {
   grid-area: main;
 }
 
-.aside_right {
-  grid-area: aside_right;
+.aside__right {
+  grid-area: aside__right;
 }
 
 .footer {

@@ -1,5 +1,5 @@
 <template>
-  <div class="dev bg-pattern bg-cover bg-center h-full flex justify-center items-center">
+  <div class="dev w-full h-full bg-pattern bg-cover bg-center flex justify-center items-center">
     <!-- Component with postition absolute -->
     <BackgroundTag tag-name="Home" />
 
@@ -33,12 +33,10 @@ export default {
           hid: 'description',
           name: 'description',
           content:
-            '¡Cotiza tu sitio web, aplicación o sistema ahora mismo! Platiquemos tranquilamente para aterrizar esa gran idea y darle vida. 👌'
+            "Hello, I'm Ángel Guerrero, I'm a software developer, I love build things and share them. I'm available for freelance work, if you have a project I'd like help you, message me. 👌"
         }
       ]
     }
   }
 }
 </script>
-
-<style lang="scss" scoped></style>

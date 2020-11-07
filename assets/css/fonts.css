@@ -1,0 +1,12 @@
+/*
+  Fonts loaded for this specific layout
+ */
+@font-face {
+  font-family: "Cy";
+  src: url("~assets/fonts/Cy/Cy-Regular.otf");
+}
+
+@font-face {
+  font-family: "Cy Extra Bold";
+  src: url("~assets/fonts/Cy/Cy-ExtraBold.otf");
+}

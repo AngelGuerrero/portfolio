@@ -5,7 +5,7 @@
 
     <b-row class="h-100 d-flex align-items-center">
       <b-col :col="false" sm="12" md="6" class="my-image">
-        <PersonalImage />
+        <!-- <MyPersonalPhoto /> -->
       </b-col>
       <b-col :col="false" sm="12" md="6">
         <header class="text-left">
