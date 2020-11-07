@@ -24,7 +24,6 @@
 // My global classes
 //
 body {
-  overflow: hidden;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
    -khtml-user-select: none;
@@ -38,6 +37,7 @@ body {
   // border: 1px solid tomato;
 }
 
-.nuxt-link-active {
-  color: $accent !important;
+.nuxt-link-exact-active {
+  color: $principal;
+  background-color: $accent;
 }

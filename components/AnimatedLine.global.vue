@@ -1,13 +1,15 @@
 <template>
-  <div :class="{ 'opacity-0': isMobile }" class="wrapper__lines">
-    <div class="line" />
-    <div class="line" />
-    <div class="line" />
-    <div class="line" />
-    <div class="line" />
-    <div class="line" />
-    <div class="line" />
-    <div class="line" />
+  <div ref="wrapper" class="wrapper__lines">
+    <div v-if="!isMobile" class="w-full h-full">
+      <div class="line" />
+      <div class="line" />
+      <div class="line" />
+      <div class="line" />
+      <div class="line" />
+      <div class="line" />
+      <div class="line" />
+      <div class="line" />
+    </div>
   </div>
 </template>
 
@@ -35,10 +37,9 @@ export default {
   },
 
   methods: {
-    initLineAnimation () {
+    initLineAnimation (elements) {
       const lines = this.$el.getElementsByClassName('line')
 
-      //
       // Random position lines
       for (let index = 0; index < lines.length; index++) {
         const left = Math.random() * (this.max - this.min) + this.min
@@ -53,7 +54,7 @@ export default {
           return i * 1500
         },
         endDelay (el, i, l) {
-          return (l - i) * 50
+          return (l - i) * 30
         },
         loop: true
       })
@@ -66,9 +67,9 @@ export default {
 .wrapper__lines {
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: $principal;
   position: fixed;
-  z-index: 0;
+  z-index: -1;
   top: 0;
   left: 0;
 }

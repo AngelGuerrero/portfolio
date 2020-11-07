@@ -1,7 +1,7 @@
 <template>
-  <footer class="dev h-full w-full flex justify-between items-center">
+  <footer class="dev h-full w-full flex justify-between items-center overflow-hidden">
     <!-- prev -->
-    <div class="dev arrow">
+    <div class="dev arrow h-full w-1/2 sm:max-w-100px">
       <ArrowBtn v-show="prev" direction="left" :to="prev" />
     </div>
 
@@ -14,7 +14,7 @@
     </div>
 
     <!-- next -->
-    <div class="dev arrow">
+    <div class="dev arrow h-full w-1/2 sm:max-w-100px">
       <ArrowBtn v-show="next" direction="right" :to="next" />
     </div>
   </footer>
@@ -35,10 +35,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.arrow {
-  width: 150px;
-  @apply h-full
-}
-</style>

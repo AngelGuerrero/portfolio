@@ -5,18 +5,22 @@
       <div
         v-for="item in menuList"
         :key="item.id"
-        class="dev
-              flex
-              items-center
-              flex-1
-              px-5
-              md:px-10
-              font-saira
-              uppercase
-              text-custom-contrast
-              hover:text-custom-enfasis"
+        class="dev"
       >
-        <nuxt-link :to="item.to" exact>
+        <nuxt-link
+          :to="item.to"
+          exact
+          class="h-full
+                flex
+                items-center
+                px-8
+                font-saira
+                uppercase
+                text-custom-blue
+                hover:bg-custom-green
+                hover:text-black
+                "
+        >
           {{ item.title }}
         </nuxt-link>
       </div>

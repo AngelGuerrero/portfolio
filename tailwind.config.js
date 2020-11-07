@@ -304,6 +304,9 @@ module.exports = {
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace']
     },
     fontSize: {
+      'custom-xs': 'calc(10px + 1.8vw)',
+      'custom-sm': 'calc(12px + 3vw)',
+      'custom-md': 'calc(14px + 4vw)',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
@@ -372,10 +375,23 @@ module.exports = {
     }),
     maxHeight: {
       full: '100%',
-      screen: '100vh'
+      screen: '100vh',
+      '50px': '50px',
+      '100px': '100px',
+      '150px': '150px',
+      '200px': '200px',
+      '250px': '250px',
+      '300px': '300px'
     },
     maxWidth: (theme, { breakpoints }) => ({
       none: 'none',
+      '50px': '50px',
+      '60px': '60px',
+      '100px': '100px',
+      '150px': '150px',
+      '200px': '200px',
+      '250px': '250px',
+      '300px': '300px',
       xs: '20rem',
       sm: '24rem',
       md: '28rem',
@@ -392,11 +408,23 @@ module.exports = {
     minHeight: {
       0: '0',
       full: '100%',
-      screen: '100vh'
+      screen: '100vh',
+      '50px': '50px',
+      '100px': '100px',
+      '150px': '150px',
+      '200px': '200px',
+      '250px': '250px',
+      '300px': '300px'
     },
     minWidth: {
       0: '0',
-      full: '100%'
+      full: '100%',
+      '50px': '50px',
+      '100px': '100px',
+      '150px': '150px',
+      '200px': '200px',
+      '250px': '250px',
+      '300px': '300px'
     },
     objectPosition: {
       bottom: 'bottom',

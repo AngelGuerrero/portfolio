@@ -3,9 +3,7 @@
     class="dev
           w-full
           flex
-          px-3
-          md:px-10
-          lg:px-0"
+          md:px-0"
   >
     <!-- col -->
     <div
@@ -15,17 +13,54 @@
             flex-col
             justify-center
             text-center
-            lg:text-left
-            lg:w-1/2"
+            md:text-left
+            md:w-1/2"
     >
       <div id="box__title_1">
-        <h1 id="title1" :class="{ 'opacity-0': !isMobile }" class="main__title dev">
+        <h1
+          id="title1"
+          :class="{ 'opacity-0': !isMobile }"
+          class="dev
+                font-cy-regular
+                text-custom-md
+                sm:text-4xl
+                lg:text-custom-md
+
+                bg-hero-texture
+                bg-400
+                bg-clip-text
+                text-transparent
+                title-background--animation
+
+                md:pl-8
+                my-1
+                p-0 dev"
+        >
           Hi, my name is
         </h1>
       </div>
 
       <div id="box__title_2">
-        <h1 id="name__title" data-text="Ángel Guerrero" :class="{ 'opacity-0': !isMobile }" class="main__title dev">
+        <h1
+          id="name__title"
+          data-text="Ángel Guerrero"
+          :class="{ 'opacity-0': !isMobile }"
+          class="dev
+                font-cy-regular
+                text-custom-md
+                sm:text-4xl
+                lg:text-custom-md
+
+                bg-hero-texture
+                bg-400
+                bg-clip-text
+                text-transparent
+                title-background--animation
+
+                md:pl-8
+                my-1
+                p-0 dev"
+        >
           Ángel Guerrero
         </h1>
       </div>
@@ -33,8 +68,25 @@
       <!-- ================================================
         Do not show animations in mobile devices
         ================================================ -->
-      <div v-if="!isMobile" id="subtitle" class="main__subtitle dev" />
-      <div v-else class="main__subtitle">
+      <div
+        v-if="!isMobile"
+        id="subtitle"
+        class="main__subtitle
+              dev
+              text-base
+              sm:text-xl
+              lg:text-2xl
+              md:pl-8"
+      />
+      <div
+        v-else
+        class="main__subtitle
+              dev
+              text-base
+              sm:text-xl
+              lg:text-2xl
+              md:pl-8"
+      >
         I <span class="font-sans italic">design</span> and
         <span class="font-cy-bold font-bold animation__underscore">develop</span> in
         <span class="text-custom-green">Vue</span>
@@ -43,7 +95,7 @@
     </div>
 
     <!-- col -->
-    <div class="dev w-1/2 hidden lg:block">
+    <div class="dev w-1/2 hidden md:block">
       <MyPhoto />
     </div>
   </div>
@@ -153,26 +205,14 @@ export default {
 <style lang="scss">
 
 .main__title {
-  font-family: "Cy";
-  margin: 4px 0;
-  padding: 5px 0;
-  font-size: 7vw;
+  @apply font-cy-regular text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
+}
 
-  color: #ee6352;
-  background-image: var(--gradient);
-  background-clip: text;
-  color: transparent;
-  background-size: 400%;
-
+.title-background--animation {
   animation-name: bgAnimation;
   animation-duration: 35s;
   animation-direction: alternate-reverse;
   animation-iteration-count: infinite;
-
-  @include media-screen-lg {
-    padding-left: 60px;
-    font-size: 5vw;
-  }
 }
 
 .box__title__disappear {
@@ -198,12 +238,6 @@ export default {
   margin: 10px 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
-  font-size: 4vw;
-
-  @include media-screen-lg {
-    padding-left: 60px;
-    font-size: 2vw;
-  }
 }
 
 .animation__underscore {

@@ -1,5 +1,5 @@
 <template>
-  <aside class="dev h-full flex flex-col justify-end">
+  <aside class="dev h-full flex flex-col justify-end z-10">
     <!-- Icons to social networks -->
     <div :class="{ 'links--animation': !isMobile }" class="flex flex-col">
       <a

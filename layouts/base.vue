@@ -1,6 +1,11 @@
 <template>
-  <div class="dev wrapper bg-custom-main">
-    <!-- Animated vertical lines -->
+  <div class="dev wrapper">
+    <!-- ================================================
+        Animated vertical lines.
+
+        This component set the background color, it has
+        a fixed position, its with and hight is 100%.
+        ================================================ -->
     <AnimatedLine :is-mobile="this.$store.state.isMobile" />
 
     <div class="icon__burger">
@@ -48,26 +53,26 @@ export default {
 // ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝
 //
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
 
   display: grid;
   // grid-gap: 5px;
   grid-template-areas:
     "burger nav"
     "aside__left main"
-    "footer footer"
+    "aside__left footer"
   ;
 
-  grid-template-columns: 3rem 1fr;
-  grid-template-rows: 3rem 1fr 4rem;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: 4rem 1fr 4rem;
 
-  @media screen and (min-width: 640px) {
+  @include media-screen-md {
     grid-template-areas:
       "burger nav nav"
       "aside__left main aside__right"
       "footer footer footer"
     ;
-    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-columns: 4rem 1fr 4rem;
   }
 }
 
