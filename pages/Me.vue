@@ -17,15 +17,6 @@
       <!-- Col -->
       <div
         class="dev
-              my-image
-              w-full"
-      >
-        <MyPhoto />
-      </div>
-
-      <!-- Col -->
-      <div
-        class="dev
               container
               h-full
               sm:px-8
@@ -40,13 +31,9 @@
           <h3
             class="dev
                   text-4xl
-                  font-cy-bold
-                  text-transparent
-                  bg-hero-texture
-                  bg-clip-text
+                  text-gray-600
                   bg-400
                   bg-center
-                  title-background--animation
                   md:text-5xl
                   lg:text-6xl
                   "
@@ -55,15 +42,14 @@
           </h3>
         </header>
 
-        <p class="dev text-custom-blue font-saira text-xl px-2 md:text-2xl">
-          I’m software developer,
-          a full-stack programmer focus on front-end,
-          I love create web and desktop applications,
-          I like fix and improve apps and systems.
+        <p class="dev text-gray-400 text-xl px-2 md:text-2xl">
+          I'm software developer, a full-stack programmer focus on front-end.
         </p>
-        <!-- <p class="dev bg-gray-400 font-saira text-xl px-2 md:text-2xl">
-          In my free time I like to do things like this, or that or maybe this one.
-        </p> -->
+        <p
+          class="dev text-gray-400 font-courgette text-xl px-2 my-3 md:text-2xl"
+        >
+          I love create web, and desktop applications.
+        </p>
       </div>
     </div>
   </div>
@@ -76,20 +62,8 @@ export default {
   created () {
     this.$store.commit('setNavigation', {
       prev: '/',
-      next: '/lab'
+      next: ''
     })
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.my-image {
-  transition: all 1s;
-  transform: scale(0.8);
-  opacity: 0.5;
-  &:hover {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-}
-</style>

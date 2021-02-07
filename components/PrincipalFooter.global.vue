@@ -1,5 +1,5 @@
 <template>
-  <footer class="dev h-full w-full flex justify-between items-center overflow-hidden">
+  <footer class="dev h-full w-full flex justify-between items-center">
     <!-- prev -->
     <div class="dev arrow h-full w-1/2 sm:max-w-100px">
       <ArrowBtn v-show="prev" direction="left" :to="prev" />
@@ -7,7 +7,9 @@
 
     <!-- FIX: Default Slot -->
     <!-- Hidden on small devices -->
-    <div class="dev hidden sm:flex justify-center items-center font-sans font-bold text-custom-blue">
+    <div
+      class="dev hidden sm:flex justify-center items-center font-sans font-bold text-custom-blue"
+    >
       <p>
         Website under construction 🚧
       </p>

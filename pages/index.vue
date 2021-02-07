@@ -1,5 +1,7 @@
 <template>
-  <div class="dev w-full h-full bg-pattern bg-cover bg-center flex justify-center items-center">
+  <div
+    class="dev w-full h-full bg-pattern bg-cover bg-center flex justify-center items-center"
+  >
     <!-- Component with postition absolute -->
     <BackgroundTag tag-name="Home" />
 

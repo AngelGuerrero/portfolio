@@ -17,7 +17,7 @@
 export default {
   props: {
     //
-    // Doesn't play animations on mobile devices
+    // It doesn't play animations on mobile devices
     //
     isMobile: {
       type: Boolean,

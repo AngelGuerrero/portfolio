@@ -2,11 +2,7 @@
   <nav class="dev navbar mr-auto h-full flex justify-end">
     <!-- Menu -->
     <div class="dev nav__menu hidden sm:flex">
-      <div
-        v-for="item in menuList"
-        :key="item.id"
-        class="dev"
-      >
+      <div v-for="item in menuList" :key="item.id" class="dev">
         <nuxt-link
           :to="item.to"
           exact
@@ -33,10 +29,10 @@ export default {
   data: () => ({
     menu: [
       { title: 'Home', to: '/', active: false },
-      { title: 'Me', to: 'me', active: false },
-      { title: 'Lab', to: 'lab', active: false },
-      { title: 'Project', to: 'projects', active: false },
-      { title: 'Contact', to: 'contact', active: false }
+      { title: 'Me', to: 'me', active: false }
+      // { title: 'Lab', to: 'lab', active: false },
+      // { title: 'Project', to: 'projects', active: false },
+      // { title: 'Contact', to: 'contact', active: false }
     ]
   }),
 
@@ -56,7 +52,7 @@ export default {
   .nav__menu {
     // initial state
     opacity: 0;
-    @include appear-from-opacity($duration: 3s, $delay: 1s);
+    @include appear-from-opacity($duration: 3s, $delay: 0.5s);
   }
 }
 </style>
