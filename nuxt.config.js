@@ -30,7 +30,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
+        content:
+          'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
       },
       // {
       //   hid: 'twitter:card',
@@ -85,38 +86,35 @@ export default {
       {
         hid: 'og:description',
         name: 'og:description',
-        content: 'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
+        content:
+          'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
       }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Courgette&family=Saira+Semi+Condensed:wght@600&display=swap'
+        href:
+          'https://fonts.googleapis.com/css2?family=Courgette&family=Saira+Semi+Condensed:wght@600&display=swap'
       }
     ]
-
   },
 
   /**
    * Router
    */
-  router: {
-  },
+  router: {},
 
   /*
    ** Global CSS
    */
-  css: [
-    '~/assets/css/fonts.css'
-  ],
+  css: ['~/assets/css/fonts.css'],
 
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins:
-  [
+  plugins: [
     { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' },
     { src: '@/plugins/anime', ssr: false, mode: 'client' }
   ],
@@ -151,11 +149,32 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     '@nuxtjs/style-resources',
+
     // 'bootstrap-vue/nuxt',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+
+    //
+    // Firebase
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.VUE_APP_API_KEY,
+          authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+          projectId: process.env.VUE_APP_DATABASE_URL,
+          storageBucket: process.env.VUE_APP_PROJECT_ID,
+          messagingSenderId: process.env.VUE_APP_STORAGE_BUCKET,
+          appId: process.env.VUE_APP_APP_ID
+        },
+        services: {
+          auth: true // Just as example. Can be any other service.
+        }
+      }
+    ]
   ],
 
   /**
@@ -177,10 +196,7 @@ export default {
    * Style resources
    */
   styleResources: {
-    scss: [
-      '~/assets/scss/global.scss',
-      '~/assets/scss/media.scss'
-    ]
+    scss: ['~/assets/scss/global.scss', '~/assets/scss/media.scss']
   },
 
   /*
@@ -215,7 +231,9 @@ export default {
     // Load pdf file
     extend (config) {
       // Find the rule which contains a assets file extension
-      const assetsLoader = config.module.rules.find(rule => rule.test.test('.png'))
+      const assetsLoader = config.module.rules.find(rule =>
+        rule.test.test('.png')
+      )
 
       // Overwrite the test regex and add `pdf`
       assetsLoader.test = /\.(png|jpe?g|gif|svg|webp|pdf)$/i
