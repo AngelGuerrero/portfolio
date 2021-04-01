@@ -165,13 +165,13 @@ export default {
         config: {
           apiKey: process.env.VUE_APP_API_KEY,
           authDomain: process.env.VUE_APP_AUTH_DOMAIN,
-          projectId: process.env.VUE_APP_DATABASE_URL,
+          projectId: process.env.VUE_APP_PROJECT_ID,
           storageBucket: process.env.VUE_APP_PROJECT_ID,
           messagingSenderId: process.env.VUE_APP_STORAGE_BUCKET,
           appId: process.env.VUE_APP_APP_ID
         },
         services: {
-          auth: true // Just as example. Can be any other service.
+          firestore: true
         }
       }
     ]

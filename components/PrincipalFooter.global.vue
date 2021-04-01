@@ -23,6 +23,8 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
+
 export default {
   props: {
     prev: {
@@ -33,6 +35,17 @@ export default {
     next: {
       type: String,
       default: ''
+    }
+  },
+
+  created () {
+    this.getInformation()
+  },
+
+  methods: {
+    getInformation () {
+      // Obtener información de vuex
+      this.$store.dispatch('bindUsers')
     }
   }
 }
