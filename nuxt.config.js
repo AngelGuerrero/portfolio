@@ -152,28 +152,15 @@ export default {
 
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+
+    // https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
 
+    // https://github.com/nuxt-community/sitemap-module#readme
     '@nuxtjs/sitemap',
 
-    //
-    // Firebase
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: 'AIzaSyAOrs3dNN_BPQ6VVGz0kpnKnTwUY5YLeG8',
-          authDomain: 'portafolio-dec01.firebaseapp.com',
-          projectId: 'portafolio-dec01',
-          storageBucket: 'portafolio-dec01.appspot.com',
-          messagingSenderId: '879159833782',
-          appId: '1:879159833782:web:e8a08c807f8f861c706217'
-        },
-        services: {
-          firestore: true
-        }
-      }
-    ]
+    // https://firebase.nuxtjs.org/
+    '@nuxtjs/firebase'
   ],
 
   /**
@@ -181,6 +168,24 @@ export default {
    */
   sitemap: {
     hostname: 'https://angelguerrero.vercel.app/'
+  },
+
+  /**
+   * Firebase configuration
+   */
+  firebase: {
+    config: {
+      apiKey: process.env.VUE_APP_API_KEY,
+      authDomain: 'portafolio-dec01.firebaseapp.com',
+      projectId: 'portafolio-dec01',
+      storageBucket: 'portafolio-dec01.appspot.com',
+      messagingSenderId: '879159833782',
+      appId: '1:879159833782:web:e8a08c807f8f861c706217'
+    },
+    services: {
+      firestore: true
+    }
+
   },
 
   /**
@@ -238,5 +243,9 @@ export default {
 
       return config
     }
+  },
+
+  env: {
+    VUE_APP_API_KEY: process.env.VUE_APP_API_KEY
   }
 }

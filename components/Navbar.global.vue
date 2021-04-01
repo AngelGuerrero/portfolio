@@ -21,6 +21,11 @@
         </nuxt-link>
       </div>
     </div>
+
+    <!-- Connected Status -->
+    <div class="dev visible sm:hidden w-full self-center">
+      <ConnectedStatus />
+    </div>
   </nav>
 </template>
 

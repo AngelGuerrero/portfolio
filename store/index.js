@@ -1,7 +1,7 @@
 import { vuexfireMutations, firestoreAction } from 'vuexfire'
 
 export const state = () => ({
-  users: [],
+  author: [],
 
   //
   // State for know if the device is moble or not
@@ -31,9 +31,9 @@ export const mutations = {
 }
 
 export const actions = {
-  bindUsers: firestoreAction(async function ({ bindFirestoreRef }) {
+  getAuthor: firestoreAction(async function ({ bindFirestoreRef }) {
     const ref = this.$fire.firestore.collection('users').doc('angelguerrero')
 
-    await bindFirestoreRef('users', ref, { wait: true })
+    await bindFirestoreRef('author', ref, { wait: true })
   })
 }
