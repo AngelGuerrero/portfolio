@@ -43,9 +43,11 @@ export default {
   },
 
   methods: {
-    getInformation () {
+    async getInformation () {
       // Obtener información de vuex
-      this.$store.dispatch('bindUsers')
+      await this.$store.dispatch('bindUsers')
+
+      console.log('this.$store.state.users :>> ', this.$store.state.users)
     }
   }
 }
