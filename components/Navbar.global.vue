@@ -10,11 +10,18 @@
                 flex
                 items-center
                 px-8
-                font-saira
-                uppercase
-                text-custom-blue
-                hover:bg-custom-green
-                hover:text-black
+                text-sm
+                font-cy-bold
+                font-bold
+                lowercase
+                border-b-4
+                border-custom-main-500
+                text-custom-blue-700
+                transition duration-700
+
+                hover:bg-custom-blue-900
+                hover:text-custom-blue-500
+                hover:border-custom-contrast-500
                 "
         >
           {{ item.title }}
@@ -58,6 +65,7 @@ export default {
     // initial state
     opacity: 0;
     @include appear-from-opacity($duration: 3s, $delay: 0.5s);
+    backdrop-filter: blur(3px);
   }
 }
 </style>

@@ -1,13 +1,14 @@
 <template>
   <div
     class="dev
-          bg-custom-accent
+          bg-custom-green-700
           w-full
           h-full
           flex
           justify-center
           items-center
-          hover:bg-custom-contrast
+          transition-colors duration-300
+          hover:bg-custom-green-500
           cursor-pointer"
   >
     <img

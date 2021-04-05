@@ -1,5 +1,7 @@
 <template>
-  <div class="dev container w-full h-full bg-pattern">
+  <div
+    class="dev my-container container w-full h-full bg-pattern bg-custom-main-800"
+  >
     <BackgroundTag tag-name="About me" />
 
     <div
@@ -31,24 +33,29 @@
           <h3
             class="dev
                   text-4xl
-                  text-gray-600
-                  bg-400
-                  bg-center
+                  text-custom-accent-600
+                  font-saira
                   md:text-5xl
                   lg:text-6xl
                   "
           >
-            Things about me!
+            Hello, world!
           </h3>
         </header>
-
-        <p class="dev text-gray-400 text-xl px-2 md:text-2xl">
-          I'm software developer, a full-stack programmer focus on front-end.
-        </p>
         <p
-          class="dev text-gray-400 font-courgette text-xl px-2 my-3 md:text-2xl"
+          class="dev
+            text-custom-enfasis-300
+            font-courgette
+            text-xl
+            px-2
+            my-3
+            md:text-2xl"
         >
           I love create web, and desktop applications.
+        </p>
+
+        <p class="dev text-gray-400 font-saira text-xl px-2 md:text-2xl">
+          <nuxt-content :document="page" />
         </p>
       </div>
     </div>
@@ -59,11 +66,33 @@
 export default {
   layout: 'base',
 
+  async asyncData ({ $content }) {
+    const page = await $content('blog/helloWorld').fetch()
+
+    return { page }
+  },
+
   created () {
     this.$store.commit('setNavigation', {
       prev: '/',
       next: ''
     })
+  },
+
+  head () {
+    return {
+      title: this.page.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.page.excerpt }
+      ]
+    }
   }
 }
 </script>
+
+<style scoped>
+.my-container {
+  background-color: rgba(25, 22, 46, 0.288);
+  backdrop-filter: blur(2px);
+}
+</style>

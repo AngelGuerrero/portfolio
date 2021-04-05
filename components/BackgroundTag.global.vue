@@ -23,7 +23,7 @@ export default {
   left: 18%;
 
   opacity: 0;
-  @include appear-background-letters($opacity: 0, $duration: 6s, $delay: 5s);
+  @include appear-background-letters($opacity: 0, $duration: 6s, $delay: 1s);
 
   @include media-screen-sm {
     left: 5%;

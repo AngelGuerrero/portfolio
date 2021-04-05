@@ -7,13 +7,14 @@
         target="_blank"
         title="Resume"
         class="dev
-              text-white
+              text-gray-600
               flex
               justify-center
               items-center
               px-3
               py-6
-              hover:text-custom-accent"
+              transition-colors duration-300
+              hover:text-custom-green-500"
       >
         <svg
           class="h-6"
@@ -65,14 +66,15 @@
         target="_blank"
         title="Ver perfil de GitHub y códigos"
         class="dev
-              text-white
+              text-gray-600
                 flex
                 justify-center
                 items-center
                 px-3
                 py-6
                 text-2xl
-              hover:text-custom-accent"
+                transition-colors duration-300
+              hover:text-custom-green-500"
       >
         <github-icon title="Ver perfil de GitHub y códigos" />
       </a>
@@ -81,14 +83,15 @@
         target="_blank"
         title="Abrir chat de Whatsapp"
         class="dev
-              text-white
+              text-gray-600
                 flex
                 justify-center
                 items-center
                 px-3
                 py-6
                 text-2xl
-              hover:text-custom-accent"
+                transition-colors duration-300
+              hover:text-custom-green-500"
       >
         <whatsapp-icon title="Abrir chat de Whatsapp" />
       </a>
@@ -97,14 +100,16 @@
         target="_blank"
         title="Mandar correo electrónico"
         class="dev
-              text-white
+              text-gray-600
                 flex
                 justify-center
                 items-center
                 px-3
                 py-6
                 text-2xl
-              hover:text-custom-accent"
+                transition-colors duration-300
+              hover:text-custom-green-500
+              "
       >
         <gmail-icon title="¡Mandar correo electrónico!" />
       </a>
