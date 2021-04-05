@@ -115,8 +115,7 @@ export default {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' },
-    { src: '@/plugins/anime', ssr: false, mode: 'client' }
+    { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' }
   ],
 
   /*

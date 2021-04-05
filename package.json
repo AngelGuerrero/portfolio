@@ -20,10 +20,10 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "firebase": "^8.3.1",
+    "gsap": "^3.6.1",
     "mobile-device-detect": "^0.4.3",
     "nuxt": "^2.13.0",
     "typeit": "^7.0.4",
-    "vue-animejs": "^2.1.1",
     "vue-kinesis": "^1.1.5",
     "vue-material-design-icons": "^4.8.0",
     "vuexfire": "^3.2.5"

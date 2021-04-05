@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     direction: {
@@ -28,10 +30,9 @@ export default {
   },
 
   mounted () {
-    this.$anime({
-      targets: '.right__arrow',
-      translateX: [-1000, 0],
-      duration: 10000
+    gsap.to('.right__arrow', {
+      duration: 4,
+      keyframes: [{ translateX: -1100 }, { opacity: 1, translateX: 0 }]
     })
   }
 }
@@ -86,19 +87,20 @@ export default {
 
 .right__arrow {
   @extend .arrow__box;
+  opacity: 0;
 }
 
 // Actions
 .back__arrow:hover .left__arrow {
   z-index: 2;
   &::before {
-    @include before("moveBtnLeft", "prev");
+    @include before('moveBtnLeft', 'prev');
   }
 }
 .back__arrow:hover .right__arrow {
   z-index: 2;
   &::before {
-    @include before("moveBtnRight", "next");
+    @include before('moveBtnRight', 'next');
   }
 }
 </style>
