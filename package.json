@@ -23,6 +23,7 @@
     "gsap": "^3.6.1",
     "mobile-device-detect": "^0.4.3",
     "nuxt": "^2.13.0",
+    "sass": "^1.32.8",
     "typeit": "^7.0.4",
     "vue-kinesis": "^1.1.5",
     "vue-material-design-icons": "^4.8.0",

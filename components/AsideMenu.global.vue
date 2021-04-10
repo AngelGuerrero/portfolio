@@ -3,7 +3,7 @@
     <!-- Icons to social networks -->
     <div :class="{ 'links--animation': !isMobile }" class="flex flex-col">
       <nuxt-link
-        to="/AngelGuerreroCV.pdf"
+        to="/portafolio.pdf"
         target="_blank"
         title="Resume"
         class="dev

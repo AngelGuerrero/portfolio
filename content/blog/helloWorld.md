@@ -7,15 +7,12 @@ I'm software developer, a full-stack programmer focus on front-end.
 
 <!--more-->
 
+<br/>
 
-I worked <a href="http://www.pilgrims.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>, 
- and currently work <a href="" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>.
+I learned a lot <a href="https://www.h3c.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>.
 
-<div class="pt-5 text-base">
-</div>
+I made good friends <a href="http://anclajemedia.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>.
 
-<div class="pt-5 text-base font-sans">
-I like spend time with my family and dogs, I'm a hue fan of Vue.js, actually this site is made with ❤ and Nuxt.js.
+I fell in love from <a href="http://www.pilgrims.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a> <span class="text-sm">(my favorite place shh)</span>.
 
-If you have an idea and need help for programming, contact me if I'm online, or let me a message.
-</div>
+And currently work <a href="https://www.grupoicarus.com.mx/" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>.

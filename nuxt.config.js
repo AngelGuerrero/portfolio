@@ -199,7 +199,7 @@ export default {
    * Style resources
    */
   styleResources: {
-    scss: ['~/assets/scss/global.scss', '~/assets/scss/media.scss']
+    scss: ['~/assets/scss/global.scss']
   },
 
   /*

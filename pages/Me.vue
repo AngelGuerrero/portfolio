@@ -57,6 +57,14 @@
         <p class="dev text-gray-400 font-saira text-xl px-2 md:text-2xl">
           <nuxt-content :document="page" />
         </p>
+        <div class="pt-5 text-gray-400 text-base font-sans">
+          <p>
+            I like spend time with my family and dogs, I'm a hue fan of Vue.js,
+            actually this site is made with ❤ and Nuxt.js. If you have an idea
+            and need help for programming, contact me if I'm online, or let me a
+            message.
+          </p>
+        </div>
       </div>
     </div>
   </div>
