@@ -15,4 +15,6 @@ I made good friends <a href="http://anclajemedia.com.mx/" target="_blank" class=
 
 I fell in love from <a href="http://www.pilgrims.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a> <span class="text-sm">(my favorite place shh)</span>.
 
-And currently work <a href="https://www.grupoicarus.com.mx/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>, and part-time <a href="https://epix.industries/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
+I worked a little time, as part-time <a href="https://epix.industries/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
+
+And currently work <a href="https://www.grupoicarus.com.mx/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
