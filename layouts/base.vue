@@ -1,5 +1,5 @@
 <template>
-  <div class="dev wrapper overflow-x-hidden">
+  <div class="dev bg-custom-main-500 wrapper overflow-x-hidden">
     <!-- ================================================
         Animated vertical lines.
 
