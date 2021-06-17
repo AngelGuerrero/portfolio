@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dev my-container container w-full h-full bg-pattern bg-custom-main-800"
+    class="dev my-container px-2 w-full h-full bg-pattern bg-custom-main-800"
   >
     <BackgroundTag tag-name="About me" />
 
@@ -9,7 +9,6 @@
             h-full
             w-full
             max-w-screen-lg
-            container
             flex
             flex-col
             md:flex-row
@@ -19,7 +18,6 @@
       <!-- Col -->
       <div
         class="dev
-              container
               h-full
               sm:px-8
               md:px-0

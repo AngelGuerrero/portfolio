@@ -60,7 +60,7 @@ export default {
   grid-template-areas:
     "burger nav"
     "aside__left main"
-    "aside__left footer"
+    "footer footer"
   ;
 
   grid-template-columns: 4rem 1fr;
