@@ -31,12 +31,12 @@ export default {
           name: 'title',
           content: 'Home'
         },
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            "Hello, I'm Ángel Guerrero, I'm a software developer, I love build things and share them. I'm available for freelance work, if you have a project I'd like help you, message me. 👌"
-        }
+        // {
+        //   hid: 'description',
+        //   name: 'description',
+        //   content:
+        //     "Hello, I'm Ángel Guerrero, I'm a software developer, I love build things and share them. I'm available for freelance work, if you have a project I'd like help you, message me. 👌"
+        // }
       ]
     }
   }
