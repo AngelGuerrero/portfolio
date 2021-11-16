@@ -96,7 +96,7 @@
 
     <!-- col -->
     <div class="dev w-1/2 hidden md:block">
-      <MyPhoto />
+      <!-- <MyPhoto /> -->
     </div>
   </div>
 </template>
