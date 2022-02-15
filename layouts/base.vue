@@ -1,5 +1,10 @@
 <template>
-  <div class="dev bg-transparent wrapper overflow-x-hidden">
+  <div
+    class="dev wrapper overflow-x-hidden bg-"
+    :class="
+      this.$store.state.isMobile ? 'bg-custom-main-500' : 'bg-transparent'
+    "
+  >
     <!-- ================================================
         Animated vertical lines.
 
