@@ -17,4 +17,6 @@ I fell in love from <a href="http://www.pilgrims.com.mx/" target="_blank" class=
 
 I worked a little time, as part-time <a href="https://epix.industries/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
 
-And currently work <a href="https://www.grupoicarus.com.mx/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
+Here I had a really and appassionate challenge <a href="https://www.grupoicarus.com.mx/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
+
+And currently work <a href="https://www.intelligential.tech/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.

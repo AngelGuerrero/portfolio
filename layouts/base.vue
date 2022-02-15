@@ -1,5 +1,5 @@
 <template>
-  <div class="dev bg-custom-main-500 wrapper overflow-x-hidden">
+  <div class="dev bg-transparent wrapper overflow-x-hidden">
     <!-- ================================================
         Animated vertical lines.
 
@@ -28,7 +28,10 @@
     <aside class="aside__right hidden sm:block" />
 
     <footer class="footer">
-      <PrincipalFooter :prev="this.$store.state.nav.prev" :next="this.$store.state.nav.next" />
+      <PrincipalFooter
+        :prev="this.$store.state.nav.prev"
+        :next="this.$store.state.nav.next"
+      />
     </footer>
   </div>
 </template>
@@ -58,20 +61,18 @@ export default {
   display: grid;
   // grid-gap: 5px;
   grid-template-areas:
-    "burger nav"
-    "aside__left main"
-    "footer footer"
-  ;
+    'burger nav'
+    'aside__left main'
+    'footer footer';
 
   grid-template-columns: 4rem 1fr;
   grid-template-rows: 4rem 1fr 4rem;
 
   @include media-screen-md {
     grid-template-areas:
-      "burger nav nav"
-      "aside__left main aside__right"
-      "footer footer footer"
-    ;
+      'burger nav nav'
+      'aside__left main aside__right'
+      'footer footer footer';
     grid-template-columns: 4rem 1fr 4rem;
   }
 }

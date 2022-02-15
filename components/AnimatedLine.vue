@@ -33,6 +33,7 @@ export default {
 
   methods: {
     animate () {
+      console.log('animate')
       gsap.to('.box', {
         // Properties
         //

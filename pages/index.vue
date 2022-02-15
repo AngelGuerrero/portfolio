@@ -30,7 +30,7 @@ export default {
           hid: 'title',
           name: 'title',
           content: 'Home'
-        },
+        }
         // {
         //   hid: 'description',
         //   name: 'description',

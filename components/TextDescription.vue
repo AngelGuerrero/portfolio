@@ -87,8 +87,13 @@
               lg:text-2xl
               md:pl-8"
       >
-        I <span class="font-sans italic">design</span> and
-        <span class="font-cy-bold font-bold animation__underscore">develop</span> in
+        I
+        <span class="font-sans italic">design</span>
+        and
+        <span class="font-cy-bold font-bold animation__underscore">
+          develop
+        </span>
+        in
         <span class="text-custom-green">Vue</span>
         <span class="text-custom-red">❤</span>
       </div>
@@ -96,7 +101,7 @@
 
     <!-- col -->
     <div class="dev w-1/2 hidden md:block">
-      <!-- <MyPhoto /> -->
+      <MyPhoto />
     </div>
   </div>
 </template>
@@ -116,7 +121,9 @@ export default {
   },
 
   mounted () {
-    if (this.isMobile) { return }
+    if (this.isMobile) {
+      return
+    }
 
     this.initTextAnimation()
   },
@@ -158,7 +165,9 @@ export default {
           .move('END')
 
           .type(' and')
-          .type(' <span class="font-cy-bold animation__underscore">develop</span>')
+          .type(
+            ' <span class="font-cy-bold animation__underscore">develop</span>'
+          )
           .pause(1000)
           .type(' in ')
 
@@ -184,9 +193,12 @@ export default {
           .delete(5)
 
           // Vue
-          .type('<span class="text-custom-green">Vue</span> <span class="text-custom-red">❤</span>', {
-            delay: 1500
-          })
+          .type(
+            '<span class="text-custom-green">Vue</span> <span class="text-custom-red">❤</span>',
+            {
+              delay: 1500
+            }
+          )
 
         typeit.go()
       }, 3000)
@@ -203,7 +215,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .main__title {
   @apply font-cy-regular text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
 }
@@ -219,7 +230,7 @@ export default {
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     background-color: $gold;
@@ -236,7 +247,7 @@ export default {
 .main__subtitle {
   width: 100%;
   margin: 10px 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
 
@@ -244,7 +255,7 @@ export default {
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 1;
     bottom: -5px;

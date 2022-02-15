@@ -128,6 +128,10 @@ export default {
       {
         path: '~/components/my/',
         prefix: 'My'
+      },
+      {
+        path: '~/components/',
+        prefix: ''
       }
     ]
   },
@@ -138,7 +142,6 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/global-components',
     '@nuxtjs/tailwindcss',
     'nuxt-purgecss'
   ],

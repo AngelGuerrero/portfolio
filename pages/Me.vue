@@ -53,7 +53,7 @@
         </p>
 
         <p class="dev text-gray-400 font-saira text-xl px-2 md:text-2xl">
-          <!-- <nuxt-content :document="page" /> -->
+          <nuxt-content :document="page" />
         </p>
         <div class="pt-5 text-gray-400 text-base font-sans">
           <p>
