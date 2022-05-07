@@ -21,7 +21,7 @@
     >
       <!-- Col -->
       <div
-        class="dev w-full h-full sm:px-8 md:px-0 flex flex-col justify-center"
+        class="dev w-full h-full sm:px-8 md:px-0 flex flex-col justify-between"
       >
         <header class="dev px-2 mb-5">
           <h3
