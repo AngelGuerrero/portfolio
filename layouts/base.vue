@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dev wrapper overflow-x-hidden bg-"
+    class="dev wrapper overflow-x-hidden"
     :class="
       this.$store.state.isMobile ? 'bg-custom-main-500' : 'bg-transparent'
     "

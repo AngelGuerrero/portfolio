@@ -101,7 +101,7 @@
 
     <!-- col -->
     <div class="dev w-1/2 hidden md:block">
-      <MyPhoto />
+      <PhotoComponent />
     </div>
   </div>
 </template>

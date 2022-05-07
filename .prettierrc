@@ -1,5 +1,11 @@
 {
   "tabWidth": 2,
   "useTabs": false,
-  "htmlWhitespaceSensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleAttributePerLine": false,
+  "arrowParens": "avoid",
+  "trailingComma": "none",
+  "printWidth": 80,
+  "singleQuote": true,
+  "semi": false
 }

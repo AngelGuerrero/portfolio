@@ -3,20 +3,17 @@ title: Hello, world
 description: 'This is my hello world for nuxt content'
 ---
 
-I'm software developer, a full-stack programmer focus on front-end.
-
+<!-- <span class="text-red-500 font-saira">I'm software developer, a full-stack programmer focus on front-end.</span> -->
 <!--more-->
-
 <br/>
 
-I learned a lot <a href="https://www.h3c.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>.
-
-I made good friends <a href="http://anclajemedia.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a>.
-
-I fell in love from <a href="https://www.pilgrims.com.mx/" target="_blank" class="text-custom-accent-600 hover:text-custom-accent-200">here</a> <span class="text-sm">(my favorite place shh)</span>.
-
-I worked a little time, as part-time <a href="https://epix.industries/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
-
-Here I had a really and appassionate challenge <a href="https://www.grupoicarus.com.mx/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
-
-And currently work <a href="https://www.intelligential.tech/" class="text-custom-accent-600 hover:text-custom-accent-200" target="_blank">here</a>.
+<content-link text="I learned a lot " url="https://www.h3c.com.mx/"></content-link>
+<content-link text="I made good friends " url="http://anclajemedia.com.mx/"></content-link>
+<content-link text="I fell in love from " url="https://www.pilgrims.com.mx/">
+  <template v-slot:append>
+    <span class="text-sm">(my favorite place shh)</span>
+  </template>
+</content-link>
+<content-link text="I worked a little time, as part-time " url="https://epix.industries/"></content-link>
+<content-link text="I had a really and appassionate challenge " url="https://www.grupoicarus.com.mx/"></content-link>
+<content-link text="And currently work " url="https://www.intelligential.tech/"></content-link>

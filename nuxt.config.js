@@ -125,10 +125,10 @@ export default {
   components: {
     dirs: [
       '~/components',
-      {
-        path: '~/components/my/',
-        prefix: 'My'
-      },
+      // {
+      //   path: '~/components/my/',
+      //   prefix: 'My'
+      // },
       {
         path: '~/components/',
         prefix: ''

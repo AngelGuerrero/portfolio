@@ -31,6 +31,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  scroll-behavior: smooth;
 }
 
 .dev {
@@ -39,4 +40,18 @@ body {
 
 .nuxt-link-exact-active {
   color: $accent;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 20px;
+  background-color: #20aa8c;
 }

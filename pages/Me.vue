@@ -1,31 +1,27 @@
 <template>
   <div
-    class="dev my-container px-2 w-full h-full bg-pattern bg-custom-main-800"
+    class="dev
+          my-container
+          w-full
+          h-full
+          bg-pattern
+          bg-custom-main-800
+          rounded-lg p-4"
   >
     <BackgroundTag tag-name="About me" />
 
     <div
       class="dev
             h-full
-            w-full
-            max-w-screen-lg
             flex
             flex-col
             md:flex-row
-            md:justify-center
-            md:items-center"
+            md:items-center
+            "
     >
       <!-- Col -->
       <div
-        class="dev
-              h-full
-              sm:px-8
-              md:px-0
-
-              flex
-              flex-col
-              justify-center
-              "
+        class="dev w-full h-full sm:px-8 md:px-0 flex flex-col justify-center"
       >
         <header class="dev px-2 mb-5">
           <h3
@@ -33,34 +29,36 @@
                   text-4xl
                   text-custom-accent-600
                   font-saira
+                  text-center
                   md:text-5xl
-                  lg:text-6xl
-                  "
+                  lg:text-6xl"
           >
             Hello, world!
           </h3>
         </header>
         <p
           class="dev
-            text-custom-enfasis-300
-            font-courgette
-            text-xl
-            px-2
-            my-3
-            md:text-2xl"
+              text-custom-enfasis-300
+              font-courgette
+              text-right
+              text-xl
+              px-2
+              my-3
+              invisible
+              md:visible
+              md:text-2xl
+              "
         >
-          I love create web, and desktop applications.
+          I love create web and desktop applications.
         </p>
 
-        <p class="dev text-gray-400 font-saira text-xl px-2 md:text-2xl">
+        <div class="dev text-sm px-2 md:text-2xl h-[400px] overflow-y-auto">
           <nuxt-content :document="page" />
-        </p>
-        <div class="pt-5 text-gray-400 text-base font-sans">
-          <p>
-            I like spend time with my family and dogs, I'm a hue fan of Vue.js,
-            actually this site is made with ❤ and Nuxt.js. If you have an idea
-            and need help for programming, contact me if I'm online, or let me a
-            message.
+        </div>
+        <div class="pt-5 text-gray-400 text-base font-sans text-center">
+          <p class="font-courgette">
+            If you have an idea and need help for programming, contact me and
+            let me a message.
           </p>
         </div>
       </div>
