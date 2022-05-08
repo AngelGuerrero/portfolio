@@ -3,8 +3,6 @@ title: Hello, world
 description: 'This is my hello world for nuxt content'
 ---
 
-<!-- <span class="text-red-500 font-saira">I'm software developer, a full-stack programmer focus on front-end.</span> -->
-<!--more-->
 <br/>
 
 <content-link text="I learned a lot " url="https://www.h3c.com.mx/"></content-link>
