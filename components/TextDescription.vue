@@ -1,66 +1,17 @@
 <template>
-  <div
-    class="dev
-          w-full
-          flex
-          md:px-0"
-  >
+  <div class="flex w-full dev md:px-0">
     <!-- col -->
-    <div
-      class="dev
-            w-full
-            flex
-            flex-col
-            justify-center
-            text-center
-            md:text-left
-            md:w-1/2"
-    >
+    <div class="flex flex-col justify-center w-full text-center dev md:text-left md:w-1/2">
       <div id="box__title_1">
-        <h1
-          id="title1"
-          :class="{ 'opacity-0': !isMobile }"
-          class="dev
-                font-cy-regular
-                text-custom-md
-                sm:text-4xl
-                lg:text-custom-md
-
-                bg-hero-texture
-                bg-400
-                bg-clip-text
-                text-transparent
-                title-background--animation
-
-                md:pl-8
-                my-1
-                p-0 dev"
-        >
+        <h1 id="title1" :class="{ 'opacity-0': !isMobile }"
+            class="p-0 my-1 text-transparent dev font-cy-regular text-custom-md sm:text-4xl lg:text-custom-md bg-hero-texture bg-400 bg-clip-text title-background--animation md:pl-8">
           Hi, my name is
         </h1>
       </div>
 
       <div id="box__title_2">
-        <h1
-          id="name__title"
-          data-text="Ángel Guerrero"
-          :class="{ 'opacity-0': !isMobile }"
-          class="dev
-                font-cy-regular
-                text-custom-md
-                sm:text-4xl
-                lg:text-custom-md
-
-                bg-hero-texture
-                bg-400
-                bg-clip-text
-                text-transparent
-                title-background--animation
-
-                md:pl-8
-                my-1
-                p-0 dev"
-        >
+        <h1 id="name__title" data-text="Ángel Guerrero" :class="{ 'opacity-0': !isMobile }"
+            class="p-0 my-1 text-transparent dev font-cy-regular text-custom-md sm:text-4xl lg:text-custom-md bg-hero-texture bg-400 bg-clip-text title-background--animation md:pl-8">
           Ángel Guerrero
         </h1>
       </div>
@@ -68,29 +19,12 @@
       <!-- ================================================
         Do not show animations in mobile devices
         ================================================ -->
-      <div
-        v-if="!isMobile"
-        id="subtitle"
-        class="main__subtitle
-              dev
-              text-base
-              sm:text-xl
-              lg:text-2xl
-              md:pl-8"
-      />
-      <div
-        v-else
-        class="main__subtitle
-              dev
-              text-base
-              sm:text-xl
-              lg:text-2xl
-              md:pl-8"
-      >
+      <div v-if="!isMobile" id="subtitle" class="text-base main__subtitle dev sm:text-xl lg:text-2xl md:pl-8" />
+      <div v-else class="text-base main__subtitle dev sm:text-xl lg:text-2xl md:pl-8">
         I
         <span class="font-sans italic">design</span>
         and
-        <span class="font-cy-bold font-bold animation__underscore">
+        <span class="font-bold font-cy-bold animation__underscore">
           develop
         </span>
         in
@@ -100,7 +34,7 @@
     </div>
 
     <!-- col -->
-    <div class="dev w-1/2 hidden md:block">
+    <div class="hidden w-1/2 dev md:block">
       <PhotoComponent />
     </div>
   </div>
@@ -214,7 +148,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .main__title {
   @apply font-cy-regular text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
 }
@@ -228,20 +162,6 @@ export default {
 
 .box__title__disappear {
   position: relative;
-
-  &::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-color: $gold;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    animation-name: revealBoxRight;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-  }
 }
 
 .main__subtitle {
@@ -253,20 +173,5 @@ export default {
 
 .animation__underscore {
   position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    bottom: -5px;
-    left: 0px;
-    height: 30%;
-    background-color: #00ffee;
-
-    animation-name: slideright;
-    animation-delay: 3s;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-  }
 }
 </style>

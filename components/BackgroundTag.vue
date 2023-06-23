@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .background_tag {
   color: white;
   position: fixed;
@@ -23,19 +23,10 @@ export default {
   left: 18%;
 
   opacity: 0;
-  @include appear-background-letters($opacity: 0, $duration: 6s, $delay: 1s);
+}
 
-  @include media-screen-sm {
-    left: 5%;
-  }
-
-  h2 {
-    font-size: 2rem !important;
-    font-family: "Courgette", cursive;
-
-    @include media-screen-md {
-      font-size: 2.5rem !important;
-    }
-  }
+h2 {
+  font-size: 2rem !important;
+  font-family: "Courgette", cursive;
 }
 </style>

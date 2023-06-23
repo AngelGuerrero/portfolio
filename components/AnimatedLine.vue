@@ -96,28 +96,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.wrapper__lines {
-  width: 100%;
-  height: 100%;
-  background-color: $principal;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
-  overflow: hidden;
-}
-
-.box {
-  width: 3px;
-  height: 35%;
-  background-color: cyan;
-  scale: 0;
-  opacity: 0;
-}
-</style>

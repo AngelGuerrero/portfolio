@@ -1,17 +1,17 @@
 <template>
-  <footer class="dev h-full w-full flex justify-between items-center">
+  <footer class="flex items-center justify-between w-full h-full dev">
     <!-- prev -->
-    <div class="dev arrow h-full w-1/4 sm:max-w-100px">
+    <div class="w-1/4 h-full dev arrow sm:max-w-100px">
       <ArrowBtn v-show="prev" direction="left" :to="prev" />
     </div>
 
     <!-- Hidden on small devices -->
-    <div class="dev w-1/2 hidden sm:flex">
+    <div class="hidden w-1/2 dev sm:flex">
       <ConnectedStatus />
     </div>
 
     <!-- next -->
-    <div class="dev arrow h-full w-1/4 sm:max-w-100px">
+    <div class="w-1/4 h-full dev arrow sm:max-w-100px">
       <ArrowBtn v-show="next" direction="right" :to="next" />
     </div>
   </footer>

@@ -27,18 +27,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .personal-image__wrapper {
   opacity: 0.4;
   transition: all 1s;
-  &:hover {
-    opacity: 1;
-  }
 }
 
-// ==================
-// Glitch
-// ==================
+/* // ================== */
+/* // Glitch */
+/* // ================== */
 .demo-3 {
   --color-text: tomato;
   --color-bg: #1d2121;
@@ -50,9 +47,7 @@ export default {
   --color-title: #fff;
   --color-subtitle: #30efbf;
 
-  // initial state
   opacity: 0;
-  @include appear-from-opacity($duration: 3s, $delay: 2s);
 }
 
 .glitch--style-1 {
@@ -168,7 +163,7 @@ export default {
   left: calc(-1 * var(--gap-horizontal));
   width: calc(100% + var(--gap-horizontal) * 2);
   height: calc(100% + var(--gap-vertical) * 2);
-  background: url(~assets/images/me.png) no-repeat 50% 0;
+  background: url(~/assets/images/me.png) no-repeat 50% 0;
   background-color: var(--blend-color-1);
   background-size: cover;
   transform: translate3d(0, 0, 0);
@@ -176,23 +171,23 @@ export default {
 }
 
 .glitch--style-2 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~/assets/images/me.png);
 }
 
 .glitch--style-3 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~/assets/images/me.png);
 }
 
 .glitch--style-4 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~/assets/images/me.png);
 }
 
 .glitch--style-5 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~/assets/images/me.png);
 }
 
 .glitch--style-6 .glitch__img {
-  background-image: url(~assets/images/me.png);
+  background-image: url(~/assets/images/me.png);
 }
 
 /* Set the background colors for the glitch images*/
@@ -224,7 +219,7 @@ export default {
 /* Hovers */
 
 .glitch:hover {
-  // cursor: none;
+  /* // cursor: none; */
 }
 
 /* On hover we show the 2nd, 3rd, 4th and 5th image*/

@@ -1,24 +1,9 @@
 export default {
   /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  ssr: false,
-
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: 'static',
-
-  /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    //
-    //  FIX: I'm not sure if, I should do this in english or mexa...?
-    //
     lang: 'es',
 
     titleTemplate: '%s | ' + 'Ángel Guerrero 🌮',
@@ -33,31 +18,6 @@ export default {
         content:
           'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
       },
-      // {
-      //   hid: 'twitter:card',
-      //   name: 'twitter:card',
-      //   content: 'Ángel Guerrero software developer'
-      // },
-      // {
-      //   hid: 'twitter:site',
-      //   name: 'twitter:site',
-      //   content: '@username'
-      // },
-      // {
-      //   hid: 'twitter:creator',
-      //   name: 'twitter:creator',
-      //   content: '@username'
-      // },
-      // {
-      //   hid: 'twitter:title',
-      //   name: 'twitter:title',
-      //   content: 'This is title'
-      // },
-      // {
-      //   hid: 'twitter:description',
-      //   name: 'twitter:description',
-      //   content: 'this is description'
-      // },
       {
         hid: 'og:image',
         property: 'og:image',
@@ -94,47 +54,15 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Courgette&family=Saira+Semi+Condensed:wght@600&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Courgette&family=Saira+Semi+Condensed:wght@600&display=swap'
       }
     ]
   },
-
-  /**
-   * Router
-   */
-  router: {},
 
   /*
    ** Global CSS
    */
   css: ['~/assets/css/fonts.css'],
-
-  /*
-   ** Plugins to load before mounting the App
-   ** https://nuxtjs.org/guide/plugins
-   */
-  plugins: [
-    { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' }
-  ],
-
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
-  components: {
-    dirs: [
-      '~/components',
-      // {
-      //   path: '~/components/my/',
-      //   prefix: 'My'
-      // },
-      {
-        path: '~/components/',
-        prefix: ''
-      }
-    ]
-  },
 
   /*
    ** Nuxt.js dev-modules
@@ -187,7 +115,6 @@ export default {
     services: {
       firestore: true
     }
-
   },
 
   /**
@@ -206,46 +133,10 @@ export default {
   },
 
   /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
-
-  /*
    ** Content module configuration
    ** See https://content.nuxtjs.org/configuration
    */
   content: {},
-
-  /*
-   ** Build configuration
-   ** See https://nuxtjs.org/api/configuration-build/
-   */
-  build: {
-    babel: {
-      compact: true
-    },
-
-    postcss: {
-      plugins: {
-        tailwindcss: {},
-        autoprefixer: {}
-      }
-    },
-
-    // Load pdf file
-    extend (config) {
-      // Find the rule which contains a assets file extension
-      const assetsLoader = config.module.rules.find(rule =>
-        rule.test.test('.png')
-      )
-
-      // Overwrite the test regex and add `pdf`
-      assetsLoader.test = /\.(png|jpe?g|gif|svg|webp|pdf)$/i
-
-      return config
-    }
-  },
 
   env: {
     VUE_APP_API_KEY: process.env.VUE_APP_API_KEY

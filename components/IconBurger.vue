@@ -1,34 +1,8 @@
 <template>
   <div
-    class="dev
-          bg-custom-green-700
-          w-full
-          h-full
-          flex
-          justify-center
-          items-center
-          transition-colors duration-300
-          hover:bg-custom-green-500
-          cursor-pointer"
-  >
-    <img
-      src="~/assets/images/menu.svg"
-      class="dev
-            flex
-            justify-center
-            items-center
-            p-3
-            cursor-pointer"
-    >
+      class="flex items-center justify-center w-full h-full transition-colors duration-300 cursor-pointer dev bg-custom-green-700 hover:bg-custom-green-500">
+    <img src="~/assets/images/menu.svg" class="flex items-center justify-center p-3 cursor-pointer dev">
   </div>
 </template>
 
-<script>
-export default {
 
-}
-</script>
-
-<style lang="scss" scoped>
-
-</style>
