@@ -230,7 +230,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .main__title {
   @apply font-cy-regular text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
 }
@@ -244,20 +244,19 @@ export default {
 
 .box__title__disappear {
   position: relative;
+}
 
-  &::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-color: $gold;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    animation-name: revealBoxRight;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-  }
+.box__title__disappear::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #fedc24;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: revealBoxRight;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 }
 
 .main__subtitle {
@@ -269,20 +268,19 @@ export default {
 
 .animation__underscore {
   position: relative;
+}
 
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    bottom: -5px;
-    left: 0px;
-    height: 30%;
-    background-color: #00ffee;
-
-    animation-name: slideright;
-    animation-delay: 3s;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-  }
+.animation__underscore::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: -5px;
+  left: 0px;
+  height: 30%;
+  background-color: #00ffee;
+  animation-name: slideright;
+  animation-delay: 3s;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 }
 </style>

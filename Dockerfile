@@ -1,18 +1,8 @@
-FROM node:14-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    git
-
-RUN ln -sf python3 /usr/bin/python
-
 COPY package.json yarn.lock* package-lock.json* ./
-
-RUN npm config set python python3
 
 RUN if [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
     elif [ -f package-lock.json ]; then npm ci; \

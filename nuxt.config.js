@@ -106,9 +106,13 @@ export default {
   router: {},
 
   /*
-   ** Global CSS
-   */
-  css: ['~/assets/css/fonts.css'],
+  ** Global CSS
+  */
+  css: [
+    '~/assets/css/fonts.css',
+    '~/assets/css/animations.css',
+    '~/assets/css/global.css'
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -136,9 +140,6 @@ export default {
 
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
-
-    // https://github.com/nuxt-community/style-resources-module
-    '@nuxtjs/style-resources',
 
     // https://github.com/nuxt-community/sitemap-module#readme
     '@nuxtjs/sitemap',
@@ -178,13 +179,6 @@ export default {
   googleAnalytics: {
     id: 'G-FTY574R9LV',
     dev: false
-  },
-
-  /**
-   * Style resources
-   */
-  styleResources: {
-    scss: ['~/assets/scss/global.scss']
   },
 
   /*

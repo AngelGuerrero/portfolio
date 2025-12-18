@@ -18,7 +18,15 @@
 </template>
 
 <script>
+import ArrowBtn from './ArrowBtn.vue'
+import ConnectedStatus from './ConnectedStatus.vue'
+
 export default {
+  components: {
+    ArrowBtn,
+    ConnectedStatus
+  },
+
   props: {
     prev: {
       type: String,

@@ -37,7 +37,13 @@
 </template>
 
 <script>
+import ConnectedStatus from './ConnectedStatus.vue'
+
 export default {
+  components: {
+    ConnectedStatus
+  },
+
   data: () => ({
     menu: [
       { title: 'Home', to: '/', active: false },
@@ -59,13 +65,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.navbar {
-  .nav__menu {
-    // initial state
-    opacity: 0;
-    @include appear-from-opacity($duration: 3s, $delay: 0.5s);
-    backdrop-filter: blur(3px);
-  }
+<style scoped>
+.navbar .nav__menu {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  backdrop-filter: blur(3px);
 }
 </style>

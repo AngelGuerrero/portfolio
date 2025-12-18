@@ -96,16 +96,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .wrapper__lines {
   width: 100%;
   height: 100%;
-  background-color: $principal;
+  background-color: #000814;
   position: fixed;
   z-index: -1;
   top: 0;
   left: 0;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

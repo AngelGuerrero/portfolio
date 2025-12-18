@@ -21,27 +21,33 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .background_tag {
   color: white;
   position: fixed;
   top: 20%;
   left: 18%;
-
   opacity: 0;
-  @include appear-background-letters($opacity: 0, $duration: 6s, $delay: 1s);
+  animation-name: appearBackgroundLetters;
+  animation-duration: 6s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
 
-  @include media-screen-sm {
+@media screen and (min-width: 640px) {
+  .background_tag {
     left: 5%;
   }
+}
 
-  h2 {
-    font-size: 2rem !important;
-    font-family: "Courgette", cursive;
+.background_tag h2 {
+  font-size: 2rem !important;
+  font-family: "Courgette", cursive;
+}
 
-    @include media-screen-md {
-      font-size: 2.5rem !important;
-    }
+@media screen and (min-width: 768px) {
+  .background_tag h2 {
+    font-size: 2.5rem !important;
   }
 }
 </style>

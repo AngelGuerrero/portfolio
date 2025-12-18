@@ -92,29 +92,20 @@ export default {
 }
 </script>
 
-<style lang="scss">
-//
-// ██╗      █████╗ ██╗   ██╗ ██████╗ ██╗   ██╗████████╗
-// ██║     ██╔══██╗╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
-// ██║     ███████║ ╚████╔╝ ██║   ██║██║   ██║   ██║
-// ██║     ██╔══██║  ╚██╔╝  ██║   ██║██║   ██║   ██║
-// ███████╗██║  ██║   ██║   ╚██████╔╝╚██████╔╝   ██║
-// ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝
-//
+<style>
 .wrapper {
   min-height: 100vh;
-
   display: grid;
-  // grid-gap: 5px;
   grid-template-areas:
     'burger nav'
     'aside__left main'
     'footer footer';
-
   grid-template-columns: 4rem 1fr;
   grid-template-rows: 4rem 1fr 4rem;
+}
 
-  @include media-screen-md {
+@media screen and (min-width: 768px) {
+  .wrapper {
     grid-template-areas:
       'burger nav nav'
       'aside__left main aside__right'
