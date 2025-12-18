@@ -1,0 +1,22 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-nuxt2
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.nuxt
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - PORT=3000
+      - VUE_APP_API_KEY=${VUE_APP_API_KEY:-}
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    stdin_open: true
+    tty: true
+

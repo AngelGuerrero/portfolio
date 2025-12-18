@@ -42,11 +42,52 @@
 </template>
 
 <script>
+// #region agent log
 import { isMobile } from 'mobile-device-detect'
+// #endregion
+
+import AnimatedLine from '~/components/AnimatedLine.vue'
+import IconBurger from '~/components/IconBurger.vue'
+import Navbar from '~/components/Navbar.vue'
+import AsideMenu from '~/components/AsideMenu.vue'
+import PrincipalFooter from '~/components/PrincipalFooter.vue'
 
 export default {
+  components: {
+    AnimatedLine,
+    IconBurger,
+    Navbar,
+    AsideMenu,
+    PrincipalFooter
+  },
+
   created () {
-    this.$store.commit('setMobileState', isMobile)
+    // #region agent log
+    fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'Layout base created hook started', data: { isMobile: typeof isMobile !== 'undefined' ? isMobile : 'undefined', storeExists: !!this.$store }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'A' }) }).catch(() => {})
+    // #endregion
+
+    try {
+      // #region agent log
+      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'Before setMobileState commit', data: { isMobileValue: isMobile, storeState: this.$store.state }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'B' }) }).catch(() => {})
+      // #endregion
+
+      this.$store.commit('setMobileState', isMobile)
+
+      // #region agent log
+      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'After setMobileState commit', data: { storeState: this.$store.state }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'B' }) }).catch(() => {})
+      // #endregion
+    } catch (error) {
+      // #region agent log
+      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'Error in created hook', data: { error: error.message, stack: error.stack }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'A' }) }).catch(() => {})
+      // #endregion
+      throw error
+    }
+  },
+
+  mounted () {
+    // #region agent log
+    fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:mounted', message: 'Layout base mounted', data: { storeState: this.$store.state, componentsLoaded: true }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'C' }) }).catch(() => {})
+    // #endregion
   }
 }
 </script>

@@ -119,24 +119,6 @@ export default {
   ],
 
   /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
-  components: {
-    dirs: [
-      '~/components',
-      // {
-      //   path: '~/components/my/',
-      //   prefix: 'My'
-      // },
-      {
-        path: '~/components/',
-        prefix: ''
-      }
-    ]
-  },
-
-  /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
