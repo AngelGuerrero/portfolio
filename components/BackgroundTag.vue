@@ -1,5 +1,13 @@
 <template>
-  <div :class="['background_tag', `background_tag--${placement}`]">
+  <div
+    class="background_tag"
+    :class="{
+      'background_tag--lower': placement === 'lower',
+      'background_tag--upper-right': placement === 'upper-right',
+      'background_tag--article': placement === 'article',
+      'background_tag--me': placement === 'me'
+    }"
+  >
     <h2>&lt; {{ tagName }} /&gt;</h2>
   </div>
 </template>
