@@ -762,39 +762,18 @@ export default {
   transform: translateY(8px);
 }
 
-@media screen and (max-width: 900px) {
-  .me-panel {
-    grid-template-columns: minmax(0, 1fr) 260px;
-  }
-
-  .me-intro,
-  .me-story {
-    padding-right: 1.6rem;
-    padding-left: 1.6rem;
-  }
-
-  .me-note {
-    min-height: 5.6rem;
-  }
-
-  .me-note__heading {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
-}
-
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 959px) {
   .me-page {
     height: auto;
     min-height: 100%;
     overflow: visible;
-    padding: 3.5rem 0.8rem 2rem;
+    padding: 3.5rem clamp(0.8rem, 3vw, 1.5rem) 2rem;
   }
 
   .me-panel {
-    display: flex;
+    display: grid;
     height: auto;
-    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr);
     overflow: hidden;
   }
 
@@ -803,16 +782,16 @@ export default {
   }
 
   .me-intro {
-    padding: 4.5rem 1.25rem 1.5rem;
+    padding: 4.5rem clamp(1.25rem, 5vw, 2.6rem) 1.5rem;
   }
 
   .me-intro h1 {
-    font-size: clamp(2.8rem, 13vw, 4rem);
+    font-size: clamp(2.8rem, 10vw, 4.6rem);
   }
 
   .me-story {
     overflow: visible;
-    padding: 1.35rem 1.25rem 1.6rem;
+    padding: 1.35rem clamp(1.25rem, 5vw, 2.6rem) 1.6rem;
   }
 
   .me-note {
@@ -834,14 +813,24 @@ export default {
   }
 
   .me-showcase {
-    min-height: 520px;
+    min-height: clamp(440px, 70vw, 620px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-left: 0;
   }
 
   .system-preview {
-    min-height: 520px;
-    padding: 2.5rem 1.25rem;
+    min-height: clamp(440px, 70vw, 620px);
+    padding: 2.5rem clamp(1.25rem, 5vw, 2.6rem);
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 959px) {
+  .me-note {
+    min-height: 5rem;
+  }
+
+  .me-note__heading {
+    grid-template-columns: minmax(120px, 0.32fr) minmax(0, 1fr);
   }
 }
 

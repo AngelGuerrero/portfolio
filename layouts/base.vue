@@ -33,7 +33,7 @@
     </main>
 
     <!-- FIX: Add content aside right -->
-    <aside class="aside__right hidden sm:block" />
+    <aside class="aside__right" />
 
     <footer class="footer">
       <PrincipalFooter
@@ -65,7 +65,7 @@ export default {
   },
 
   beforeMount () {
-    this.viewportQuery = window.matchMedia('(max-width: 767px)')
+    this.viewportQuery = window.matchMedia('(max-width: 959px)')
     this.updateViewport(this.viewportQuery)
   },
 
@@ -90,29 +90,31 @@ export default {
 <style>
 .wrapper {
   height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-areas:
     'burger nav'
-    'aside__left main'
+    'main main'
     'footer footer';
-  grid-template-columns: 4rem 1fr;
-  grid-template-rows: 4rem 1fr 4rem;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  grid-template-rows: 4rem minmax(0, 1fr) 4rem;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 959px) {
   .wrapper {
     height: auto;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 960px) {
   .wrapper {
     grid-template-areas:
       'burger nav nav'
       'aside__left main aside__right'
       'footer footer footer';
-    grid-template-columns: 4rem 1fr 4rem;
+    grid-template-columns: 4rem minmax(0, 1fr) 4rem;
   }
 }
 
@@ -128,6 +130,7 @@ export default {
 
 .aside__left {
   grid-area: aside__left;
+  display: none;
 }
 
 .main {
@@ -138,9 +141,17 @@ export default {
 
 .aside__right {
   grid-area: aside__right;
+  display: none;
 }
 
 .footer {
   grid-area: footer;
+}
+
+@media screen and (min-width: 960px) {
+  .aside__left,
+  .aside__right {
+    display: block;
+  }
 }
 </style>

@@ -1,25 +1,14 @@
 <template>
   <div
-    class="dev
-          w-full
-          flex
-          md:px-0"
+    class="dev hero-composition"
   >
     <!-- col -->
     <div
-      class="dev
-            w-full
-            flex
-            flex-col
-            justify-center
-            text-center
-            md:text-left
-            md:w-1/2"
+      class="dev hero-copy"
     >
       <div id="box__title_1">
         <h1
           id="title1"
-          :class="{ 'opacity-0': !isMobile }"
           class="dev
                 hero-display
                 text-custom-md
@@ -32,7 +21,6 @@
                 text-transparent
                 title-background--animation
 
-                md:pl-8
                 my-1
                 p-0 dev"
         >
@@ -44,7 +32,6 @@
         <h1
           id="name__title"
           data-text="Ángel Guerrero"
-          :class="{ 'opacity-0': !isMobile }"
           class="dev
                 hero-display
                 text-custom-md
@@ -57,7 +44,6 @@
                 text-transparent
                 title-background--animation
 
-                md:pl-8
                 my-1
                 p-0 dev"
         >
@@ -65,27 +51,13 @@
         </h1>
       </div>
 
-      <!-- ================================================
-        Do not show animations in mobile devices
-        ================================================ -->
       <div
-        v-if="!isMobile"
         id="subtitle"
         class="main__subtitle
               dev
               text-base
               sm:text-xl
-              lg:text-2xl
-              md:pl-8"
-      />
-      <div
-        v-else
-        class="main__subtitle
-              dev
-              text-base
-              sm:text-xl
-              lg:text-2xl
-              md:pl-8"
+              lg:text-2xl"
       >
         I
         <span class="font-sans italic">design</span>
@@ -100,7 +72,7 @@
     </div>
 
     <!-- col -->
-    <div class="dev w-1/2 hidden md:block">
+    <div class="dev hero-photo">
       <PhotoComponent />
     </div>
   </div>
@@ -147,16 +119,22 @@ export default {
       //
       // First title
       addClass('box__title_1', 'box__title__disappear')
-      setTimeout(_ => removeClass('title1', 'opacity-0'), 1000)
       //
       // Second title
       setTimeout(() => {
         addClass('box__title_2', 'box__title__disappear')
-        setTimeout(_ => removeClass('name__title', 'opacity-0'), 1000)
       }, 2000)
 
       // After 3 seconds
       setTimeout(() => {
+        const subtitle = document.getElementById('subtitle')
+
+        if (!subtitle) {
+          return
+        }
+
+        subtitle.innerHTML = ''
+
         const typeit = new TypeIt('#subtitle', {
           speed: 90,
           startDelay: 900,
@@ -220,6 +198,41 @@ export default {
 </script>
 
 <style>
+.hero-composition {
+  box-sizing: border-box;
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  padding: clamp(1rem, 5vw, 2rem);
+}
+
+.hero-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-copy .hero-display {
+  font-size: clamp(2.9rem, 12vw, 5rem);
+  line-height: 1.04;
+}
+
+.hero-photo {
+  display: none;
+  min-width: 0;
+}
+
+@media screen and (max-width: 520px) {
+  #name__title {
+    padding: 0.04em 0.03em 0.08em;
+    font-size: clamp(2.7rem, 11.5vw, 5rem);
+    line-height: 1.1;
+  }
+}
+
 .main__title {
   @apply text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
   font-family: 'Outfit', sans-serif;
@@ -262,6 +275,26 @@ export default {
   margin: 10px 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
+}
+
+@media screen and (min-width: 960px) {
+  .hero-composition {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+    gap: clamp(1.5rem, 4vw, 5rem);
+    padding: 0 clamp(2rem, 4vw, 4rem);
+  }
+
+  .hero-copy {
+    text-align: left;
+  }
+
+  .hero-copy .hero-display {
+    font-size: clamp(3.4rem, 5.4vw, 5.4rem);
+  }
+
+  .hero-photo {
+    display: block;
+  }
 }
 
 .animation__underscore {

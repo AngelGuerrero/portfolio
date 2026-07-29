@@ -46,9 +46,9 @@ body {
   background-color: #20aa8c;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 959px) {
   ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
   }
 }

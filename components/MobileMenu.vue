@@ -211,8 +211,8 @@ export default {
         { scaleY: 0, transformOrigin: 'top center' },
         {
           scaleY: 1,
-          duration: 0.72,
-          stagger: 0.055,
+          duration: 0.42,
+          stagger: 0.035,
           ease: 'expo.inOut'
         }
       )
@@ -223,16 +223,16 @@ export default {
           opacity: 0.42,
           scale: 1,
           rotation: 0,
-          duration: 1.05,
+          duration: 0.65,
           ease: 'power3.out'
         },
-        '-=0.42'
+        '-=0.28'
       )
       timeline.fromTo(
         meta,
         { x: -28, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' },
-        '-=0.72'
+        { x: 0, opacity: 1, duration: 0.3, ease: 'power3.out' },
+        '-=0.48'
       )
       timeline.fromTo(
         preview,
@@ -241,10 +241,10 @@ export default {
           y: 0,
           opacity: 0.075,
           filter: 'blur(0px)',
-          duration: 0.7,
+          duration: 0.42,
           ease: 'power3.out'
         },
-        '-=0.5'
+        '-=0.34'
       )
       timeline.fromTo(
         links,
@@ -257,17 +257,17 @@ export default {
           yPercent: 0,
           opacity: 1,
           clipPath: 'inset(0 0 0% 0)',
-          duration: 0.72,
-          stagger: 0.09,
+          duration: 0.46,
+          stagger: 0.055,
           ease: 'expo.out'
         },
-        '-=0.58'
+        '-=0.4'
       )
       timeline.fromTo(
         footer,
         { y: 18, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.42, ease: 'power2.out' },
-        '-=0.35'
+        { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' },
+        '-=0.28'
       )
     },
 
@@ -394,6 +394,7 @@ export default {
   inset: 0;
   z-index: 90;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   background: #000814;
   color: #ffffff;
@@ -464,6 +465,7 @@ export default {
   display: grid;
   width: min(calc(100% - 8rem), 1180px);
   height: 100vh;
+  height: 100dvh;
   margin: 0 auto;
   grid-template-rows: auto minmax(0, 1fr) auto;
   padding: 2rem 0 1.5rem;
@@ -754,7 +756,7 @@ export default {
   }
 
   .mobile-menu__link {
-    min-height: 6.6rem;
+    min-height: clamp(4.8rem, 14dvh, 6.6rem);
     grid-template-columns: 34px minmax(0, 1fr) 30px;
   }
 
@@ -784,6 +786,34 @@ export default {
 
   .mobile-menu__close span {
     font-size: 0.58rem;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .mobile-menu__shell {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .mobile-menu__header {
+    padding-bottom: 0.55rem;
+  }
+
+  .mobile-menu__stage {
+    overflow-y: auto;
+    padding: 0.55rem 0;
+  }
+
+  .mobile-menu__link {
+    min-height: 4.35rem;
+  }
+
+  .mobile-menu__label {
+    font-size: clamp(2rem, 10vh, 3.2rem);
+  }
+
+  .mobile-menu__footer {
+    padding-top: 0.55rem;
   }
 }
 
