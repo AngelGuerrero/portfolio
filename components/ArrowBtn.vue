@@ -1,15 +1,21 @@
 <template>
-  <div class="back__arrow">
-    <div :class="[direction === 'left' ? 'left__arrow' : 'right__arrow']">
-      <nuxt-link :to="to">
-        <img
-          src="~assets/images/fleche_verte_droite.svg"
-          alt="Arrow icon"
-          srcset="~assets/images/fleche_verte_droite.svg"
-        >
-      </nuxt-link>
-    </div>
-  </div>
+  <nuxt-link
+    ref="link"
+    :to="to"
+    class="page-arrow"
+    :class="`page-arrow--${direction}`"
+    :aria-label="accessibleLabel"
+  >
+    <span class="page-arrow__label">
+      {{ direction === 'left' ? 'Previous' : 'Next' }}
+    </span>
+    <img
+      src="~assets/images/fleche_verte_droite.svg"
+      alt=""
+      aria-hidden="true"
+      class="page-arrow__icon"
+    >
+  </nuxt-link>
 </template>
 
 <script>
@@ -20,7 +26,8 @@ export default {
     direction: {
       type: String,
       default: 'right',
-      required: true
+      required: true,
+      validator: value => ['left', 'right'].includes(value)
     },
 
     to: {
@@ -29,98 +36,145 @@ export default {
     }
   },
 
+  computed: {
+    accessibleLabel () {
+      const destination = this.to === '/' ? 'home' : this.to.replace(/^\//, '')
+      const action = this.direction === 'left' ? 'previous' : 'next'
+
+      return `Go to ${action} page: ${destination}`
+    }
+  },
+
   mounted () {
-    gsap.to('.right__arrow', {
-      duration: 4,
-      keyframes: [{ translateX: -1100 }, { opacity: 1, translateX: 0 }]
-    })
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
+
+    gsap.fromTo(
+      this.$refs.link.$el,
+      {
+        opacity: 0,
+        x: this.direction === 'left' ? -20 : 20
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.75,
+        ease: 'power3.out',
+        delay: 0.25
+      }
+    )
   }
 }
 </script>
 
 <style scoped>
-.back__arrow {
-  width: 100%;
-  height: 100%;
+.page-arrow {
+  box-sizing: border-box;
   position: relative;
-}
-
-.arrow__box {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.left__arrow {
-  position: absolute;
   width: 100%;
+  min-width: 4rem;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 4rem;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 1px solid transparent;
+  padding: 0.55rem 0.7rem;
+  background: rgba(0, 8, 20, 0.08);
+  color: #3bffbe;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
 }
 
-.left__arrow img {
-  transform: rotateZ(180deg) rotateX(180deg);
-}
-
-.right__arrow {
+.page-arrow::before {
+  content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(59, 255, 190, 0.08), transparent 62%);
   opacity: 0;
+  transition: opacity 180ms ease;
 }
 
-.back__arrow:hover .left__arrow {
-  z-index: 2;
+.page-arrow__label,
+.page-arrow__icon {
+  position: relative;
+  z-index: 1;
 }
 
-.back__arrow:hover .left__arrow::before {
-  content: 'prev';
-  width: 100%;
-  height: 100%;
-  border: 3px solid #3bffbe;
-  padding: 5px;
-  color: #3bffbe;
-  font-size: 14px;
+.page-arrow__label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1;
   text-transform: uppercase;
+}
+
+.page-arrow__icon {
+  display: block;
+  width: 2.8rem;
+  height: auto;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-arrow--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.page-arrow--left .page-arrow__icon {
+  transform: rotate(180deg);
+}
+
+.page-arrow--right {
+  align-items: flex-end;
   text-align: right;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  animation-name: moveBtnLeft;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
 }
 
-.back__arrow:hover .right__arrow {
-  z-index: 2;
+.page-arrow:hover,
+.page-arrow:focus-visible {
+  border-color: #3bffbe;
+  background: rgba(0, 18, 28, 0.78);
+  box-shadow:
+    inset 0 0 20px rgba(59, 255, 190, 0.05),
+    0 0 18px rgba(59, 255, 190, 0.08);
+  color: #ffffff;
+  outline: none;
 }
 
-.back__arrow:hover .right__arrow::before {
-  content: 'next';
-  width: 100%;
-  height: 100%;
-  border: 3px solid #3bffbe;
-  padding: 5px;
-  color: #3bffbe;
-  font-size: 14px;
-  text-transform: uppercase;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  animation-name: moveBtnRight;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
+.page-arrow:hover::before,
+.page-arrow:focus-visible::before {
+  opacity: 1;
+}
+
+.page-arrow--right:hover .page-arrow__icon,
+.page-arrow--right:focus-visible .page-arrow__icon {
+  transform: translateX(5px);
+}
+
+.page-arrow--left:hover .page-arrow__icon,
+.page-arrow--left:focus-visible .page-arrow__icon {
+  transform: rotate(180deg) translateX(5px);
+}
+
+.page-arrow:focus-visible {
+  outline: 2px solid #ffe75f;
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-arrow,
+  .page-arrow::before,
+  .page-arrow__icon {
+    transition: none;
+  }
 }
 </style>

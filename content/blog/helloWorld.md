@@ -1,17 +1,23 @@
 ---
-title: Hello, world
-description: 'This is my hello world for nuxt content'
+title: Me
+description: 'Just a developer building the future, one line at a time.'
 ---
+
+I write code because I love building things. I'm obsessed with performance, aesthetics, and creating digital experiences that feel alive. If it's challenging, I'm in.
+
+I don't just follow the rules; I build the tools that make them obsolete.
 
 <br/>
 
-<content-link text="I learned a lot " url="https://www.h3c.com.mx/"></content-link>
-<content-link text="I made good friends " url="http://anclajemedia.com.mx/"></content-link>
-<content-link text="I fell in love from " url="https://www.pilgrims.com.mx/">
-  <template v-slot:append>
-    <span class="text-sm">(my favorite place shh)</span>
-  </template>
-</content-link>
-<content-link text="I worked a little time, as part-time " url="https://epix.industries/"></content-link>
-<content-link text="I had a really and appassionate challenge " url="https://www.grupoicarus.com.mx/"></content-link>
-<content-link text="And currently work " url="https://www.intelligential.tech/"></content-link>
+#### THE NATIVE NODES I'VE OPERATED AT:
+
+- **[H3C](https://www.h3c.com.mx/)** - Foundation.
+- **[Anclaje Media](http://anclajemedia.com.mx/)** - Creative Logic.
+- **[Pilgrims](https://www.pilgrims.com.mx/)** - Strategic Growth.
+- **[Epix Industries](https://epix.industries/)** - Industrial Scaling.
+- **[Grupo Icarus](https://www.grupoicarus.com.mx/)** - Passionate Challenges.
+- **[Intelligential Tech](https://www.intelligential.tech/)** - Current Frontier.
+
+<br/>
+
+If you want to build something disruptive, reach out.

@@ -1,8 +1,11 @@
 <template>
-  <footer class="dev h-full w-full flex justify-between items-center">
+  <footer
+    class="dev h-full w-full flex justify-between items-center"
+    aria-label="Page navigation"
+  >
     <!-- prev -->
     <div class="dev arrow h-full w-1/4 sm:max-w-100px">
-      <ArrowBtn v-show="prev" direction="left" :to="prev" />
+      <ArrowBtn v-if="prev" direction="left" :to="prev" />
     </div>
 
     <!-- Hidden on small devices -->
@@ -12,7 +15,7 @@
 
     <!-- next -->
     <div class="dev arrow h-full w-1/4 sm:max-w-100px">
-      <ArrowBtn v-show="next" direction="right" :to="next" />
+      <ArrowBtn v-if="next" direction="right" :to="next" />
     </div>
   </footer>
 </template>

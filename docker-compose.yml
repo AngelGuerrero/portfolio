@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio-nuxt2
     ports:
-      - "3000:3000"
+      - "5000:3000"
     volumes:
       - .:/app
       - /app/node_modules

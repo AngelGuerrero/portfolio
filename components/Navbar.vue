@@ -2,14 +2,16 @@
   <nav class="dev navbar mr-auto h-full flex justify-end">
     <!-- Menu -->
     <div class="dev nav__menu hidden sm:flex">
-      <div v-for="item in menuList" :key="item.id" class="dev">
+      <div v-for="item in menu" :key="item.to" class="dev">
         <nuxt-link
           :to="item.to"
-          exact
-          class="h-full
+          :exact="item.exact"
+          active-class="nav__link--active"
+          exact-active-class="nav__link--active"
+          class="nav__link h-full
                 flex
                 items-center
-                px-8
+                px-5
                 text-sm
                 font-cy-bold
                 font-bold
@@ -46,22 +48,11 @@ export default {
 
   data: () => ({
     menu: [
-      { title: 'Home', to: '/', active: false },
-      { title: 'Me', to: 'me', active: false }
-      // { title: 'Lab', to: 'lab', active: false },
-      // { title: 'Project', to: 'projects', active: false },
-      // { title: 'Contact', to: 'contact', active: false }
+      { title: 'Home', to: '/', exact: true },
+      { title: 'Me', to: '/me', exact: false },
+      { title: 'Memories', to: '/memories', exact: false }
     ]
-  }),
-
-  computed: {
-    menuList () {
-      return this.menu.map((item) => {
-        item.active = item.to === this.$route.path
-        return item
-      })
-    }
-  }
+  })
 }
 </script>
 
@@ -73,5 +64,13 @@ export default {
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
   backdrop-filter: blur(3px);
+}
+
+.nav__link--active,
+.nav__link--active:hover,
+.nav__link--active:focus {
+  border-color: #ffe75f;
+  background: rgba(0, 130, 153, 0.22);
+  color: #00fff9;
 }
 </style>

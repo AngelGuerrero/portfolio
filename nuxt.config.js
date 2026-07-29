@@ -14,12 +14,11 @@ export default {
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
-   */
+  */
   head: {
-    //
-    //  FIX: I'm not sure if, I should do this in english or mexa...?
-    //
-    lang: 'es',
+    htmlAttrs: {
+      lang: 'en'
+    },
 
     titleTemplate: '%s | ' + 'Ángel Guerrero 🌮',
     title: 'Ángel Guerrero',
@@ -31,7 +30,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
+          'Ángel Guerrero creates expressive software, thoughtful digital products and personal experiments.'
       },
       // {
       //   hid: 'twitter:card',
@@ -81,13 +80,13 @@ export default {
       {
         hid: 'og:title',
         name: 'og:title',
-        content: 'Desarrollador de software freelance | ✨🏆 Ángel Guerrero 🌮'
+        content: 'Software developer and digital maker | Ángel Guerrero'
       },
       {
         hid: 'og:description',
         name: 'og:description',
         content:
-          'Desarrollo aplicaciones a la medida. Cuéntame de tu proyecto para comenzar a trabajar en él. ¡Mira mis aplicaciones! 😍'
+          'Ángel Guerrero creates expressive software, thoughtful digital products and personal experiments.'
       }
     ],
     link: [
@@ -95,7 +94,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Courgette&family=Saira+Semi+Condensed:wght@600&display=swap'
+          'https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap'
       }
     ]
   },
@@ -119,6 +118,7 @@ export default {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
+    { src: '~/plugins/prism.client', mode: 'client' },
     { src: '~/plugins/vue-material-icons', ssr: false, mode: 'client' }
   ],
 
@@ -203,6 +203,9 @@ export default {
     },
 
     postcss: {
+      preset: {
+        stage: 1
+      },
       plugins: {
         tailwindcss: {},
         autoprefixer: {}

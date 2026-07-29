@@ -17,6 +17,9 @@
       <IconBurger />
     </div>
 
+    <MobileMenu />
+    <PageTransition />
+
     <nav class="nav">
       <Navbar />
     </nav>
@@ -42,14 +45,12 @@
 </template>
 
 <script>
-// #region agent log
-import { isMobile } from 'mobile-device-detect'
-// #endregion
-
 import AnimatedLine from '~/components/AnimatedLine.vue'
 import IconBurger from '~/components/IconBurger.vue'
 import Navbar from '~/components/Navbar.vue'
 import AsideMenu from '~/components/AsideMenu.vue'
+import MobileMenu from '~/components/MobileMenu.vue'
+import PageTransition from '~/components/PageTransition.vue'
 import PrincipalFooter from '~/components/PrincipalFooter.vue'
 
 export default {
@@ -58,42 +59,37 @@ export default {
     IconBurger,
     Navbar,
     AsideMenu,
+    MobileMenu,
+    PageTransition,
     PrincipalFooter
   },
 
-  created () {
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'Layout base created hook started', data: { isMobile: typeof isMobile !== 'undefined' ? isMobile : 'undefined', storeExists: !!this.$store }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'A' }) }).catch(() => {})
-    // #endregion
-
-    try {
-      // #region agent log
-      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'Before setMobileState commit', data: { isMobileValue: isMobile, storeState: this.$store.state }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'B' }) }).catch(() => {})
-      // #endregion
-
-      this.$store.commit('setMobileState', isMobile)
-
-      // #region agent log
-      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'After setMobileState commit', data: { storeState: this.$store.state }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'B' }) }).catch(() => {})
-      // #endregion
-    } catch (error) {
-      // #region agent log
-      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:created', message: 'Error in created hook', data: { error: error.message, stack: error.stack }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'A' }) }).catch(() => {})
-      // #endregion
-      throw error
-    }
+  beforeMount () {
+    this.viewportQuery = window.matchMedia('(max-width: 767px)')
+    this.updateViewport(this.viewportQuery)
   },
 
   mounted () {
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'layouts/base.vue:mounted', message: 'Layout base mounted', data: { storeState: this.$store.state, componentsLoaded: true }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'C' }) }).catch(() => {})
-    // #endregion
+    this.viewportQuery.addListener(this.updateViewport)
+  },
+
+  beforeDestroy () {
+    if (this.viewportQuery) {
+      this.viewportQuery.removeListener(this.updateViewport)
+    }
+  },
+
+  methods: {
+    updateViewport (event) {
+      this.$store.commit('setMobileState', event.matches)
+    }
   }
 }
 </script>
 
 <style>
 .wrapper {
+  height: 100vh;
   min-height: 100vh;
   display: grid;
   grid-template-areas:
@@ -102,6 +98,12 @@ export default {
     'footer footer';
   grid-template-columns: 4rem 1fr;
   grid-template-rows: 4rem 1fr 4rem;
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    height: auto;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -116,6 +118,8 @@ export default {
 
 .icon__burger {
   grid-area: burger;
+  position: relative;
+  z-index: 100;
 }
 
 .nav {
@@ -128,6 +132,8 @@ export default {
 
 .main {
   grid-area: main;
+  min-width: 0;
+  min-height: 0;
 }
 
 .aside__right {

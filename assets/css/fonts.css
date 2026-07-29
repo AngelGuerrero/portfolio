@@ -1,6 +1,8 @@
 /*
   Fonts loaded for this specific layout
  */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
 @font-face {
   font-family: "Cy";
   src: url("~assets/fonts/Cy/Cy-Regular.otf");

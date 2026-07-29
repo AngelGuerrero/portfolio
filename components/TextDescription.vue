@@ -21,7 +21,7 @@
           id="title1"
           :class="{ 'opacity-0': !isMobile }"
           class="dev
-                font-cy-regular
+                hero-display
                 text-custom-md
                 sm:text-4xl
                 lg:text-custom-md
@@ -46,7 +46,7 @@
           data-text="Ángel Guerrero"
           :class="{ 'opacity-0': !isMobile }"
           class="dev
-                font-cy-regular
+                hero-display
                 text-custom-md
                 sm:text-4xl
                 lg:text-custom-md
@@ -126,20 +126,9 @@ export default {
   },
 
   mounted () {
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'components/TextDescription.vue:mounted', message: 'TextDescription component mounted', data: { isMobile: this.isMobile, elementExists: !!this.$el, elementClasses: this.$el ? this.$el.className : null }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'D' }) }).catch(() => {})
-    // #endregion
-
     if (this.isMobile) {
-      // #region agent log
-      fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'components/TextDescription.vue:mounted', message: 'TextDescription skipping animation (mobile)', data: { isMobile: this.isMobile }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'D' }) }).catch(() => {})
-      // #endregion
       return
     }
-
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/34ce4a14-4fb9-4f1c-bc59-a53be485cb74', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'components/TextDescription.vue:mounted', message: 'TextDescription starting animation', data: { isMobile: this.isMobile }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'run1', hypothesisId: 'D' }) }).catch(() => {})
-    // #endregion
 
     this.initTextAnimation()
   },
@@ -232,7 +221,16 @@ export default {
 
 <style>
 .main__title {
-  @apply font-cy-regular text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
+  @apply text-transparent bg-hero-texture bg-clip-text bg-400 bg-center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+}
+
+.hero-display {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.045em;
 }
 
 .title-background--animation {
