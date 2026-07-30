@@ -18,6 +18,12 @@
   );
 }
 
+html,
+body {
+  min-height: 100%;
+  background-color: #000814;
+}
+
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

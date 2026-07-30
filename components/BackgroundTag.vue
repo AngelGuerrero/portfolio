@@ -72,13 +72,19 @@ export default {
 }
 
 .background_tag--me {
-  z-index: 2;
-  top: 10.5%;
-  left: 8.5%;
+  position: absolute;
+  z-index: 0;
+  top: 2.5rem;
+  right: clamp(1rem, 5vw, 5rem);
+  left: auto;
   animation-name: appearMeSignature;
   animation-duration: 2s;
   animation-delay: 0.2s;
   pointer-events: none;
+}
+
+.background_tag--me h2 {
+  font-size: clamp(3rem, 7vw, 6.5rem) !important;
 }
 
 @keyframes appearMeSignature {
@@ -87,7 +93,7 @@ export default {
   }
 
   to {
-    opacity: 0.17;
+    opacity: 0.075;
   }
 }
 

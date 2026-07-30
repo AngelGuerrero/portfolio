@@ -94,7 +94,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap'
+          'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Courgette&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap'
       }
     ]
   },
@@ -198,6 +198,8 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
+    transpile: ['animejs'],
+
     babel: {
       compact: true
     },

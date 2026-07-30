@@ -266,4 +266,16 @@ export default {
   animation: glitch-anim-flash 0.5s steps(1, end) infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .demo-3 {
+    opacity: 1;
+    animation: none;
+  }
+
+  .glitch:hover .glitch__img:nth-child(n + 2) {
+    opacity: 0;
+    animation: none;
+  }
+}
+
 </style>

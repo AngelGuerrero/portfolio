@@ -25,12 +25,18 @@ export default {
 
   data: () => ({
     animationContext: null,
-    reduceMotion: false
+    compactViewport: true,
+    reduceMotion: false,
+    viewportQuery: null
   }),
 
   computed: {
     shouldAnimate () {
-      return !this.isMobile && !this.reduceMotion
+      return (
+        this.$route.path === '/' &&
+        !this.compactViewport &&
+        !this.reduceMotion
+      )
     }
   },
 
@@ -45,7 +51,10 @@ export default {
   },
 
   mounted () {
+    this.viewportQuery = window.matchMedia('(max-width: 639px)')
+    this.compactViewport = this.viewportQuery.matches
     this.reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    this.viewportQuery.addListener(this.updateViewport)
 
     if (this.shouldAnimate) {
       this.animate()
@@ -53,10 +62,18 @@ export default {
   },
 
   beforeDestroy () {
+    if (this.viewportQuery) {
+      this.viewportQuery.removeListener(this.updateViewport)
+    }
+
     this.destroyAnimation()
   },
 
   methods: {
+    updateViewport (event) {
+      this.compactViewport = event.matches
+    },
+
     animate () {
       if (!this.$refs.field || this.animationContext) {
         return

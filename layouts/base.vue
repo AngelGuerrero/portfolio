@@ -89,6 +89,8 @@ export default {
 
 <style>
 .wrapper {
+  position: relative;
+  isolation: isolate;
   height: 100vh;
   height: 100dvh;
   min-height: 100vh;

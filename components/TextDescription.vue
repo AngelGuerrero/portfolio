@@ -98,7 +98,10 @@ export default {
   },
 
   mounted () {
-    if (this.isMobile) {
+    if (
+      window.matchMedia('(max-width: 639px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       return
     }
 
@@ -313,5 +316,16 @@ export default {
   animation-delay: 3s;
   animation-duration: 3s;
   animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title-background--animation,
+  .animation__underscore::after {
+    animation: none;
+  }
+
+  .animation__underscore::after {
+    width: 70%;
+  }
 }
 </style>
