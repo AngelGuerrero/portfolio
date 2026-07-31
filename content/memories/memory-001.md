@@ -2,7 +2,10 @@
 id: memory_001
 title: Hello, this space is for my memories.
 description: A growing collection of the ideas, code, images and moments I want to carry with me.
-codeLine: const memories = life.keep()
+category: About this journal
+publishedAt: '2026-07-28'
+readingTime: 1 min read
+language: en
 order: 1
 ---
 

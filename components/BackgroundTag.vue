@@ -1,6 +1,7 @@
 <template>
   <div
     class="background_tag"
+    aria-hidden="true"
     :class="{
       'background_tag--lower': placement === 'lower',
       'background_tag--upper-right': placement === 'upper-right',

@@ -1,18 +1,40 @@
 <template>
-  <div class="memory-page">
+  <div ref="scene" class="memory-page">
     <background-tag tag-name="Memory" placement="article" />
 
-    <article class="memory-article">
-      <header class="memory-article__header">
+    <article
+      class="memory-article"
+      :lang="memory.language || 'en'"
+      aria-labelledby="memory-title"
+    >
+      <header class="memory-article__header" data-article-reveal>
         <nuxt-link to="/memories" class="memory-back">
           <span aria-hidden="true">←</span> All memories
         </nuxt-link>
-        <h1>{{ memory.title }}</h1>
+
+        <div class="memory-article__meta">
+          <span v-if="memory.category">{{ memory.category }}</span>
+          <time v-if="memory.publishedAt" :datetime="memory.publishedAt">
+            {{ formatDate(memory) }}
+          </time>
+          <span v-if="memory.readingTime">{{ memory.readingTime }}</span>
+          <span v-if="memory.language" class="memory-article__language">
+            {{ memory.language }}
+          </span>
+        </div>
+
+        <h1 id="memory-title">
+          {{ memory.title }}
+        </h1>
+        <p v-if="memory.description" class="memory-article__lead">
+          {{ memory.description }}
+        </p>
       </header>
 
       <div
         class="memory-article__layout"
         :class="{ 'memory-article__layout--with-toc': hasTableOfContents }"
+        data-article-reveal
       >
         <aside v-if="hasTableOfContents" class="memory-toc">
           <nav aria-label="On this memory">
@@ -29,11 +51,41 @@
 
         <nuxt-content :document="memory" class="memory-content" />
       </div>
+
+      <nav
+        v-if="newerMemory || olderMemory"
+        class="memory-navigation"
+        aria-label="More memories"
+        data-article-reveal
+      >
+        <nuxt-link
+          v-if="newerMemory"
+          :to="newerMemory.path"
+          class="memory-navigation__link memory-navigation__link--newer"
+        >
+          <span>Newer memory</span>
+          <strong>← {{ newerMemory.title }}</strong>
+        </nuxt-link>
+
+        <nuxt-link
+          v-if="olderMemory"
+          :to="olderMemory.path"
+          class="memory-navigation__link memory-navigation__link--older"
+        >
+          <span>Earlier memory</span>
+          <strong>{{ olderMemory.title }} →</strong>
+        </nuxt-link>
+      </nav>
     </article>
   </div>
 </template>
 
 <script>
+import {
+  animate,
+  createScope,
+  stagger
+} from 'animejs'
 import BackgroundTag from '~/components/BackgroundTag.vue'
 
 export default {
@@ -46,8 +98,21 @@ export default {
   async asyncData ({ $content, params, error }) {
     try {
       const memory = await $content('memories', params.slug).fetch()
+      const memories = await $content('memories')
+        .only(['title', 'path', 'order'])
+        .sortBy('order', 'desc')
+        .fetch()
+      const currentIndex = memories.findIndex(entry => (
+        entry.path === memory.path
+      ))
 
-      return { memory }
+      return {
+        memory,
+        newerMemory: currentIndex > 0 ? memories[currentIndex - 1] : null,
+        olderMemory: currentIndex >= 0 && currentIndex < memories.length - 1
+          ? memories[currentIndex + 1]
+          : null
+      }
     } catch (exception) {
       error({
         statusCode: 404,
@@ -55,6 +120,10 @@ export default {
       })
     }
   },
+
+  data: () => ({
+    animeScope: null
+  }),
 
   computed: {
     hasTableOfContents () {
@@ -71,6 +140,33 @@ export default {
 
   mounted () {
     this.renderCodeBlocks()
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+
+    if (reduceMotion) {
+      return
+    }
+
+    this.animeScope = createScope({
+      root: this.$refs.scene
+    }).add(() => {
+      animate('[data-article-reveal]', {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: stagger(130),
+        duration: 760,
+        ease: 'out(3)'
+      })
+    })
+  },
+
+  beforeDestroy () {
+    if (this.animeScope) {
+      this.animeScope.revert()
+      this.animeScope = null
+    }
   },
 
   methods: {
@@ -109,6 +205,21 @@ export default {
           }, 1800)
         })
       })
+    },
+
+    formatDate (memory) {
+      if (!memory.publishedAt) {
+        return ''
+      }
+
+      const locale = memory.language === 'es' ? 'es-MX' : 'en-US'
+      const date = new Date(`${memory.publishedAt}T12:00:00`)
+
+      return new Intl.DateTimeFormat(locale, {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }).format(date)
     }
   },
 
@@ -134,8 +245,8 @@ export default {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem) 4rem;
-  scrollbar-color: rgba(32, 170, 140, 0.58) transparent;
+  padding: clamp(2.75rem, 7vh, 5.25rem) clamp(1rem, 5vw, 4.5rem) 5rem;
+  scrollbar-color: rgba(59, 255, 190, 0.45) transparent;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   user-select: text;
@@ -151,65 +262,107 @@ export default {
 
 .memory-page::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: rgba(32, 170, 140, 0.58);
+  background: rgba(59, 255, 190, 0.45);
 }
 
 .memory-article {
   position: relative;
   z-index: 1;
-  width: min(100%, 1040px);
+  width: min(100%, 980px);
   margin: 0 auto;
 }
 
 .memory-article__header {
-  max-width: 850px;
+  width: min(100%, 760px);
   margin: 0 auto;
-  padding: 0 0 clamp(2.2rem, 5vh, 4rem);
+  padding-bottom: clamp(2.75rem, 6vh, 4.75rem);
 }
 
 .memory-back {
   display: inline-flex;
+  min-height: 44px;
   align-items: center;
   gap: 0.55rem;
-  margin-bottom: 1.6rem;
-  color: #8fa5ae;
+  margin: -0.6rem 0 1.75rem -0.75rem;
+  border-radius: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  color: #aabac1;
   font-family: 'Manrope', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  transition: color 180ms ease;
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
-.memory-back:hover,
-.memory-back:focus-visible {
+.memory-back:hover {
+  background: rgba(59, 255, 190, 0.07);
   color: #3bffbe;
-  outline: none;
+}
+
+.memory-back:focus-visible,
+.memory-toc a:focus-visible,
+.memory-navigation__link:focus-visible,
+.memory-content a:focus-visible,
+.memory-content div.code-toolbar > .toolbar button:focus-visible {
+  outline: 3px solid #3bffbe;
+  outline-offset: 3px;
+}
+
+.memory-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.9rem;
+  color: #98abb3;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.memory-article__meta > * + *::before {
+  content: '·';
+  margin-right: 0.9rem;
+  color: #3bffbe;
+}
+
+.memory-article__language {
+  text-transform: uppercase;
 }
 
 .memory-article__header h1 {
-  margin: 0;
+  max-width: 13ch;
+  margin: 1.15rem 0 0;
   background: var(--gradient);
   background-size: 400%;
   background-clip: text;
   color: transparent;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.65rem, 6.5vw, 5.8rem);
+  font-size: clamp(3.25rem, 5.6vw, 4.6rem);
   font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 0.96;
+  letter-spacing: -0.052em;
+  line-height: 0.98;
   animation: bgAnimation 35s alternate-reverse infinite;
 }
 
+.memory-article__lead {
+  max-width: 62ch;
+  margin: 1.65rem 0 0;
+  color: #d2dde1;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.08rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+
 .memory-article__layout {
-  width: min(100%, 850px);
+  width: min(100%, 680px);
   margin: 0 auto;
 }
 
 .memory-article__layout--with-toc {
   display: grid;
   width: 100%;
-  grid-template-columns: 170px minmax(0, 720px);
+  grid-template-columns: 180px minmax(0, 680px);
   justify-content: center;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  gap: clamp(2rem, 5vw, 4rem);
 }
 
 .memory-toc {
@@ -221,34 +374,39 @@ export default {
   top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
-  padding-left: 1rem;
+  gap: 0.4rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  padding-left: 0.85rem;
 }
 
 .memory-toc a {
-  color: #718993;
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  border-radius: 0.3rem;
+  padding: 0.25rem 0.4rem;
+  color: #91a6af;
   font-family: 'Manrope', sans-serif;
-  font-size: 0.7rem;
-  line-height: 1.4;
-  transition: color 160ms ease;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  transition: color 160ms ease, background-color 160ms ease;
 }
 
-.memory-toc a:hover,
-.memory-toc a:focus-visible {
+.memory-toc a:hover {
+  background: rgba(59, 255, 190, 0.06);
   color: #3bffbe;
-  outline: none;
 }
 
 .memory-toc__depth-3 {
-  padding-left: 0.65rem;
+  padding-left: 0.8rem !important;
 }
 
 .memory-content {
   min-width: 0;
-  color: #c7d3d8;
+  max-width: 68ch;
+  color: #cbd7dc;
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  font-size: clamp(1.03rem, 1.25vw, 1.1rem);
   line-height: 1.85;
 }
 
@@ -267,33 +425,33 @@ export default {
 }
 
 .memory-content h2 {
-  margin: 3.4rem 0 1.1rem;
-  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  margin: 3.6rem 0 1.2rem;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
 }
 
 .memory-content h3 {
-  margin: 2.5rem 0 0.9rem;
-  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  margin: 2.7rem 0 1rem;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
 }
 
 .memory-content p,
 .memory-content ul,
 .memory-content ol {
-  margin: 1.25rem 0;
+  margin: 1.4rem 0;
 }
 
 .memory-content a {
-  border-bottom: 1px solid rgba(59, 255, 190, 0.55);
-  color: #3bffbe;
+  border-bottom: 1px solid rgba(59, 255, 190, 0.62);
+  color: #69ffd0;
 }
 
 .memory-content blockquote {
-  margin: 2.3rem 0;
+  margin: 2.5rem 0;
   border-left: 3px solid #ff8fd0;
-  padding: 0.3rem 0 0.3rem 1.4rem;
+  padding: 0.4rem 0 0.4rem 1.4rem;
   color: #e2e9ec;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   line-height: 1.55;
 }
 
@@ -303,8 +461,8 @@ export default {
   display: block;
   width: 100%;
   max-width: 100%;
-  margin: 2.5rem 0;
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  margin: 2.75rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.8rem;
   background: rgba(0, 8, 20, 0.72);
 }
@@ -321,20 +479,20 @@ export default {
 .memory-content .nuxt-content-highlight,
 .memory-content div.code-toolbar {
   position: relative;
-  margin: 2.2rem 0;
+  margin: 2.4rem 0;
 }
 
 .memory-content pre {
   max-width: 100%;
   margin: 0;
   overflow-x: auto;
-  border: 1px solid rgba(59, 255, 190, 0.2);
+  border: 1px solid rgba(59, 255, 190, 0.24);
   border-radius: 0.75rem;
-  padding: 3.45rem 1.25rem 1.25rem;
-  background: rgba(0, 7, 17, 0.9);
+  padding: 3.65rem 1.25rem 1.25rem;
+  background: rgba(0, 7, 17, 0.92);
   color: #dce8ec;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.7;
   tab-size: 2;
   text-shadow: none;
@@ -352,14 +510,14 @@ export default {
   right: 0;
   left: 0;
   display: flex;
-  min-height: 2.45rem;
+  min-height: 2.75rem;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0 0.75rem;
-  color: #718993;
+  color: #91a6af;
   font-family: 'Manrope', sans-serif;
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   pointer-events: none;
 }
 
@@ -369,44 +527,40 @@ export default {
 }
 
 .memory-content div.code-toolbar > .toolbar .toolbar-item span {
-  color: #718993;
+  color: #91a6af;
   font-family: 'Manrope', sans-serif;
-  font-size: 0.66rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 650;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .memory-content div.code-toolbar > .toolbar button {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 0.35rem;
-  background: rgba(255, 255, 255, 0.045);
-  padding: 0.28rem 0.55rem;
-  color: #a9bbc3;
+  min-height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.055);
+  padding: 0.4rem 0.7rem;
+  color: #bdcbd1;
   font-family: 'Manrope', sans-serif;
-  font-size: 0.63rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 650;
   cursor: pointer;
   pointer-events: auto;
-  transition:
-    border-color 160ms ease,
-    color 160ms ease,
-    background-color 160ms ease;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
 
-.memory-content div.code-toolbar > .toolbar button:hover,
-.memory-content div.code-toolbar > .toolbar button:focus-visible {
-  border-color: rgba(59, 255, 190, 0.55);
-  background: rgba(59, 255, 190, 0.08);
+.memory-content div.code-toolbar > .toolbar button:hover {
+  border-color: rgba(59, 255, 190, 0.6);
+  background: rgba(59, 255, 190, 0.09);
   color: #3bffbe;
-  outline: none;
 }
 
 .memory-content .token.comment,
 .memory-content .token.prolog,
 .memory-content .token.doctype,
 .memory-content .token.cdata {
-  color: #637983;
+  color: #81969f;
   font-style: italic;
 }
 
@@ -468,17 +622,65 @@ export default {
   background: rgba(59, 255, 190, 0.1);
   color: #69ffd0;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 0.87em;
+  font-size: 0.9em;
+}
+
+.memory-navigation {
+  display: grid;
+  width: min(100%, 760px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: clamp(4rem, 9vh, 7rem) auto 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 1.25rem;
+}
+
+.memory-navigation__link {
+  display: flex;
+  min-height: 92px;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.65rem;
+  padding: 1rem;
+  color: #e2eaed;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.memory-navigation__link:hover {
+  background: rgba(59, 255, 190, 0.065);
+  color: #3bffbe;
+}
+
+.memory-navigation__link span {
+  margin-bottom: 0.45rem;
+  color: #91a6af;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.memory-navigation__link strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.memory-navigation__link--older {
+  grid-column: 2;
+  text-align: right;
 }
 
 @media screen and (max-width: 900px) {
   .memory-article__layout--with-toc {
     display: block;
-    width: min(100%, 720px);
+    width: min(100%, 680px);
   }
 
   .memory-toc {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.75rem;
   }
 
   .memory-toc nav {
@@ -497,11 +699,20 @@ export default {
   }
 
   .memory-article__header {
-    padding-bottom: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .memory-back {
+    margin-bottom: 1.4rem;
   }
 
   .memory-article__header h1 {
-    font-size: clamp(2.75rem, 13vw, 4.4rem);
+    max-width: 11ch;
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .memory-article__lead {
+    font-size: 1.05rem;
   }
 
   .memory-toc nav {
@@ -509,26 +720,42 @@ export default {
   }
 
   .memory-content {
+    max-width: none;
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: 1.8;
   }
 
   .memory-content pre {
     margin-right: -0.25rem;
     margin-left: -0.25rem;
-    padding: 3.25rem 1rem 1rem;
-    font-size: 0.74rem;
+    padding: 3.5rem 1rem 1rem;
+    font-size: 0.8rem;
   }
 
   .memory-content div.code-toolbar > .toolbar {
     right: -0.25rem;
     left: -0.25rem;
   }
+
+  .memory-navigation {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .memory-navigation__link--older {
+    grid-column: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .memory-article__header h1 {
     animation: none;
+  }
+
+  .memory-back,
+  .memory-toc a,
+  .memory-navigation__link,
+  .memory-content div.code-toolbar > .toolbar button {
+    transition: none;
   }
 }
 </style>
